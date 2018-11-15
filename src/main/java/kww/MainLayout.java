@@ -10,8 +10,7 @@ import javafx.stage.Stage;
 import kww.RealtTranslator.Core.Controllers.Login.Login;
 import kww.RealtTranslator.Core.Controllers.Main.Main;
 
-public class MainLayout  extends Application {
-
+public class MainLayout extends Application {
 
 
     @Override
@@ -20,7 +19,7 @@ public class MainLayout  extends Application {
         Parent root = loader.load();
         Main main = loader.getController();
         Scene scene = new Scene(root);
-        stage.getIcons().add(new Image("View/Resources/Icons/realttranslator.ico")) ;
+        stage.getIcons().add(new Image("View/Resources/Icons/realttranslator.ico"));
         stage.setTitle("РиэлтТранслятор");
         stage.setScene(scene);
 
@@ -33,10 +32,9 @@ public class MainLayout  extends Application {
         Login login = loader2.getController();
         login.setMain(main);
         stage1.setScene(new Scene(root1));
-        stage1.getIcons().add(new Image("View/Resources/Icons/realttranslator.ico")) ;
+        stage1.getIcons().add(new Image("View/Resources/Icons/realttranslator.ico"));
         stage1.setTitle("Авторизация");
         stage1.initModality(Modality.WINDOW_MODAL);
-
 
 
         stage1.show();
