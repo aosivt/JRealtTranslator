@@ -1,0 +1,92 @@
+{
+  "user_id": 19296,
+  "user_name": "alex",
+  "agency_id": 1,
+  "agency_name": "КВМ",
+  "agency_short_name": "КВМ Кемерово",
+  "settings_level": "agency",
+  "filial_id": 1,
+  "filial_name": "Главный офис (Тест 1)",
+  "serv": [
+    {
+      "id": 1,
+      "name": "Статистика",
+      "code": "stat",
+      "is_system_only": false,
+      "is_billing_related": false,
+      "has_microservice": false,
+      "user_managed": false,
+      "for_rm": false
+    },
+    {
+      "id": 2,
+      "name": "Короткие ссылки",
+      "code": "url",
+      "is_system_only": false,
+      "is_billing_related": false,
+      "has_microservice": false,
+      "user_managed": false,
+      "for_rm": false
+    },
+    {
+      "id": 3,
+      "name": "Частные объявления",
+      "code": "own",
+      "is_system_only": false,
+      "is_billing_related": true,
+      "has_microservice": false,
+      "user_managed": true,
+      "for_rm": true
+    },
+    {
+      "id": 4,
+      "name": "РиэлтТранслятор",
+      "code": "translator",
+      "is_system_only": false,
+      "is_billing_related": true,
+      "has_microservice": false,
+      "user_managed": true,
+      "for_rm": true
+    },
+    {
+      "id": 6,
+      "name": "Экспорт объявлений",
+      "code": "export_file",
+      "is_system_only": false,
+      "is_billing_related": false,
+      "has_microservice": false,
+      "user_managed": false,
+      "for_rm": false
+    },
+    {
+      "id": 7,
+      "name": "Размещение на портале",
+      "code": "portal",
+      "is_system_only": true,
+      "is_billing_related": true,
+      "has_microservice": false,
+      "user_managed": true,
+      "for_rm": true
+    },
+    {
+      "id": 8,
+      "name": "Приоритетные объявления",
+      "code": "priority_estate",
+      "is_system_only": true,
+      "is_billing_related": true,
+      "has_microservice": false,
+      "user_managed": true,
+      "for_rm": false
+    },
+    {
+      "id": 12,
+      "name": "Техподдержка сайта организации",
+      "code": "support",
+      "is_system_only": true,
+      "is_billing_related": true,
+      "has_microservice": false,
+      "user_managed": false,
+      "for_rm": false
+    }
+  ]
+}
