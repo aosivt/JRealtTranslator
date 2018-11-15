@@ -9,16 +9,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="618.0" prefWidth="802.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kww.RealtTranslator.Core.Controllers.Main.Main">
+<AnchorPane fx:id="anchorPane" prefHeight="611.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kww.RealtTranslator.Core.Controllers.Main.Main">
     
    <children>
-      <JFXTabPane layoutX="15.0" layoutY="105.0" prefHeight="430.0" prefWidth="769.0" style="-fx: #E4340C;" tabClosingPolicy="UNAVAILABLE">
+      <JFXTabPane layoutX="15.0" layoutY="105.0" prefHeight="429.0" prefWidth="973.0" style="-fx: #E4340C;" tabClosingPolicy="UNAVAILABLE">
           <tabs>
               <Tab style="-fx-background-color: #E4340C;" text="Активные">
                   <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="317.0" prefWidth="651.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="317.0" prefWidth="926.0">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" />
+                        <fx:include source="TranslatorItem.fxml" />
                   
                         <Separator layoutX="7.0" layoutY="401.0" prefHeight="8.0" prefWidth="769.0" />
                      </children></AnchorPane>
@@ -44,8 +44,8 @@
       <ProgressBar layoutX="47.0" layoutY="24.0" prefHeight="25.0" prefWidth="736.0" progress="0.24" style="-fx-background-color: #000000;" />
 
       <JFXTextField fx:id="username" layoutX="78.0" layoutY="58.0" />
-       <Separator layoutX="31.0" layoutY="548.0" prefHeight="3.0" prefWidth="736.0" />
-      <ImageView fitHeight="45.0" fitWidth="639.0" layoutX="106.0" layoutY="559.0" pickOnBounds="true" preserveRatio="true">
+       <Separator layoutX="31.0" layoutY="548.0" prefHeight="2.0" prefWidth="936.0" />
+      <ImageView fitHeight="45.0" fitWidth="639.0" layoutX="208.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Resources/Icons/company_logo.png" />
          </image>

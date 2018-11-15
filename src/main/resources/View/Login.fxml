@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="305.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kww.RealtTranslator.Core.Controllers.Login.Login">
    <children>
@@ -32,12 +33,24 @@
                   <Image url="@Resources/Icons/logo_name.png" />
                </image>
             </ImageView>
-            <JFXTextField fx:id="username" focusColor="#09b6bc" labelFloat="true" layoutX="42.0" layoutY="135.0" maxWidth="374.0" minWidth="232.0" prefHeight="40.0" prefWidth="374.0" promptText="Логин" />
-            <JFXPasswordField fx:id="pass" focusColor="#09b6bc" labelFloat="true" layoutX="42.0" layoutY="210.0" maxWidth="374.0" minWidth="214.0" prefHeight="40.0" prefWidth="374.0" promptText="Пароль" />
-            <JFXButton fx:id="login" buttonType="RAISED" defaultButton="true" layoutX="42.0" layoutY="269.0" onAction="#makeLogin" prefHeight="32.0" prefWidth="171.0" ripplerFill="WHITE" style="-fx-background-color: #E4340C;" text="OK" textAlignment="CENTER" textFill="WHITE" />
-            <JFXButton fx:id="cancel" buttonType="RAISED" cancelButton="true" layoutX="233.0" layoutY="269.0" onAction="#exit" prefHeight="32.0" prefWidth="180.0" ripplerFill="WHITE" style="-fx-background-color: #E4340C;" text="Отмена" textAlignment="CENTER" textFill="WHITE" />
+            <JFXTextField fx:id="username" focusColor="#09b6bc" labelFloat="true" layoutX="42.0" layoutY="135.0" maxWidth="374.0" minWidth="232.0" prefHeight="40.0" prefWidth="374.0" promptText="Логин">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXTextField>
+            <JFXPasswordField fx:id="pass" focusColor="#09b6bc" labelFloat="true" layoutX="42.0" layoutY="210.0" maxWidth="374.0" minWidth="214.0" prefHeight="40.0" prefWidth="374.0" promptText="Пароль">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXPasswordField>
+            <JFXButton fx:id="login" buttonType="RAISED" defaultButton="true" layoutX="42.0" layoutY="269.0" onAction="#makeLogin" prefHeight="32.0" prefWidth="171.0" ripplerFill="WHITE" style="-fx-background-color: #E4340C;" text="OK" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="cancel" buttonType="RAISED" cancelButton="true" layoutX="233.0" layoutY="269.0" onAction="#exit" prefHeight="32.0" prefWidth="180.0" ripplerFill="WHITE" style="-fx-background-color: #E4340C;" text="Отмена" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
             <Label fx:id="message" layoutX="46.0" layoutY="300.0" prefHeight="17.0" prefWidth="374.0" text="Label" />
-            <Hyperlink  layoutX="294.0" layoutY="48.0" text="Забыли пароль?" onAction="#actionForgotPassword"/>
+            <Hyperlink layoutX="294.0" layoutY="48.0" onAction="#actionForgotPassword" text="Забыли пароль?" />
          </children>
          <effect>
             <DropShadow blurType="GAUSSIAN" />
