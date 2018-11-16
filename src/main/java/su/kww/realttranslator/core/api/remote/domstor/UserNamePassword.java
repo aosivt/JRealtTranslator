@@ -1,4 +1,4 @@
-package kww.RealtTranslator.Core.Api.Interfaces;
+package su.kww.realttranslator.core.api.remote.domstor;
 
 public interface UserNamePassword {
     public String getUsername();

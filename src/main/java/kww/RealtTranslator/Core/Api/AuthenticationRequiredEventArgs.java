@@ -1,5 +1,7 @@
 package kww.RealtTranslator.Core.Api;
 
+import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
+
 public class AuthenticationRequiredEventArgs {
     private String message;
     private DomstorUsernamePassword domstorUsernamePassword;

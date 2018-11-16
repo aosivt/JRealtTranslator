@@ -9,9 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import kww.RealtTranslator.Core.Api.Interfaces.UserNamePassword;
-import kww.RealtTranslator.Core.Api.DomstorUsernamePassword;
-import su.kww.realttranslator.core.controllers.frame_translators.BaseFrameTranslators;
+import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
+import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
+import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
+import su.kww.realttranslator.core.api.remote.domstor.services.BaseApiConfig;
 import su.kww.realttranslator.core.controllers.frame_translators.FrameTranslators;
 
 import java.net.URL;
@@ -77,9 +78,21 @@ public abstract class BaseLogin implements Initializable {
         return frameTranslators;
     }
 
+    void updateByLogin(){
+        synchronize();
+    }
+
+    BaseApiConfig getBaseApiConfig(){
+        return DaggerDomstorComponent.create()
+                                .getDomstorApiConfig()
+                                .setUserNamePassword(createUserPass());
+    }
+
+    protected abstract void synchronize();
     @FXML
     void exit(ActionEvent event) {
         System.exit(0);
     }
+
 
 }

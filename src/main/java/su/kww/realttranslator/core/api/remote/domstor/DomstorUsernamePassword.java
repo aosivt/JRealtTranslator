@@ -1,6 +1,9 @@
-package kww.RealtTranslator.Core.Api;
+package su.kww.realttranslator.core.api.remote.domstor;
 
-import kww.RealtTranslator.Core.Api.Interfaces.UserNamePassword;
+import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
+import su.kww.realttranslator.core.api.remote.domstor.services.DomstorApiConfig;
+
+import javax.inject.Inject;
 
 public class DomstorUsernamePassword implements UserNamePassword {
 
@@ -20,4 +23,5 @@ public class DomstorUsernamePassword implements UserNamePassword {
     public String getPassword() {
         return password;
     }
+
 }

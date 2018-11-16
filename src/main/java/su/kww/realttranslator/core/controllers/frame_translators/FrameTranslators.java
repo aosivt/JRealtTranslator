@@ -7,12 +7,8 @@ import javax.inject.Inject;
 
 public class FrameTranslators extends BaseFrameTranslators {
 
-    @Inject
-    DomstorApiConfig domstorApiConfig;
 
     public FrameTranslators(){}
 
-    public DomstorApiConfig getDomstorApiConfig() {
-        return domstorApiConfig;
-    }
+
 }

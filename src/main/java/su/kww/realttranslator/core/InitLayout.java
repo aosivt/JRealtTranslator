@@ -15,14 +15,6 @@ import javax.inject.Inject;
 
 public class InitLayout extends Application {
 
-
-    DomstorApiConfig domstorApiConfig;
-
-    @Inject
-    public InitLayout(DomstorApiConfig domstorApiConfig){
-        this.domstorApiConfig = domstorApiConfig;
-    }
-
     @Override
     public void start(Stage stage) throws Exception {
 

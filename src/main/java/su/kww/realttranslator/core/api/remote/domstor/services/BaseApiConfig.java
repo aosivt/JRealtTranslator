@@ -1,7 +1,7 @@
 package su.kww.realttranslator.core.api.remote.domstor.services;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import kww.RealtTranslator.Core.Api.Interfaces.UserNamePassword;
+import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import okhttp3.Credentials;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -13,14 +13,12 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
 
     UserNamePassword userNamePassword;
 
-
     public BaseApiConfig(){}
 
     public BaseApiConfig(String baseUrl){
         this.baseUrl = baseUrl;
     }
 
-    public abstract BaseApiConfig setUserNamePassword(UserNamePassword userNamePassword);
 
     protected Retrofit getRetrofitForBaseUrl(){
 
@@ -44,5 +42,11 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
 
     private String getBasicAuthorizationString(){
         return Credentials.basic(userNamePassword.getUsername(), userNamePassword.getPassword());
+    }
+
+    public BaseApiConfig setUserNamePassword(UserNamePassword userNamePassword) {
+        this.userNamePassword = userNamePassword;
+        return this;
+
     }
 }
