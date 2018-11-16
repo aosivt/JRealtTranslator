@@ -29,13 +29,13 @@
         <property name="hibernate.order_inserts">true</property>
         <!--&lt;!&ndash; Drop and re-create the database schema on startup-->
         <!--<property name="hbm2ddl.auto">create</property>-->
-        <mapping class="kww.RealtTranslator.Core.Entity.Advert" />
-        <mapping class="kww.RealtTranslator.Core.Entity.Site" />
-        <mapping class="kww.RealtTranslator.Core.Entity.AdvertSite" />
-        <mapping class="kww.RealtTranslator.Core.Entity.SiteSettings" />
-        <mapping class="kww.RealtTranslator.Core.Entity.AdvertSiteData" />
-        <mapping class="kww.RealtTranslator.Core.Entity.MailerPreset" />
-        <mapping class="kww.RealtTranslator.Core.Entity.UserSettings" />
+        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.Advert" />
+        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.Site" />
+        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.AdvertSite" />
+        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.SiteSettings" />
+        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.AdvertSiteData" />
+        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.MailerPreset" />
+        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.UserSettings" />
 
     </session-factory>
 </hibernate-configuration>

@@ -1,11 +1,10 @@
 package kww.RealtTranslator.Core.Server;
 
 import com.sun.jersey.api.client.*;
-import kww.RealtTranslator.Core.Api.Interfaces.IApiConfig;
-import kww.RealtTranslator.Core.Api.ServiceEntities.LoginService.LoginEntity;
-import kww.RealtTranslator.Core.Entity.Advert;
-import kww.RealtTranslator.Core.Entity.MailerPreset;
-import kww.RealtTranslator.Core.Entity.Site;
+import su.kww.realttranslator.core.api.remote.domstor.services.UrlConfig;
+import su.kww.realttranslator.core.api.inside.database.entities.Advert;
+import su.kww.realttranslator.core.api.inside.database.entities.MailerPreset;
+import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import sun.net.NetworkClient;
 
 import javax.ws.rs.core.MediaType;
@@ -13,7 +12,7 @@ import java.util.Collection;
 
 public class AbstractServer implements IServer {
 
-    protected IApiConfig apiConfig;
+    protected UrlConfig apiConfig;
     protected IAuthToken<String> token;
     protected NetworkClient client = new NetworkClient();
 

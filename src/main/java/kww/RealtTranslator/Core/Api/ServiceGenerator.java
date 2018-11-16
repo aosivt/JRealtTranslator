@@ -1,6 +1,7 @@
 package kww.RealtTranslator.Core.Api;
 
-import kww.RealtTranslator.Core.Api.Interfaces.IApiConfig;
+import su.kww.realttranslator.core.api.remote.domstor.services.BaseApiConfig;
+import su.kww.realttranslator.core.api.remote.domstor.services.UrlConfig;
 import okhttp3.Credentials;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -11,13 +12,13 @@ import javax.inject.Inject;
 public class ServiceGenerator {
 
     @Inject
-    public static IApiConfig API_CONFIG;
+    public static UrlConfig API_CONFIG;
 
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
-                    .baseUrl(API_CONFIG.getLoginUrl());
+                    .baseUrl(BaseApiConfig.LoginUrl);
 
     private static Retrofit retrofit = builder.build();
 

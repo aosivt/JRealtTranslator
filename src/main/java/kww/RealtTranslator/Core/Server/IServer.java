@@ -1,8 +1,8 @@
 package kww.RealtTranslator.Core.Server;
 
-import kww.RealtTranslator.Core.Entity.Advert;
-import kww.RealtTranslator.Core.Entity.MailerPreset;
-import kww.RealtTranslator.Core.Entity.Site;
+import su.kww.realttranslator.core.api.inside.database.entities.Advert;
+import su.kww.realttranslator.core.api.inside.database.entities.MailerPreset;
+import su.kww.realttranslator.core.api.inside.database.entities.Site;
 
 import java.util.Collection;
 

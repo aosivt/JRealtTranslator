@@ -2,7 +2,6 @@ package kww.RealtTranslator.Core.Tools;
 
 import kww.RealtTranslator.Core.Tools.Interfaces.IUserAgentProvider;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -42,8 +41,6 @@ public class UserAgentProvider implements IUserAgentProvider {
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_6_8) AppleWebKit/537.13+ (KHTML, like Gecko) Version/5.1.7 Safari/534.57.2",
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/534.55.3 (KHTML, like Gecko) Version/5.1.3 Safari/534.53.10"
     );
-
-
     public List<String> getList() {
         return list;
     }

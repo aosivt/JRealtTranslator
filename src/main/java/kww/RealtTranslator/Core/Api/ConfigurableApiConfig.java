@@ -1,8 +1,8 @@
 package kww.RealtTranslator.Core.Api;
 
-import kww.RealtTranslator.Core.Api.Interfaces.IApiConfig;
+import su.kww.realttranslator.core.api.remote.domstor.services.UrlConfig;
 
-public class ConfigurableApiConfig implements IApiConfig {
+public class ConfigurableApiConfig implements UrlConfig {
     private String baseUrl;
     
     public ConfigurableApiConfig(String baseUrl){
