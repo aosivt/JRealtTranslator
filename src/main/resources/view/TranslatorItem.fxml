@@ -9,28 +9,28 @@
 
       <ImageView fitHeight="74.0" fitWidth="66.0" layoutX="171.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Resources/icons/run.png" />
+            <Image url="@resources/icons/run.png" />
          </image>
       </ImageView>
       <ProgressBar layoutX="275.0" layoutY="98.0" prefHeight="27.0" prefWidth="657.0" progress="0.0" />
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="932.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Resources/icons/settings.png" />
+            <Image url="@resources/icons/settings.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="275.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Resources/icons/success.png" />
+            <Image url="@resources/icons/success.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="274.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Resources/icons/date.png" />
+            <Image url="@resources/icons/date.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="554.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Resources/icons/time.png" />
+            <Image url="@resources/icons/time.png" />
          </image>
       </ImageView>
 

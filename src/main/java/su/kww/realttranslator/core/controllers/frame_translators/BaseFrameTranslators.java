@@ -4,10 +4,11 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
-import su.kww.realttranslator.core.api.remote.domstor.services.DomstorApiConfig;
+import javafx.scene.paint.Color;
 
-import javax.inject.Inject;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,10 +17,20 @@ public abstract class BaseFrameTranslators implements Initializable {
 
 
     @FXML
-    private AnchorPane anchorPane;
+    protected AnchorPane anchorPane;
 
     @FXML
-    private JFXTextField username;
+    protected JFXTextField username;
+
+    @FXML
+    protected ProgressBar progressBar;
+
+    protected Double indexProgressBar = 0.0;
+
+    @FXML
+    protected Label labelProgressBarr;
+
+    final private static int DEFAULT_LABEL_PADDING = 5;
 
     @FXML
     void exit(ActionEvent event) {
@@ -27,8 +38,23 @@ public abstract class BaseFrameTranslators implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle rb) {
-        username.setText("sdfgsdfgsfd");
+
+        setup();
+
+
     }
+
+    public void addPercentProgressBar(Double index, String textLabelProgressBar){
+        indexProgressBar +=index;
+        progressBar.setProgress(indexProgressBar);
+        labelProgressBarr.setText("проверка");
+    }
+
+    private void setup(){
+
+        labelProgressBarr.setTextFill(Color.web("#0076a3"));
+    }
+
 
 
 }

@@ -1,11 +1,15 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
-import javax.persistence.*;
-import java.sql.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "site")
-public class Site {
+public class Site implements Serializable {
 
 //.WithColumn("id").AsInt32().PrimaryKey()
     @Id

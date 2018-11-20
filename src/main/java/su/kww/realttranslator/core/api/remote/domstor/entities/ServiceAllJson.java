@@ -2,401 +2,658 @@ package su.kww.realttranslator.core.api.remote.domstor.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import su.kww.realttranslator.core.api.remote.domstor.entities.address.*;
+import su.kww.realttranslator.core.api.remote.domstor.entities.options_feed_object.*;
 
 import java.util.Set;
 
 public class ServiceAllJson {
 
+    @SerializedName("room_count")
+    @Expose
     @JsonProperty("room_count")
-    private Object room_count;
+    private String room_count;
+    @SerializedName("room_count_total")
+    @Expose
     @JsonProperty("room_count_total")
-    private Object room_count_total;
+    private String room_count_total;
+    @SerializedName("flat_type_id")
+    @Expose
     @JsonProperty("flat_type_id")
-    private Object flat_type_id;
+    private String flat_type_id;
+    @SerializedName("object_floor")
+    @Expose
     @JsonProperty("object_floor")
-    private Object object_floor;
+    private String object_floor;
+    @SerializedName("planning_id")
+    @Expose
     @JsonProperty("planning_id")
-    private Object planning_id;
+    private String planning_id;
+    @SerializedName("floor_count")
+    @Expose
     @JsonProperty("floor_count")
-    private Object floor_count;
+    private String floor_count;
+    @SerializedName("phone_id")
+    @Expose
     @JsonProperty("phone_id")
-    private Object phone_id;
+    private String phone_id;
+    @SerializedName("toilet_id")
+    @Expose
     @JsonProperty("toilet_id")
-    private Object toilet_id;
+    private String toilet_id;
+    @SerializedName("material_wall_id")
+    @Expose
     @JsonProperty("material_wall_id")
-    private Object material_wall_id;
+    private String material_wall_id;
+    @SerializedName("building_material_id")
+    @Expose
     @JsonProperty("building_material_id")
-    private Object building_material_id;
+    private String building_material_id;
+    @SerializedName("new_building")
+    @Expose
     @JsonProperty("new_building")
-    private Object new_building;
+    private String new_building;
+    @SerializedName("delivery_year")
+    @Expose
     @JsonProperty("delivery_year")
-    private Object delivery_year;
+    private String delivery_year;
+    @SerializedName("delivery_quarter")
+    @Expose
     @JsonProperty("delivery_quarter")
-    private Object delivery_quarter;
+    private String delivery_quarter;
+    @SerializedName("delivered")
+    @Expose
     @JsonProperty("delivered")
-    private Object delivered;
+    private String delivered;
+    @SerializedName("active_exchange")
+    @Expose
     @JsonProperty("active_exchange")
     private Boolean active_exchange;
+    @SerializedName("first_floor_commerce")
+    @Expose
     @JsonProperty("first_floor_commerce")
-    private Object first_floor_commerce;
+    private String first_floor_commerce;
+    @SerializedName("ground_floor")
+    @Expose
     @JsonProperty("ground_floor")
-    private Object ground_floor;
+    private String ground_floor;
+    @SerializedName("building_floor")
+    @Expose
     @JsonProperty("building_floor")
     private Object building_floor;
+    @SerializedName("for_commerce")
+    @Expose
     @JsonProperty("for_commerce")
     private Object for_commerce;
+    @SerializedName("balcony_count")
+    @Expose
     @JsonProperty("balcony_count")
     private Object balcony_count;
+    @SerializedName("loggia_count")
+    @Expose
     @JsonProperty("loggia_count")
     private Object loggia_count;
+    @SerializedName("household_technique_ids")
+    @Expose
     @JsonProperty("household_technique_ids")
     private Set<Object> household_technique_ids;
+    @SerializedName("balcony_arrangement_ids")
+    @Expose
     @JsonProperty("balcony_arrangement_ids")
     private Set<Object> balcony_arrangement_ids;
+    @SerializedName("furniture_ids")
+    @Expose
     @JsonProperty("furniture_ids")
     private Set<Object>furniture_ids;
+    @SerializedName("parking_ids")
+    @Expose
     @JsonProperty("parking_ids")
     private Set<Object>parking_ids;
+    @SerializedName("in_communal")
+    @Expose
     @JsonProperty("in_communal")
     private Object in_communal;
+    @SerializedName("building_num")
+    @Expose
     @JsonProperty("building_num")
     private Object building_num;
+    @SerializedName("phone_count")
+    @Expose
     @JsonProperty("phone_count")
     private Object phone_count;
+    @SerializedName("gas")
+    @Expose
     @JsonProperty("gas")
     private Object gas;
+    @SerializedName("cable_tv")
+    @Expose
     @JsonProperty("cable_tv")
     private Object cable_tv;
+    @SerializedName("door_phone")
+    @Expose
     @JsonProperty("door_phone")
     private Object door_phone;
+    @SerializedName("satellite_tv")
+    @Expose
     @JsonProperty("satellite_tv")
     private Object satellite_tv;
+    @SerializedName("signalizing")
+    @Expose
     @JsonProperty("signalizing")
     private Object signalizing;
+    @SerializedName("internet")
+    @Expose
     @JsonProperty("internet")
     private Object internet;
+    @SerializedName("fire_prevention")
+    @Expose
     @JsonProperty("fire_prevention")
     private Object firePrevention;
+    @SerializedName("toilet_count")
+    @Expose
     @JsonProperty("toilet_count")
     private Object toilet_count;
+    @SerializedName("square_house")
+    @Expose
     @JsonProperty("square_house")
     private Object square_house;
+    @SerializedName("square_living")
+    @Expose
     @JsonProperty("square_living")
     private Object square_living;
+    @SerializedName("square_kitchen")
+    @Expose
     @JsonProperty("square_kitchen")
     private Object square_kitchen;
+    @SerializedName("build_year")
+    @Expose
     @JsonProperty("build_year")
     private Object build_year;
+    @SerializedName("height")
+    @Expose
     @JsonProperty("height")
     private Object height;
+    @SerializedName("available_metro")
+    @Expose
     @JsonProperty("available_metro")
     private Object available_metro;
+    @SerializedName("available_bus_to_metro")
+    @Expose
     @JsonProperty("available_bus_to_metro")
     private Object available_bus_to_metro;
+    @SerializedName("rent_communal_payment_id")
+    @Expose
     @JsonProperty("rent_communal_payment_id")
     private Object rent_communal_payment_id;
+    @SerializedName("rent_term")
+    @Expose
     @JsonProperty("rent_term")
     private Object rent_term;
+    @SerializedName("video_weblink")
+    @Expose
     @JsonProperty("video_weblink")
     private Object video_weblink;
+    @SerializedName("mortgage")
+    @Expose
     @JsonProperty("mortgage")
     private Object mortgage;
+    @SerializedName("cadastral_number")
+    @Expose
     @JsonProperty("cadastral_number")
     private Object cadastral_number;
+    @SerializedName("flat_num")
+    @Expose
     @JsonProperty("flat_num")
     private Object flat_num;
+    @SerializedName("id")
+    @Expose
     @JsonProperty("id")
     private Object id;
+    @SerializedName("code")
+    @Expose
     @JsonProperty("code")
     private Object code;
+    @SerializedName("agent_id")
+    @Expose
     @JsonProperty("agent_id")
     private Object agent_id;
+    @SerializedName("filial_id")
+    @Expose
     @JsonProperty("filial_id")
     private Object filial_id;
+    @SerializedName("agency_id")
+    @Expose
     @JsonProperty("agency_id")
     private Object agency_id;
+    @SerializedName("server_dt")
+    @Expose
     @JsonProperty("server_dt")
     private Object server_dt;
+    @SerializedName("reg_dt")
+    @Expose
     @JsonProperty("reg_dt")
     private Object reg_dt;
+    @SerializedName("edit_dt")
+    @Expose
     @JsonProperty("edit_dt")
     private Object edit_dt;
+    @SerializedName("ref_city_id")
+    @Expose
     @JsonProperty("ref_city_id")
     private Object ref_city_id;
 
+    @SerializedName("ref_city")
+    @Expose
     @JsonProperty("ref_city")
-    private Object ref_city;
+    private RefCity ref_city;
 
+    @SerializedName("city")
+    @Expose
     @JsonProperty("city")
-    private Object city;
+    private City city;
 
+    @SerializedName("region")
+    @Expose
     @JsonProperty("region")
-    private Object region;
+    private Region region;
 
+    @SerializedName("master_city")
+    @Expose
     @JsonProperty("master_city")
-    private Object master_city;
+    private MasterCity master_city;
 
+    @SerializedName("district")
+    @Expose
     @JsonProperty("district")
-    private Object district;
+    private District district;
 
+    @SerializedName("parent_district")
+    @Expose
     @JsonProperty("parent_district")
-    private Object parent_district;
+    private ParentDistrict parent_district;
 
+    @SerializedName("street")
+    @Expose
     @JsonProperty("street")
-    private Object street;
+    private Street street;
 
+    @SerializedName("contact")
+    @Expose
     @JsonProperty("contact")
     private Object contact;
 
+    @SerializedName("furniture")
+    @Expose
     @JsonProperty("furniture")
-    private Object furniture;
+    private Set<Furniture> furniture;
 
+    @SerializedName("household_technique")
+    @Expose
     @JsonProperty("household_technique")
-    private Object household_technique;
+    private Set<HouseholdTechnique> household_technique;
 
+    @SerializedName("balcony_arrangement")
+    @Expose
     @JsonProperty("balcony_arrangement")
     private Object balcony_arrangement;
-
+    @SerializedName("parking")
+    @Expose
     @JsonProperty("parking")
     private Object parking;
-
+    @SerializedName("flat_type")
+    @Expose
     @JsonProperty("flat_type")
-    private Object flat_type;
-
+    private FlatType flat_type;
+    @SerializedName("rent_currency")
+    @Expose
     @JsonProperty("rent_currency")
-    private Object rent_currency;
-
+    private RentCurrency rent_currency;
+    @SerializedName("rent_period")
+    @Expose
     @JsonProperty("rent_period")
-    private Object rentPeriod;
-
+    private RentPeriod rentPeriod;
+    @SerializedName("price_currency")
+    @Expose
     @JsonProperty("price_currency")
-    private Object price_currency;
-
+    private PriceCurrency price_currency;
+    @SerializedName("material_wall")
+    @Expose
     @JsonProperty("material_wall")
-    private Object material_wall;
-
+    private MaterialWall material_wall;
+    @SerializedName("building_material")
+    @Expose
     @JsonProperty("building_material")
-    private Object building_material;
-
+    private BuildingMaterial building_material;
+    @SerializedName("photos")
+    @Expose
     @JsonProperty("photos")
-    private Object photos;
-
+    private Set<String> photos;
+    @SerializedName("photos_md5")
+    @Expose
     @JsonProperty("photos_md5")
-    private Object photos_md5;
-
+    private Set<PhotosMd5> photos_md5;
+    @SerializedName("link")
+    @Expose
     @JsonProperty("link")
-    private Object link;
-
+    private String link;
+    @SerializedName("phone")
+    @Expose
     @JsonProperty("phone")
-    private Object phone;
-
+    private Phone phone;
+    @SerializedName("subregion")
+    @Expose
     @JsonProperty("subregion")
     private Object subregion;
-
+    @SerializedName("location")
+    @Expose
     @JsonProperty("location")
     private Object location;
 
-
+    @SerializedName("house_type_id")
+    @Expose
     @JsonProperty("house_type_id")
     private Object house_type_id;
-
+    @SerializedName("house_part")
+    @Expose
     @JsonProperty("house_part")
     private Object housePart;
-
+    @SerializedName("heat_ids")
+    @Expose
     @JsonProperty("heat_ids")
     private Object heat_ids;
-
+    @SerializedName("water_id")
+    @Expose
     @JsonProperty("water_id")
     private Object water_id;
-
+    @SerializedName("sewerage_id")
+    @Expose
     @JsonProperty("sewerage_id")
     private Object sewerage_id;
-
+    @SerializedName("garage_id")
+    @Expose
     @JsonProperty("garage_id")
     private Object garage_id;
-
+    @SerializedName("swimming_pool_id")
+    @Expose
     @JsonProperty("swimming_pool_id")
     private Object swimmingPool_id;
-
+    @SerializedName("bath_house_id")
+    @Expose
     @JsonProperty("bath_house_id")
     private Object bathHouse_id;
-
+    @SerializedName("square_ground")
+    @Expose
     @JsonProperty("square_ground")
     private Object squareGround;
-
+    @SerializedName("square_ground_m2")
+    @Expose
     @JsonProperty("square_ground_m2")
     private Object square_ground_m2;
-
+    @SerializedName("square_ground_unit_id")
+    @Expose
     @JsonProperty("square_ground_unit_id")
     private Object square_ground_unit_id;
-
+    @SerializedName("heat")
+    @Expose
     @JsonProperty("heat")
     private Object heat;
-
+    @SerializedName("square_ground_unit")
+    @Expose
     @JsonProperty("square_ground_unit")
     private Object square_ground_unit;
 
-
+    @SerializedName("street_name")
+    @Expose
     @JsonProperty("street_name")
     private Object street_name;
-
+    @SerializedName("planning")
+    @Expose
     @JsonProperty("planning")
     private Object planning;
-
+    @SerializedName("toilet")
+    @Expose
     @JsonProperty("toilet")
     private Object toilet;
-
+    @SerializedName("state")
+    @Expose
     @JsonProperty("state")
-    private Object state;
-
+    private State state;
+    @SerializedName("city_id")
+    @Expose
     @JsonProperty("city_id")
     private Object city_id;
+    @SerializedName("region_id")
+    @Expose
     @JsonProperty("region_id")
     private Object region_id;
+    @SerializedName("active_sale")
+    @Expose
     @JsonProperty("active_sale")
     private Boolean active_sale;
+    @SerializedName("active_rent")
+    @Expose
     @JsonProperty("active_rent")
     private Boolean active_rent;
+    @SerializedName("object_phone")
+    @Expose
     @JsonProperty("object_phone")
-    private Object object_phone;
+    private String object_phone;
+    @SerializedName("publish_partner_ids")
+    @Expose
     @JsonProperty("publish_partner_ids")
     private Set<Object> publish_partner_ids;
+    @SerializedName("public_level_web_id")
+    @Expose
     @JsonProperty("public_level_web_id")
     private Object public_level_web_id;
+    @SerializedName("state_id")
+    @Expose
     @JsonProperty("state_id")
     private Object state_id;
+    @SerializedName("address_note")
+    @Expose
     @JsonProperty("address_note")
     private Object address_note;
+    @SerializedName("note_web")
+    @Expose
     @JsonProperty("note_web")
     private Object note_web;
+    @SerializedName("note_excel")
+    @Expose
     @JsonProperty("note_excel")
     private Object note_excel;
+    @SerializedName("int_possible")
+    @Expose
     @JsonProperty("int_possible")
     private Boolean int_possible;
+    @SerializedName("agreement_id")
+    @Expose
     @JsonProperty("agreement_id")
     private Object agreement_id;
+    @SerializedName("status_id")
+    @Expose
     @JsonProperty("status_id")
     private Object status_id;
+    @SerializedName("owner_type_id")
+    @Expose
     @JsonProperty("owner_type_id")
     private Object owner_type_id;
+    @SerializedName("realization_way_id")
+    @Expose
     @JsonProperty("realization_way_id")
     private Object realization_way_id;
+    @SerializedName("org_is_filial_divided")
+    @Expose
     @JsonProperty("org_is_filial_divided")
     private Object org_is_filial_divided;
+    @SerializedName("agent_phone")
+    @Expose
     @JsonProperty("agent_phone")
     private Object agent_phone;
+    @SerializedName("agent_name")
+    @Expose
     @JsonProperty("agent_name")
     private Object agent_name;
+    @SerializedName("region_type_name")
+    @Expose
     @JsonProperty("region_type_name")
     private Object region_type_name;
+    @SerializedName("longitude")
+    @Expose
     @JsonProperty("longitude")
     private Object longitude;
+    @SerializedName("latitude")
+    @Expose
     @JsonProperty("latitude")
     private Object latitude;
+    @SerializedName("master_city_id")
+    @Expose
     @JsonProperty("master_city_id")
     private Object master_city_id;
+    @SerializedName("subregion_id")
+    @Expose
     @JsonProperty("subregion_id")
     private Object subregion_id;
+    @SerializedName("location_id")
+    @Expose
     @JsonProperty("location_id")
     private Object location_id;
+    @SerializedName("location_name")
+    @Expose
     @JsonProperty("location_name")
     private Object location_name;
+    @SerializedName("district_id")
+    @Expose
     @JsonProperty("district_id")
     private Object district_id;
+    @SerializedName("street_id")
+    @Expose
     @JsonProperty("street_id")
     private Object street_id;
+    @SerializedName("metro_id")
+    @Expose
     @JsonProperty("metro_id")
     private Object metro_id;
+    @SerializedName("corpus")
+    @Expose
     @JsonProperty("corpus")
     private Object corpus;
+    @SerializedName("remoteness_from_city")
+    @Expose
     @JsonProperty("remoteness_from_city")
     private Object remoteness_from_city;
-
+    @SerializedName("price_full")
+    @Expose
     @JsonProperty("price_full")
     private String price_full;
+    @SerializedName("rent_full")
+    @Expose
     @JsonProperty("rent_full")
     private String rent_full;
+    @SerializedName("price_full_rur")
+    @Expose
     @JsonProperty("price_full_rur")
     private String price_full_rur;
+    @SerializedName("price_currency_id")
+    @Expose
     @JsonProperty("price_currency_id")
     private String price_currency_id;
+    @SerializedName("rent_currency_id")
+    @Expose
     @JsonProperty("rent_currency_id")
     private String rent_currency_id;
+    @SerializedName("rent_period_id")
+    @Expose
     @JsonProperty("rent_period_id")
     private String rent_period_id;
+    @SerializedName("rent_full_rur")
+    @Expose
     @JsonProperty("rent_full_rur")
     private String rent_full_rur;
+    @SerializedName("publisher_params")
+    @Expose
     @JsonProperty("publisher_params")
-
     private Object publisher_params;
-
+    @SerializedName("data_class")
+    @Expose
     @JsonProperty("data_class")
     private Integer data_class;
-
+    @SerializedName("agent")
+    @Expose
     @JsonProperty("agent")
     private Agent agent;
+    @SerializedName("org")
+    @Expose
     @JsonProperty("org")
     private Organization org;
+    @SerializedName("live_complex")
+    @Expose
     @JsonProperty("live_complex")
     private LiveComplex live_complex;
+    @SerializedName("filial")
+    @Expose
     @JsonProperty("filial")
     private Filial filial;
+    @SerializedName("developer")
+    @Expose
     @JsonProperty("developer")
     private Developer developer;
 
-    public Object getRoom_count() {
+    public String getRoom_count() {
         return room_count;
     }
 
-    public Object getRoom_count_total() {
+    public String getRoom_count_total() {
         return room_count_total;
     }
 
-    public Object getFlat_type_id() {
+    public String getFlat_type_id() {
         return flat_type_id;
     }
 
-    public Object getObject_floor() {
+    public String getObject_floor() {
         return object_floor;
     }
 
-    public Object getPlanning_id() {
+    public String getPlanning_id() {
         return planning_id;
     }
 
-    public Object getFloor_count() {
+    public String getFloor_count() {
         return floor_count;
     }
 
-    public Object getPhone_id() {
+    public String getPhone_id() {
         return phone_id;
     }
 
-    public Object getToilet_id() {
+    public String getToilet_id() {
         return toilet_id;
     }
 
-    public Object getMaterial_wall_id() {
+    public String getMaterial_wall_id() {
         return material_wall_id;
     }
 
-    public Object getBuilding_material_id() {
+    public String getBuilding_material_id() {
         return building_material_id;
     }
 
-    public Object getNew_building() {
+    public String getNew_building() {
         return new_building;
     }
 
-    public Object getDelivery_year() {
+    public String getDelivery_year() {
         return delivery_year;
     }
 
-    public Object getDelivery_quarter() {
+    public String getDelivery_quarter() {
         return delivery_quarter;
     }
 
-    public Object getDelivered() {
+    public String getDelivered() {
         return delivered;
     }
 
@@ -404,11 +661,11 @@ public class ServiceAllJson {
         return active_exchange;
     }
 
-    public Object getFirst_floor_commerce() {
+    public String getFirst_floor_commerce() {
         return first_floor_commerce;
     }
 
-    public Object getGround_floor() {
+    public String getGround_floor() {
         return ground_floor;
     }
 
@@ -576,31 +833,31 @@ public class ServiceAllJson {
         return ref_city_id;
     }
 
-    public Object getRef_city() {
+    public RefCity getRef_city() {
         return ref_city;
     }
 
-    public Object getCity() {
+    public City getCity() {
         return city;
     }
 
-    public Object getRegion() {
+    public Region getRegion() {
         return region;
     }
 
-    public Object getMaster_city() {
+    public MasterCity getMaster_city() {
         return master_city;
     }
 
-    public Object getDistrict() {
+    public District getDistrict() {
         return district;
     }
 
-    public Object getParent_district() {
+    public ParentDistrict getParent_district() {
         return parent_district;
     }
 
-    public Object getStreet() {
+    public Street getStreet() {
         return street;
     }
 
@@ -608,11 +865,11 @@ public class ServiceAllJson {
         return contact;
     }
 
-    public Object getFurniture() {
+    public Set<Furniture> getFurniture() {
         return furniture;
     }
 
-    public Object getHousehold_technique() {
+    public Set<HouseholdTechnique> getHousehold_technique() {
         return household_technique;
     }
 
@@ -624,43 +881,43 @@ public class ServiceAllJson {
         return parking;
     }
 
-    public Object getFlat_type() {
+    public FlatType getFlat_type() {
         return flat_type;
     }
 
-    public Object getRent_currency() {
+    public RentCurrency getRent_currency() {
         return rent_currency;
     }
 
-    public Object getRentPeriod() {
+    public RentPeriod getRentPeriod() {
         return rentPeriod;
     }
 
-    public Object getPrice_currency() {
+    public PriceCurrency getPrice_currency() {
         return price_currency;
     }
 
-    public Object getMaterial_wall() {
+    public MaterialWall getMaterial_wall() {
         return material_wall;
     }
 
-    public Object getBuilding_material() {
+    public BuildingMaterial getBuilding_material() {
         return building_material;
     }
 
-    public Object getPhotos() {
+    public Set<String> getPhotos() {
         return photos;
     }
 
-    public Object getPhotos_md5() {
+    public Set<PhotosMd5> getPhotos_md5() {
         return photos_md5;
     }
 
-    public Object getLink() {
+    public String getLink() {
         return link;
     }
 
-    public Object getPhone() {
+    public Phone getPhone() {
         return phone;
     }
 
@@ -736,7 +993,7 @@ public class ServiceAllJson {
         return toilet;
     }
 
-    public Object getState() {
+    public State getState() {
         return state;
     }
 
@@ -756,7 +1013,7 @@ public class ServiceAllJson {
         return active_rent;
     }
 
-    public Object getObject_phone() {
+    public String getObject_phone() {
         return object_phone;
     }
 

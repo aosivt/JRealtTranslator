@@ -1,5 +1,7 @@
 package su.kww.realttranslator.core.api.remote.domstor.services;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import okhttp3.Credentials;
@@ -22,10 +24,15 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
 
     protected Retrofit getRetrofitForBaseUrl(){
 
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .setDateFormat("yyyy-mm-dd hh:mm:ss")
+                .create();
+
         return new Retrofit.Builder()
                 .client(getHttpClient())
                 .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }

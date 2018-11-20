@@ -4,8 +4,10 @@ import io.reactivex.Observable;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 import su.kww.realttranslator.core.api.remote.domstor.entities.mailer.MailerPresentsEntity;
+import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
 
 import javax.inject.Inject;
+import java.util.Set;
 
 public class DomstorApiConfig extends BaseApiConfig {
 
@@ -21,7 +23,11 @@ public class DomstorApiConfig extends BaseApiConfig {
         return getRetrofitForBaseUrl().create(ServiceConfig.class).getMailer();
     }
     @Override
-    public Observable<ServiceAllJson> getAdverts() {
+    public Observable<Set<ServiceAllJson>> getAdverts() {
         return getRetrofitForBaseUrl().create(ServiceConfig.class).getAdverts();
+    }
+    @Override
+    public Observable<Set<Resource>> getResources() {
+        return getRetrofitForBaseUrl().create(ServiceConfig.class).getResources();
     }
 }

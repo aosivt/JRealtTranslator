@@ -9,14 +9,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import su.kww.realttranslator.core.api.MessageForTranslator;
+import su.kww.realttranslator.core.api.inside.database.entities.Site;
+import su.kww.realttranslator.core.api.inside.database.repositoies.RepositorySite;
 import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
-import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
+import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
+import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
 import su.kww.realttranslator.core.api.remote.domstor.services.BaseApiConfig;
 import su.kww.realttranslator.core.controllers.frame_translators.FrameTranslators;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public abstract class BaseLogin implements Initializable {
 
@@ -37,9 +43,6 @@ public abstract class BaseLogin implements Initializable {
 
     @FXML
     private Label message;
-
-    protected final static String EMPTY_USER_PASSWORD = "Одно из полей не заполненно";
-    protected final static String ERROR_USER_PASSWORD = "Ошибка аутетификации";
 
     private FrameTranslators frameTranslators;
 
@@ -88,7 +91,34 @@ public abstract class BaseLogin implements Initializable {
                                 .setUserNamePassword(createUserPass());
     }
 
-    protected abstract void synchronize();
+    protected void synchronize() {
+        getBaseApiConfig()
+                .getLogin()
+                .firstOrError()
+                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
+                .subscribe(s->getMain().addPercentProgressBar(50.0d,"Обновление внешних данных"))
+                .dispose();
+
+//        getBaseApiConfig()
+//                .getAdverts()
+//                .firstOrError()
+//                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
+//                .subscribe(s->{
+//                    s.get(0);
+//                }).dispose();
+
+        getBaseApiConfig()
+                .getResources()
+                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
+                .subscribe(this::updateSite).dispose();
+    }
+
+
+
+    private Set<Site> updateSite(Set<Resource> resources){
+        return resources.parallelStream().map(RepositorySite::create).map(s->(Site)RepositorySite.update(s)).sequential().collect(Collectors.toSet());
+    }
+
     @FXML
     void exit(ActionEvent event) {
         System.exit(0);

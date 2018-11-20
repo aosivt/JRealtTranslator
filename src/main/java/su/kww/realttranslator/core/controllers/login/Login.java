@@ -3,11 +3,7 @@ package su.kww.realttranslator.core.controllers.login;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
-import su.kww.realttranslator.core.api.remote.domstor.DomstorComponent;
-import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
-import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
-import su.kww.realttranslator.core.api.remote.domstor.services.BaseApiConfig;
+import su.kww.realttranslator.core.api.MessageForTranslator;
 
 import java.awt.*;
 import java.io.IOException;
@@ -25,7 +21,7 @@ public class Login extends BaseLogin implements Initializable {
         if (checkFielding()){
             updateByLogin();
         }
-        fieldMessage(EMPTY_USER_PASSWORD);
+        fieldMessage(MessageForTranslator.EMPTY_USER_PASSWORD);
     }
     @FXML
     void actionForgotPassword(ActionEvent event) {
@@ -38,13 +34,5 @@ public class Login extends BaseLogin implements Initializable {
         }
     }
 
-    @Override
-    protected void synchronize() {
-        getBaseApiConfig()
-                .getLogin()
-                .firstOrError()
-                .doOnError(e->fieldMessage(ERROR_USER_PASSWORD + e.getMessage()))
-                .subscribe(this::checkLogin)
-                .dispose();
-    }
+
 }

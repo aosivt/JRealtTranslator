@@ -19,18 +19,18 @@
          <children>
             <ImageView fitHeight="33.0" fitWidth="420.0" layoutX="23.0" layoutY="340.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Resources/icons/company_logo.png" />
+                  <Image url="@resources/icons/company_logo.png" />
                </image>
             </ImageView>
             <Separator layoutX="19.0" layoutY="315.0" prefHeight="4.0" prefWidth="427.0" />
             <ImageView fitHeight="208.0" fitWidth="123.0" layoutX="342.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Resources/icons/logo.png" />
+                  <Image url="@resources/icons/logo.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="109.0" fitWidth="349.0" layoutX="29.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Resources/icons/logo_name.png" />
+                  <Image url="@resources/icons/logo_name.png" />
                </image>
             </ImageView>
             <JFXTextField fx:id="username" focusColor="#09b6bc" labelFloat="true" layoutX="42.0" layoutY="135.0" maxWidth="374.0" minWidth="232.0" prefHeight="40.0" prefWidth="374.0" promptText="Логин">
