@@ -38,7 +38,7 @@ public class SiteSettings {
     private Date translationDate;
     //.WithColumn("translation_message").AsString(500).Nullable()
     @Column(name = "translation_message", length = 500, nullable = true)
-    private String translation_message;
+    private String translationMessage;
     //.WithColumn("login").AsString(255).Nullable()
     @Column(name = "login", nullable = true)
     private String login;
@@ -113,11 +113,11 @@ public class SiteSettings {
     }
 
     public String getTranslation_message() {
-        return translation_message;
+        return translationMessage;
     }
 
-    public void setTranslation_message(String translation_message) {
-        this.translation_message = translation_message;
+    public void setTranslation_message(String translationMessage) {
+        this.translationMessage = translationMessage;
     }
 
     public String getLogin() {

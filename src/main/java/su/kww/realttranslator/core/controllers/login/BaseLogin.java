@@ -22,7 +22,6 @@ import su.kww.realttranslator.core.controllers.frame_translators.FrameTranslator
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public abstract class BaseLogin implements Initializable {
 
@@ -115,8 +114,11 @@ public abstract class BaseLogin implements Initializable {
 
 
 
-    private Set<Site> updateSite(Set<Resource> resources){
-        return resources.parallelStream().map(RepositorySite::create).map(s->(Site)RepositorySite.update(s)).sequential().collect(Collectors.toSet());
+    private void updateSite(Set<Resource> resources){
+        resources.parallelStream().map(RepositorySite::create)
+                                         .map(s->(Site)RepositorySite.update(s))
+                                         .sequential().forEach(r -> getMain().addTranslator(r));
+
     }
 
     @FXML
