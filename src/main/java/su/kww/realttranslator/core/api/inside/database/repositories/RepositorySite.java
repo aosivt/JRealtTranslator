@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.api.inside.database.repositoies;
+package su.kww.realttranslator.core.api.inside.database.repositories;
 
 import org.hibernate.Session;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
