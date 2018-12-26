@@ -11,7 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import su.kww.realttranslator.core.api.MessageForTranslator;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
-import su.kww.realttranslator.core.api.inside.database.repositoies.RepositorySite;
+import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySite;
 import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
 import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;

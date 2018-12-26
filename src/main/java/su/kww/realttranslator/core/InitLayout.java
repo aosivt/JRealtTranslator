@@ -11,6 +11,10 @@ import javafx.stage.Stage;
 import su.kww.realttranslator.core.controllers.frame_translators.FrameTranslators;
 import su.kww.realttranslator.core.controllers.login.Login;
 
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
+import javax.imageio.stream.ImageInputStream;
+
 public class InitLayout extends Application {
 
     @Override
@@ -20,7 +24,7 @@ public class InitLayout extends Application {
         Parent root = loader.load();
         FrameTranslators main = loader.getController();
         Scene scene = new Scene(root);
-        Image appIcon = new Image("view/resources/icons/trim_logo_name.png");
+        Image appIcon = new Image("view/resources/icons/realttranslator.png");
         stage.getIcons().add(appIcon);
         stage.setTitle("РиэлтТрансляторПроверкаСвязи");
         stage.setScene(scene);
