@@ -45,7 +45,7 @@ abstract class BaseTranslatorItem {
         Stage stage1 = new Stage();
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        Image appIcon = new Image("view/resources/icons/trim_logo_name.png");
+        Image appIcon = new Image("view/resources/icons/realttranslator.png");
         stage1.getIcons().add(appIcon);
         stage1.setTitle("Свойства");
         stage1.setScene(scene);
