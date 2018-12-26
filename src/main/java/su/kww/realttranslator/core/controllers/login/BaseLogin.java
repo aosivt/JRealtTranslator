@@ -82,6 +82,7 @@ public abstract class BaseLogin implements Initializable {
 
     void updateByLogin(){
         synchronize();
+        anchorPane.getScene().getWindow().hide();
     }
 
     BaseApiConfig getBaseApiConfig(){

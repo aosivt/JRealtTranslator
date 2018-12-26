@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -47,7 +48,8 @@ public abstract class BaseFrameTranslators implements Initializable {
     @FXML
     protected Label labelProgressBarr;
 
-    final private static int DEFAULT_LABEL_PADDING = 5;
+    @FXML
+    protected ImageView sync;
 
     @FXML
     void exit(ActionEvent event) {
@@ -55,8 +57,9 @@ public abstract class BaseFrameTranslators implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle rb) {
-
-        setup();
+        labelProgressBarr.setTextFill(Color.web("#0076a3"));
+        sync.setOnMouseEntered(en-> sync.setImage(new Image("view/resources/icons/sync-hover.png")));
+        sync.setOnMouseExited(ex-> sync.setImage(new Image("view/resources/icons/sync.png")));
     }
 
     public void addPercentProgressBar(Double index, String textLabelProgressBar){
@@ -65,10 +68,6 @@ public abstract class BaseFrameTranslators implements Initializable {
         labelProgressBarr.setText("проверка");
     }
 
-    private void setup(){
-
-        labelProgressBarr.setTextFill(Color.web("#0076a3"));
-    }
 
     public Image getImageLogo(byte[] bytes){
         return new Image(new ByteArrayInputStream(bytes));

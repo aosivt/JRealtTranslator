@@ -6,15 +6,26 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="200.0" prefWidth="971.0" style="-fx-background-color: #e9e9e9;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.translator.TranslatorItem">
+<AnchorPane
+        fx:controller="su.kww.realttranslator.core.controllers.translator.TranslatorItem"
+        stylesheets="@css/RootStyle.css"
+        prefHeight="200.0" prefWidth="971.0"
+        xmlns="http://javafx.com/javafx/8.0.172-ea"
+        xmlns:fx="http://javafx.com/fxml/1">
 
-      <ImageView fitHeight="74.0" fitWidth="66.0" layoutX="171.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="run"
+                 fitHeight="74.0" fitWidth="66.0" layoutX="171.0" layoutY="70.0"
+                 pickOnBounds="true" preserveRatio="true"
+                 onMouseClicked="#actionRun">
          <image>
             <Image url="@resources/icons/run.png" />
          </image>
       </ImageView>
       <ProgressBar layoutX="275.0" layoutY="98.0" prefHeight="27.0" prefWidth="657.0" progress="0.0" />
-      <ImageView fx:id="settings" fitHeight="25.0" fitWidth="25.0" layoutX="932.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#actionSettings">
+      <ImageView fx:id="settings"
+                 fitHeight="25.0" fitWidth="25.0" layoutX="932.0" layoutY="14.0"
+                 pickOnBounds="true" preserveRatio="true"
+                 onMouseClicked="#actionSettings">
          <image >
             <Image url="@resources/icons/settings.png" />
          </image>
@@ -35,7 +46,10 @@
          </image>
       </ImageView>
 
-    <ImageView fx:id="logo" fitHeight="60.0" fitWidth="140.0" layoutX="21.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
-    <Label fx:id="textLogo" alignment="CENTER" contentDisplay="CENTER" layoutX="11.0" layoutY="123.0" prefHeight="16.0" prefWidth="148.0" text="Label" />
+    <ImageView fx:id="logo"
+               fitHeight="60.0" fitWidth="140.0" layoutX="21.0" layoutY="51.0"
+               pickOnBounds="true" preserveRatio="true" />
+    <Label fx:id="textLogo" alignment="CENTER" contentDisplay="CENTER"
+           layoutX="11.0" layoutY="123.0" prefHeight="16.0" prefWidth="148.0"/>
 
 </AnchorPane>

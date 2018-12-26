@@ -1,6 +1,7 @@
 package su.kww.realttranslator.core;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,14 +16,18 @@ public class InitLayout extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FrameTranslators.fxml"));
         Parent root = loader.load();
         FrameTranslators main = loader.getController();
         Scene scene = new Scene(root);
         Image appIcon = new Image("view/resources/icons/trim_logo_name.png");
         stage.getIcons().add(appIcon);
-        stage.setTitle("РиэлтТранслятор");
+        stage.setTitle("РиэлтТрансляторПроверкаСвязи");
         stage.setScene(scene);
+        stage.setOnCloseRequest(c-> {
+            Platform.exit();
+            System.exit(0);
+        });
 
         stage.show();
 

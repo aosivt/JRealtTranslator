@@ -14,10 +14,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.ScrollPane?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="611.0" prefWidth="1004.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.frame_translators.FrameTranslators">
+<AnchorPane fx:id="anchorPane"
+            fx:controller="su.kww.realttranslator.core.controllers.frame_translators.FrameTranslators"
+            stylesheets="@css/RootStyle.css"
+            prefHeight="611.0" prefWidth="1004.0"
+            xmlns="http://javafx.com/javafx/8.0.172-ea"
+            xmlns:fx="http://javafx.com/fxml/1"
+            >
 
     <children>
-        <JFXTabPane fx:id="translatorsTabPane" layoutX="15.0" layoutY="105.0" prefHeight="429.0" prefWidth="973.0" style="-fx: #E4340C;" tabClosingPolicy="UNAVAILABLE">
+        <JFXTabPane fx:id="translatorsTabPane"
+                    layoutX="15.0" layoutY="105.0" prefHeight="429.0" prefWidth="973.0"
+                    style="-fx: #E4340C;" tabClosingPolicy="UNAVAILABLE">
             <tabs>
                 <Tab style="-fx-background-color: #E4340C;" text="Активные" >
                     <ScrollPane>
@@ -36,24 +44,37 @@
                 </Tab>
             </tabs>
         </JFXTabPane>
-        <ImageView fitHeight="26.0" fitWidth="20.0" layoutX="14.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+
+        <ImageView fx:id="sync"
+                fitHeight="26.0" fitWidth="20.0" layoutX="14.0" layoutY="31.0"
+                pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@resources/icons/sync.png" />
             </image>
         </ImageView>
-        <ProgressBar fx:id="progressBar" layoutX="47.0" layoutY="24.0" prefHeight="33.0" prefWidth="734.0" progress="0.0" style="-fx-accent: black;" />
+
+        <ProgressBar fx:id="progressBar"
+                     layoutX="47.0" layoutY="24.0" prefHeight="33.0" prefWidth="734.0" progress="0.0"
+                     style="-fx-accent: black;" />
 
         <JFXTextField fx:id="username" layoutX="78.0" layoutY="58.0" />
+
         <Separator layoutX="31.0" layoutY="548.0" prefHeight="2.0" prefWidth="936.0" />
-        <ImageView fitHeight="45.0" fitWidth="639.0" layoutX="208.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true">
+
+        <ImageView fitHeight="45.0" fitWidth="639.0" layoutX="208.0" layoutY="560.0"
+                   pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@resources/icons/company_logo.png" />
             </image>
         </ImageView>
-      <Label fx:id="labelProgressBarr" layoutX="319.0" layoutY="33.0" prefHeight="16.0" prefWidth="106.0" text="Label" textAlignment="CENTER" textFill="TRANSPARENT">
+
+        <Label fx:id="labelProgressBarr"
+             layoutX="319.0" layoutY="33.0" prefHeight="16.0" prefWidth="106.0"
+             text="Label" textAlignment="CENTER" textFill="TRANSPARENT">
          <font>
             <Font size="14.0" />
-         </font></Label>
+         </font>
+      </Label>
 
     </children>
 </AnchorPane>

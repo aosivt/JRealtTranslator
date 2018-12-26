@@ -7,7 +7,7 @@
     <session-factory>
         <!--HSQLDB-->
         <!-- Database connection settings -->
-        <property name="connection.url">jdbc:hsqldb:file:projectDB/DataBase;shutdown=true</property>
+        <property name="connection.url">jdbc:hsqldb:file:.JRealtTranslator/DataBase;shutdown=true</property>
         <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
         <property name="connection.username">SA</property>
         <property name="connection.password"></property>

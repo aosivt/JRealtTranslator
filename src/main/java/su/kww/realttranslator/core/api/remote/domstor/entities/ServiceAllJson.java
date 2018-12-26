@@ -210,7 +210,7 @@ public class ServiceAllJson {
     @SerializedName("id")
     @Expose
     @JsonProperty("id")
-    private Object id;
+    private Long  id;
     @SerializedName("code")
     @Expose
     @JsonProperty("code")
@@ -797,7 +797,7 @@ public class ServiceAllJson {
         return flat_num;
     }
 
-    public Object getId() {
+    public Long getId() {
         return id;
     }
 

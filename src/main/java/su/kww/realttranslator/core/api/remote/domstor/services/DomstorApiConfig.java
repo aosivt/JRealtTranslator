@@ -11,6 +11,8 @@ import java.util.Set;
 
 public class DomstorApiConfig extends BaseApiConfig {
 
+    private String errorMessage = "";
+
     @Inject
     public DomstorApiConfig(){}
 
@@ -30,4 +32,27 @@ public class DomstorApiConfig extends BaseApiConfig {
     public Observable<Set<Resource>> getResources() {
         return getRetrofitForBaseUrl().create(ServiceConfig.class).getResources();
     }
+    protected void synchronize() {
+//
+//        getLogin()
+//                .firstOrError()
+//                .doOnError(this::setErrorMessage)
+//                .subscribe(s->getMain().addPercentProgressBar(50.0d,"Обновление внешних данных"))
+//                .dispose();
+//
+//        getAdverts()
+//                .firstOrError()
+//                .doOnError(this::setErrorMessage)
+//                .subscribe(RepositoryAdverts::createAdverts).dispose();
+//
+//        getResources()
+//                .doOnError(this::setErrorMessage)
+//                .subscribe(this::updateSite).dispose();
+    }
+
+    private void setErrorMessage(Throwable throwable) {
+        errorMessage = throwable.getMessage();
+    }
+
+
 }

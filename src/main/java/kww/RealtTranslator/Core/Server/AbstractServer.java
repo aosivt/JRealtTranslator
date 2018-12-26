@@ -5,7 +5,7 @@ import su.kww.realttranslator.core.api.remote.domstor.services.UrlConfig;
 import su.kww.realttranslator.core.api.inside.database.entities.Advert;
 import su.kww.realttranslator.core.api.inside.database.entities.MailerPreset;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
-import sun.net.NetworkClient;
+//import sun.net.NetworkClient;
 
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
@@ -14,7 +14,7 @@ public class AbstractServer implements IServer {
 
     protected UrlConfig apiConfig;
     protected IAuthToken<String> token;
-    protected NetworkClient client = new NetworkClient();
+//    protected NetworkClient client = new NetworkClient();
 
     @Override
     public void authenticate() {

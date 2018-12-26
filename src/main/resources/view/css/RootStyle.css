@@ -1,0 +1,19 @@
+.button {
+    -fx-font: 18px Arial;
+    -fx-background-color: #E4340C;
+    -fx-text-fill: white;
+}
+#.button:focused{
+#    -fx-font: 18px Arial;
+#    -fx-background-color: gray;
+#    -fx-text-fill: white;
+#}
+.button:hover{
+    -fx-font: 18px Arial;
+    -fx-background-color: black;
+    -fx-text-fill: white;
+}
+.AnchorPane{
+    -fx-background-color: #e9e9e9;
+}
+

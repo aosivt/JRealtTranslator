@@ -1,0 +1,9 @@
+# The URL from which the client is downloaded
+appbase = http://localhost:8585
+# UI Configuration
+ui.name = fdiez.org Getdown Example Application
+# Application jar files
+code = getdownEx.jar
+# The main entry point for the application
+class = su.kww.realttranslator.core.InitLayout
+version=1
