@@ -1,18 +1,18 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
+
+import javax.persistence.*;
 
 //.Table("user_settings")
 @Entity
 @Table(name = "user_settings")
-public class UserSettings {
+public class UserSettings implements EntityDomstor {
 
 //.WithColumn("id").AsInt64().PrimaryKey().Identity()
     @Id
     @Column(name = "id")
+    @GeneratedValue
     private Long id;
 //.WithColumn("key").AsString(255).NotNullable().Unique()
     @Column(name = "key", nullable = false, unique = true)

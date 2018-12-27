@@ -9,11 +9,11 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-public class RepositorySite {
+public class RepositorySite extends AbstractRepository{
 
     private final static DateFormat df = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-    public static Site create(Resource resource){
 
+    public static Site create(Resource resource){
             Site site = new Site();
             site.setId(Integer.parseInt(resource.getId().toString()));
             site.setLogo(resource.getLogo());
@@ -25,17 +25,6 @@ public class RepositorySite {
             site.setStatus(Integer.parseInt(resource.getStatus()));
             site.setUpdateAt(resource.getUpdatedAt());
             return site;
-
-    }
-
-    public static Serializable update(Serializable serializable) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.saveOrUpdate(serializable);
-        session.getTransaction().commit();
-        session.clear();
-        session.close();
-        return serializable;
     }
 
 }

@@ -1,5 +1,7 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
+import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,7 +11,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "site")
-public class Site implements Serializable {
+public class Site implements EntityDomstor {
 
 //.WithColumn("id").AsInt32().PrimaryKey()
     @Id

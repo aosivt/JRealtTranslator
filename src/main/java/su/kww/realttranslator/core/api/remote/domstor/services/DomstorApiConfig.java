@@ -1,6 +1,14 @@
 package su.kww.realttranslator.core.api.remote.domstor.services;
 
 import io.reactivex.Observable;
+import su.kww.realttranslator.core.api.MessageForTranslator;
+import su.kww.realttranslator.core.api.inside.database.entities.Site;
+import su.kww.realttranslator.core.api.inside.database.entities.UserSettings;
+import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdverts;
+import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySite;
+import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryUserSettings;
+import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
+import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 import su.kww.realttranslator.core.api.remote.domstor.entities.mailer.MailerPresentsEntity;
@@ -32,26 +40,50 @@ public class DomstorApiConfig extends BaseApiConfig {
     public Observable<Set<Resource>> getResources() {
         return getRetrofitForBaseUrl().create(ServiceConfig.class).getResources();
     }
-    protected void synchronize() {
+
+    public void synchronize(String userName, String passWord) {
+        setUserNamePassword(createUserPass(userName,passWord));
+
+        getLogin()
+//                //.doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
+                .subscribe(this::updateLogin).dispose();
 //
-//        getLogin()
-//                .firstOrError()
-//                .doOnError(this::setErrorMessage)
-//                .subscribe(s->getMain().addPercentProgressBar(50.0d,"Обновление внешних данных"))
-//                .dispose();
 //
-//        getAdverts()
-//                .firstOrError()
-//                .doOnError(this::setErrorMessage)
-//                .subscribe(RepositoryAdverts::createAdverts).dispose();
-//
-//        getResources()
-//                .doOnError(this::setErrorMessage)
-//                .subscribe(this::updateSite).dispose();
+        getAdverts()
+                .doOnError(e->{
+                    System.out.println(e.getMessage());
+                })
+                .subscribe(this::updateAdverts).dispose();
+
+        getResources()
+//                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
+                .subscribe(this::updateSite).dispose();
     }
 
     private void setErrorMessage(Throwable throwable) {
         errorMessage = throwable.getMessage();
+    }
+
+    private UserNamePassword createUserPass(String userName, String passWord) {
+        return new DomstorUsernamePassword(userName, passWord);
+    }
+
+    private void updateSite(Set<Resource> resources){
+        resources.parallelStream()
+                .map(RepositorySite::create)
+                .forEach(RepositorySite::update);
+    }
+
+    private void updateLogin(LoginEntity login){
+        UserSettings userSettings =  RepositoryUserSettings.create(login);
+        RepositoryUserSettings.update(userSettings);
+    }
+
+    private void updateAdverts(Set<ServiceAllJson> advertsServiceAllJson){
+        advertsServiceAllJson.parallelStream()
+                .map(RepositoryAdverts::create)
+                .sequential()
+                .forEach(RepositoryAdverts::update);
     }
 
 

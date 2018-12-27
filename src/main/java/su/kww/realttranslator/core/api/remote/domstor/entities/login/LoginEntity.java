@@ -3,8 +3,11 @@ package su.kww.realttranslator.core.api.remote.domstor.entities.login;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 
-public class LoginEntity {
+import java.io.Serializable;
+
+public class LoginEntity implements Serializable {
 
     @SerializedName("user_id")
     @Expose

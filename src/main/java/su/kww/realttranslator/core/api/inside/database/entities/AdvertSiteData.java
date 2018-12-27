@@ -1,15 +1,18 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
+import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.sql.Date;
 
 //                .Table("advert_site_data")
 @Entity
 @Table(name = "advert_site_data")
-public class AdvertSiteData {
+public class AdvertSiteData implements EntityDomstor {
 
 //.WithColumn("id").AsInt64().PrimaryKey().Identity()
     @Id

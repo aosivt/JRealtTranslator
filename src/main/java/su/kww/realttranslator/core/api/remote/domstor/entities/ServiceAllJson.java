@@ -7,9 +7,11 @@ import com.google.gson.annotations.SerializedName;
 import su.kww.realttranslator.core.api.remote.domstor.entities.address.*;
 import su.kww.realttranslator.core.api.remote.domstor.entities.options_feed_object.*;
 
+import java.io.Serializable;
+import java.sql.Date;
 import java.util.Set;
 
-public class ServiceAllJson {
+public class ServiceAllJson implements Serializable {
 
     @SerializedName("room_count")
     @Expose
@@ -230,7 +232,7 @@ public class ServiceAllJson {
     @SerializedName("server_dt")
     @Expose
     @JsonProperty("server_dt")
-    private Object server_dt;
+    private Date server_dt;
     @SerializedName("reg_dt")
     @Expose
     @JsonProperty("reg_dt")
@@ -338,10 +340,10 @@ public class ServiceAllJson {
     @Expose
     @JsonProperty("link")
     private String link;
-    @SerializedName("phone")
-    @Expose
-    @JsonProperty("phone")
-    private Phone phone;
+//    @SerializedName("phone")
+//    @Expose
+//    @JsonProperty("phone")
+//    private String phone;
     @SerializedName("subregion")
     @Expose
     @JsonProperty("subregion")
@@ -817,7 +819,7 @@ public class ServiceAllJson {
         return agency_id;
     }
 
-    public Object getServer_dt() {
+    public Date getServer_dt() {
         return server_dt;
     }
 
@@ -915,10 +917,6 @@ public class ServiceAllJson {
 
     public String getLink() {
         return link;
-    }
-
-    public Phone getPhone() {
-        return phone;
     }
 
     public Object getSubregion() {

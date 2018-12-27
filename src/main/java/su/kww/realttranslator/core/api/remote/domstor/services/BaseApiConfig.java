@@ -13,6 +13,11 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
 
     protected String baseUrl = "http://api.domstor.ru/";
 
+    private Gson gson = new GsonBuilder()
+                                        .setLenient()
+                                        .setDateFormat("yyyy-mm-dd hh:mm:ss")
+                                        .create();
+
     UserNamePassword userNamePassword;
 
     public BaseApiConfig(){}
@@ -24,11 +29,6 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
 
     protected Retrofit getRetrofitForBaseUrl(){
 
-        Gson gson = new GsonBuilder()
-                .setLenient()
-                .setDateFormat("yyyy-mm-dd hh:mm:ss")
-                .create();
-
         return new Retrofit.Builder()
                 .client(getHttpClient())
                 .baseUrl(baseUrl)
@@ -38,22 +38,18 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
     }
 
     protected OkHttpClient getHttpClient(){
-        return new OkHttpClient.Builder()
-                               .authenticator((route, response) ->
-                                               response
-                                                    .request().newBuilder()
-                                                    .header("Authorization", getBasicAuthorizationString())
-                                                    .build())
-                                               .build();
+        return new OkHttpClient.Builder().authenticator(
+                (route, response) -> response.request().newBuilder()
+                                             .header("Authorization", getBasicAuthorizationString())
+                                             .build()).build();
     }
 
     private String getBasicAuthorizationString(){
         return Credentials.basic(userNamePassword.getUsername(), userNamePassword.getPassword());
     }
 
-    public BaseApiConfig setUserNamePassword(UserNamePassword userNamePassword) {
+    protected BaseApiConfig setUserNamePassword(UserNamePassword userNamePassword) {
         this.userNamePassword = userNamePassword;
         return this;
-
     }
 }

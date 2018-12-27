@@ -81,14 +81,20 @@ public abstract class BaseLogin implements Initializable {
     }
 
     void updateByLogin(){
-        synchronize();
+        synchronizeFromApiDomstor(username.getText(), pass.getText());
         anchorPane.getScene().getWindow().hide();
     }
 
-    BaseApiConfig getBaseApiConfig(){
+    private BaseApiConfig getBaseApiConfig(){
         return DaggerDomstorComponent.create()
-                                .getDomstorApiConfig()
-                                .setUserNamePassword(createUserPass());
+                                .getDomstorApiConfig();
+//                                .setUserNamePassword(createUserPass());
+    }
+
+    private void synchronizeFromApiDomstor(String userName, String passWord){
+        DaggerDomstorComponent.create()
+                .getDomstorApiConfig()
+                .synchronize(userName,passWord);
     }
 
     protected void synchronize() {
