@@ -340,10 +340,10 @@ public class ServiceAllJson implements Serializable {
     @Expose
     @JsonProperty("link")
     private String link;
-//    @SerializedName("phone")
-//    @Expose
-//    @JsonProperty("phone")
-//    private String phone;
+    @SerializedName("phone")
+    @Expose
+    @JsonProperty("phone")
+    private Object phone;
     @SerializedName("subregion")
     @Expose
     @JsonProperty("subregion")
@@ -1173,5 +1173,9 @@ public class ServiceAllJson implements Serializable {
 
     public Developer getDeveloper() {
         return developer;
+    }
+
+    public Object getPhone() {
+        return phone;
     }
 }
