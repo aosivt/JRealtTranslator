@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-abstract class BaseTranslatorItem implements Initializable {
+abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     @FXML
     protected ImageView logo;
     @FXML
