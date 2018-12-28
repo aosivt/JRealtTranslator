@@ -57,6 +57,9 @@ public abstract class BaseLogin implements Initializable {
         this.frameTranslators = frameTranslators;
         return this;
     }
+    public FrameTranslators getFrameTranslators(){
+        return this.frameTranslators;
+    }
 
     @FXML
     public abstract void auth(ActionEvent event);
@@ -67,65 +70,21 @@ public abstract class BaseLogin implements Initializable {
         }
         return false;
     }
-    protected UserNamePassword createUserPass() {
-        return new DomstorUsernamePassword(username.getText(), pass.getText());
-    }
 
     protected void fieldMessage(String value) {
         message.setVisible(true);
         message.setText(value);
     }
 
-    protected FrameTranslators getMain(){
-        return frameTranslators;
-    }
-
     void updateByLogin(){
-        synchronizeFromApiDomstor(username.getText(), pass.getText());
+        synchronizeFromApiDomstor();
         anchorPane.getScene().getWindow().hide();
     }
 
-    private BaseApiConfig getBaseApiConfig(){
-        return DaggerDomstorComponent.create()
-                                .getDomstorApiConfig();
-//                                .setUserNamePassword(createUserPass());
-    }
-
-    private void synchronizeFromApiDomstor(String userName, String passWord){
+    private void synchronizeFromApiDomstor(){
         DaggerDomstorComponent.create()
                 .getDomstorApiConfig()
-                .synchronize(userName,passWord);
-    }
-
-    protected void synchronize() {
-        getBaseApiConfig()
-                .getLogin()
-                .firstOrError()
-                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
-                .subscribe(s->getMain().addPercentProgressBar(50.0d,"Обновление внешних данных"))
-                .dispose();
-
-//        getBaseApiConfig()
-//                .getAdverts()
-//                .firstOrError()
-//                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
-//                .subscribe(s->{
-//                    s.get(0);
-//                }).dispose();
-
-        getBaseApiConfig()
-                .getResources()
-                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
-                .subscribe(this::updateSite).dispose();
-    }
-
-
-
-    private void updateSite(Set<Resource> resources){
-        resources.parallelStream().map(RepositorySite::create)
-                                         .map(s->(Site)RepositorySite.update(s))
-                                         .sequential().forEach(r -> getMain().addTranslator(r));
-
+                .synchronize(username.getText(), pass.getText());
     }
 
     @FXML

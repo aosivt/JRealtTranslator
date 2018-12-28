@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.translator;
+package su.kww.realttranslator.core.controllers.translators;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,10 +20,8 @@ abstract class BaseTranslatorItem implements Initializable {
     protected ImageView logo;
     @FXML
     protected Label textLogo;
-
     @FXML
     protected ImageView settings;
-
     @FXML
     protected ImageView run;
 

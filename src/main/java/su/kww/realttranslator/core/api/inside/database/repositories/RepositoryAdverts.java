@@ -12,7 +12,6 @@ public class RepositoryAdverts extends AbstractRepository {
     public static Set<Advert> createAdverts(Set<ServiceAllJson> serviceAllJsons){
         return serviceAllJsons.parallelStream()
                               .map(RepositoryAdverts::create)
-                              .sequential()
                               .collect(Collectors.toSet());
     }
 

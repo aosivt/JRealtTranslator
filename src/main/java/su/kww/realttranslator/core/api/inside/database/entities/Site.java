@@ -2,10 +2,7 @@ package su.kww.realttranslator.core.api.inside.database.entities;
 
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -44,6 +41,10 @@ public class Site implements EntityDomstor {
 //.AddColumn("autorun_available").AsBoolean().WithDefaultValue(false);
     @Column(name = "autorun_available")
     private Boolean autorunAvailable = false;
+
+    @OneToOne
+    @JoinColumn(name = "id", referencedColumnName = "siteId")
+    private SiteSettings siteSettings;
 
     public Integer getId() {
         return id;
@@ -123,5 +124,13 @@ public class Site implements EntityDomstor {
 
     public void setAutorunAvailable(Boolean autorunAvailable) {
         this.autorunAvailable = autorunAvailable;
+    }
+
+    public SiteSettings getSiteSettings() {
+        return siteSettings;
+    }
+
+    public void setSiteSettings(SiteSettings siteSettings) {
+        this.siteSettings = siteSettings;
     }
 }

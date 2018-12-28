@@ -2,8 +2,10 @@ package su.kww.realttranslator.core.api.remote.domstor.services;
 
 import io.reactivex.Observable;
 import su.kww.realttranslator.core.api.MessageForTranslator;
+import su.kww.realttranslator.core.api.inside.database.entities.Advert;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.database.entities.UserSettings;
+import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdverts;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySite;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryUserSettings;
@@ -15,7 +17,9 @@ import su.kww.realttranslator.core.api.remote.domstor.entities.mailer.MailerPres
 import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
 
 import javax.inject.Inject;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class DomstorApiConfig extends BaseApiConfig {
 
@@ -69,9 +73,12 @@ public class DomstorApiConfig extends BaseApiConfig {
     }
 
     private void updateSite(Set<Resource> resources){
-        resources.parallelStream()
+        Set<EntityDomstor>  sites = resources
+                .parallelStream()
                 .map(RepositorySite::create)
-                .forEach(RepositorySite::update);
+                .collect(Collectors.toSet());
+
+        RepositoryAdverts.updateBySetEntity(sites);
     }
 
     private void updateLogin(LoginEntity login){
@@ -80,10 +87,12 @@ public class DomstorApiConfig extends BaseApiConfig {
     }
 
     private void updateAdverts(Set<ServiceAllJson> advertsServiceAllJson){
-        advertsServiceAllJson.parallelStream()
+        Set<EntityDomstor> adverts = advertsServiceAllJson.parallelStream()
+                .filter(Objects::nonNull)
                 .map(RepositoryAdverts::create)
-                .sequential()
-                .forEach(RepositoryAdverts::update);
+                .collect(Collectors.toSet());
+
+        RepositoryAdverts.updateBySetEntity(adverts);
     }
 
 

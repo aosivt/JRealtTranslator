@@ -2,10 +2,7 @@ package su.kww.realttranslator.core.api.inside.database.entities;
 
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 //Create.Table("site_settings")
@@ -18,15 +15,12 @@ public class SiteSettings implements EntityDomstor {
     @Column(name = "site_id")
     private Integer siteId;
     //.WithColumn("agency_id").AsInt32().PrimaryKey()
-    @Id
     @Column(name = "agency_id")
     private Integer agencyId;
     //.WithColumn("filial_id").AsInt32().PrimaryKey()
-    @Id
     @Column(name = "filial_id")
     private Integer filialId;
     //.WithColumn("agent_id").AsInt32().PrimaryKey()
-    @Id
     @Column(name = "agent_id")
     private Integer agentId;
     //.WithColumn("is_active").AsBoolean().WithDefaultValue(false).NotNullable()
@@ -57,6 +51,9 @@ public class SiteSettings implements EntityDomstor {
     //.AddColumn("is_autorun_enabled").AsBoolean().WithDefaultValue(false)
     @Column(name = "is_autorun_enabled", nullable = false)
     private Boolean isAutorunEnabled = false;
+
+    @OneToOne(fetch= FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "siteSettings")
+    private Site site;
 
     public Integer getSiteId() {
         return siteId;
@@ -144,5 +141,37 @@ public class SiteSettings implements EntityDomstor {
 
     public void setConfig(String config) {
         this.config = config;
+    }
+
+    public String getTranslationMessage() {
+        return translationMessage;
+    }
+
+    public String getExternalPhone() {
+        return externalPhone;
+    }
+
+    public Boolean getAutorunEnabled() {
+        return isAutorunEnabled;
+    }
+
+    public void setTranslationMessage(String translationMessage) {
+        this.translationMessage = translationMessage;
+    }
+
+    public void setExternalPhone(String externalPhone) {
+        this.externalPhone = externalPhone;
+    }
+
+    public void setAutorunEnabled(Boolean autorunEnabled) {
+        isAutorunEnabled = autorunEnabled;
+    }
+
+    public Site getSite() {
+        return site;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
     }
 }

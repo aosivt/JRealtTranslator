@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.translator;
+package su.kww.realttranslator.core.controllers.translators;
 
 public class TranslatorItem extends BaseTranslatorItem {
 

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import su.kww.realttranslator.core.api.MessageForTranslator;
+import su.kww.realttranslator.core.api.inside.database.entities.Site;
 
 import java.awt.*;
 import java.io.IOException;
@@ -20,6 +21,8 @@ public class Login extends BaseLogin implements Initializable {
     public void auth(ActionEvent event) {
         if (checkFielding()){
             updateByLogin();
+            getFrameTranslators().addTranslator(new Site());
+            return;
         }
         fieldMessage(MessageForTranslator.EMPTY_USER_PASSWORD);
     }

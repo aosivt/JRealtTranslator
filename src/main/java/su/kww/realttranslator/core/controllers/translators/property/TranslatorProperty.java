@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.translator.property;
+package su.kww.realttranslator.core.controllers.translators.property;
 
 public class TranslatorProperty extends BaseTranslatorProperty {
 

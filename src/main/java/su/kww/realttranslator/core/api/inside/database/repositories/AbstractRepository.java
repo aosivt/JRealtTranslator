@@ -5,7 +5,10 @@ import org.hibernate.Session;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
 
+import javax.persistence.Query;
 import java.io.Serializable;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public abstract class AbstractRepository {
 
@@ -19,6 +22,29 @@ public abstract class AbstractRepository {
         session.clear();
         session.close();
         return serializable;
+    }
+
+    public static Set<EntityDomstor> updateBySetEntity(Set<EntityDomstor> entityDomstors) {
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        entityDomstors.forEach(session::saveOrUpdate);
+        session.getTransaction().commit();
+        session.clear();
+        session.close();
+        return entityDomstors;
+    }
+
+    public static Set<EntityDomstor> select(String nameEntity){
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Set<EntityDomstor> serializables;
+        String stringSelectEntities = String.format("From %s setEntity",nameEntity);
+        Query query = session.createQuery(stringSelectEntities);
+        serializables = (Set<EntityDomstor>) query.getResultList().parallelStream().collect(Collectors.toSet());
+        session.clear();
+        session.close();
+
+        return serializables;
     }
 
     protected static String toJson(Serializable serializable){

@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.translator.property;
+package su.kww.realttranslator.core.controllers.translators.property;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import su.kww.realttranslator.core.api.inside.database.entities.Site;
+import su.kww.realttranslator.core.api.inside.database.entities.SiteSettings;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -33,6 +35,8 @@ public abstract class BaseTranslatorProperty implements Initializable {
     @FXML
     protected Button cancel;
 
+    private Site site;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -45,5 +49,23 @@ public abstract class BaseTranslatorProperty implements Initializable {
     public void saveProperty(MouseEvent mouseEvent) {
 
         ((Stage)ancorPaneTranslatorProperty.getScene().getWindow()).close();
+    }
+
+    private SiteSettings createSiteSettings(){
+        SiteSettings siteSettings = new SiteSettings();
+        siteSettings.setActive(isEnableTranslator.isDisableVisualFocus());
+        siteSettings.setAgencyId(1);
+        siteSettings.setAgentId(1);
+        siteSettings.setFilialId(1);
+        siteSettings.setSite(site);
+        siteSettings.setLogin(loginResource.getText());
+        siteSettings.setPassword(passwordResource.getText());
+        siteSettings.setAutorunEnabled(isAutoTranslator.isDisableVisualFocus());
+        siteSettings.setExternalPhone(singlePhoneNumber.getText());
+        return siteSettings;
+    }
+
+    public void setSite(Site site){
+        this.site = site;
     }
 }
