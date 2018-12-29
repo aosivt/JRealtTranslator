@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.translators.property;
+package su.kww.realttranslator.core.controllers.item_translator.property;
 
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
@@ -57,7 +57,6 @@ public abstract class BaseTranslatorProperty implements Initializable {
         siteSettings.setAgencyId(1);
         siteSettings.setAgentId(1);
         siteSettings.setFilialId(1);
-        siteSettings.setSite(site);
         siteSettings.setLogin(loginResource.getText());
         siteSettings.setPassword(passwordResource.getText());
         siteSettings.setAutorunEnabled(isAutoTranslator.isDisableVisualFocus());

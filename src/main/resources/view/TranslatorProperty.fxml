@@ -5,7 +5,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="ancorPaneTranslatorProperty" prefHeight="400.0" prefWidth="275.0" stylesheets="@css/RootStyle.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.translators.property.TranslatorProperty">
+<AnchorPane fx:id="ancorPaneTranslatorProperty" prefHeight="400.0" prefWidth="275.0" stylesheets="@css/RootStyle.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.item_translator.property.TranslatorProperty">
    <children>
       <JFXTextField fx:id="loginResource" focusColor="#09b6bc" labelFloat="true"
                     layoutX="14.0" layoutY="135.0" prefHeight="30.0" prefWidth="250.0" promptText="Логин" />

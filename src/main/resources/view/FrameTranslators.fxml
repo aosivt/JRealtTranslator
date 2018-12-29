@@ -15,7 +15,7 @@
 <?import javafx.scene.control.ScrollPane?>
 
 <AnchorPane fx:id="anchorPane"
-            fx:controller="su.kww.realttranslator.core.controllers.frame_translators.FrameTranslators"
+            fx:controller="su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators"
             stylesheets="@css/RootStyle.css"
             prefHeight="611.0" prefWidth="1004.0"
             xmlns="http://javafx.com/javafx/8.0.172-ea"

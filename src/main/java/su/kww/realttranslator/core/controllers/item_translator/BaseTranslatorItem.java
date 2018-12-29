@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.translators;
+package su.kww.realttranslator.core.controllers.item_translator;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import org.apache.commons.codec.binary.Base64;
+import su.kww.realttranslator.core.api.inside.database.entities.Site;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,13 +28,7 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     @FXML
     protected ImageView run;
 
-    public void setTextLogo(String text){
-        textLogo.setText(text);
-    }
-
-    public void setLogo(Image imageLogo){
-        logo.setImage(imageLogo);
-    }
+    protected Site site;
 
     @FXML
     void actionSettings(MouseEvent event) {
@@ -67,4 +64,27 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
         run.setOnMouseEntered(en-> run.setImage(new Image("view/resources/icons/run-hover.png")));
         run.setOnMouseExited(ex-> run.setImage(new Image("view/resources/icons/run.png")));
     }
+
+    private Image getImageLogo(byte[] bytes){
+        return new Image(new ByteArrayInputStream(bytes));
+    }
+    private byte[] decodeImageByString(String imageDataString) {
+        return Base64.decodeBase64(imageDataString);
+    }
+
+    private void setTextLogo(String text){
+        textLogo.setText(text);
+    }
+
+    private void setLogo(Image imageLogo){
+        logo.setImage(imageLogo);
+    }
+
+    @Override
+    public TranslatorItem createLogo() {
+        getImageLogo(decodeImageByString(site.getLogo()));
+        setTextLogo(site.getName());
+        return this;
+    }
+
 }

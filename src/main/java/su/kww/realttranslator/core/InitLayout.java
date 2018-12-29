@@ -8,12 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import su.kww.realttranslator.core.controllers.frame_translators.FrameTranslators;
+import su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators;
 import su.kww.realttranslator.core.controllers.login.Login;
-
-import javax.imageio.ImageIO;
-import javax.imageio.ImageReader;
-import javax.imageio.stream.ImageInputStream;
 
 public class InitLayout extends Application {
 

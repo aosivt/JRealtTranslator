@@ -9,43 +9,35 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import su.kww.realttranslator.core.api.MessageForTranslator;
-import su.kww.realttranslator.core.api.inside.database.entities.Site;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySite;
 import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
-import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
-import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
-import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
-import su.kww.realttranslator.core.api.remote.domstor.services.BaseApiConfig;
-import su.kww.realttranslator.core.controllers.frame_translators.FrameTranslators;
+import su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators;
 
+import java.awt.*;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Set;
 
 public abstract class BaseLogin implements Initializable {
 
     @FXML
-    private AnchorPane anchorPane;
+    protected AnchorPane anchorPane;
 
     @FXML
-    private JFXTextField username;
+    protected JFXTextField username;
 
     @FXML
-    private JFXPasswordField pass;
+    protected JFXPasswordField pass;
 
     @FXML
-    private JFXButton login;
+    protected JFXButton login;
 
     @FXML
-    private JFXButton cancel;
+    protected JFXButton cancel;
 
     @FXML
-    private Label message;
+    protected Label message;
 
-    private FrameTranslators frameTranslators;
-
-    public BaseLogin(){}
 
     public void initialize(URL url, ResourceBundle rb) {
         message.setVisible(false);
@@ -53,44 +45,23 @@ public abstract class BaseLogin implements Initializable {
         pass.setOnMouseClicked(e -> message.setVisible(false));
     }
 
-    public BaseLogin setMain(FrameTranslators frameTranslators){
-        this.frameTranslators = frameTranslators;
-        return this;
-    }
-    public FrameTranslators getFrameTranslators(){
-        return this.frameTranslators;
-    }
-
     @FXML
     public abstract void auth(ActionEvent event);
-
-    protected Boolean checkFielding() {
-        if (!Strings.isNullOrEmpty(username.getText()) && !Strings.isNullOrEmpty(pass.getText())) {
-            return true;
-        }
-        return false;
-    }
-
-    protected void fieldMessage(String value) {
-        message.setVisible(true);
-        message.setText(value);
-    }
-
-    void updateByLogin(){
-        synchronizeFromApiDomstor();
-        anchorPane.getScene().getWindow().hide();
-    }
-
-    private void synchronizeFromApiDomstor(){
-        DaggerDomstorComponent.create()
-                .getDomstorApiConfig()
-                .synchronize(username.getText(), pass.getText());
-    }
 
     @FXML
     void exit(ActionEvent event) {
         System.exit(0);
     }
 
+    @FXML
+    void actionForgotPassword(ActionEvent event) {
+        try {
+            Desktop.getDesktop().browse(new URL("http://domstor.ru/restore/").toURI());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

@@ -52,8 +52,8 @@ public class SiteSettings implements EntityDomstor {
     @Column(name = "is_autorun_enabled", nullable = false)
     private Boolean isAutorunEnabled = false;
 
-    @OneToOne(fetch= FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "siteSettings")
-    private Site site;
+//    @OneToOne(fetch= FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "siteSettings")
+//    private Site site;
 
     public Integer getSiteId() {
         return siteId;
@@ -87,7 +87,7 @@ public class SiteSettings implements EntityDomstor {
         this.agentId = agentId;
     }
 
-    public Boolean getActive() {
+    public Boolean isActive() {
         return isActive;
     }
 
@@ -151,7 +151,7 @@ public class SiteSettings implements EntityDomstor {
         return externalPhone;
     }
 
-    public Boolean getAutorunEnabled() {
+    public Boolean isAutorunEnabled() {
         return isAutorunEnabled;
     }
 
@@ -165,13 +165,5 @@ public class SiteSettings implements EntityDomstor {
 
     public void setAutorunEnabled(Boolean autorunEnabled) {
         isAutorunEnabled = autorunEnabled;
-    }
-
-    public Site getSite() {
-        return site;
-    }
-
-    public void setSite(Site site) {
-        this.site = site;
     }
 }
