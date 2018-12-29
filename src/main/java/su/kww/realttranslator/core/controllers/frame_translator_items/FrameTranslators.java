@@ -47,7 +47,7 @@ public class FrameTranslators extends BaseFrameTranslators {
     public void addTranslator(final Site site) {
         try{
             FXMLLoader loader = createTranslatorItem(site);
-            getBoxTranslatorItem(site).getChildren().add(loader.load());
+
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
@@ -57,16 +57,15 @@ public class FrameTranslators extends BaseFrameTranslators {
     private FXMLLoader getViewTranslatorItem(){
         return new FXMLLoader(getClass().getResource("/view/TranslatorItem.fxml"));
     }
-    private FrameTranslatorItem getControllerTranslatorItemByLoader(final FXMLLoader loader){
-        return ((FrameTranslatorItem)loader.getController());
-    }
+
 
     private VBox getBoxTranslatorItem(final Site site){
         return ActiveTranslator.valueOf(getStringStatus(site)).checkActive(this);
     }
 
-    private FXMLLoader createTranslatorItem(final Site site){
+    private FXMLLoader createTranslatorItem(final Site site) throws IOException{
         FXMLLoader loader = getViewTranslatorItem();
+        getBoxTranslatorItem(site).getChildren().add(loader.load());
         FrameTranslatorItem frameTranslatorItem = loader.getController();
         frameTranslatorItem.createLogo();
 
