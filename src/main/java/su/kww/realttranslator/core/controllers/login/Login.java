@@ -25,7 +25,7 @@ public class Login extends BaseLogin implements Initializable {
     public void auth(ActionEvent event) {
         if (checkFielding()){
             updateByLogin();
-            frameTranslators.addTranslator(new Site());
+            frameTranslators.activateTranslatorItems();
             return;
         }
         fieldMessage(MessageForTranslator.EMPTY_USER_PASSWORD);

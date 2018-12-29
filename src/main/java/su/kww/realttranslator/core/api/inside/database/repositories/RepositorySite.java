@@ -1,5 +1,6 @@
 package su.kww.realttranslator.core.api.inside.database.repositories;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.hibernate.Session;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
@@ -8,10 +9,9 @@ import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resourc
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 public class RepositorySite extends AbstractRepository{
-
-    private final static DateFormat df = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
 
     public static Site create(Resource resource){
             Site site = new Site();
@@ -26,5 +26,10 @@ public class RepositorySite extends AbstractRepository{
             site.setUpdateAt(resource.getUpdatedAt());
             return site;
     }
+
+    public static Boolean isNullSiteSettings(final Site site){
+        return Objects.isNull(site.getSiteSettings());
+    }
+
 
 }

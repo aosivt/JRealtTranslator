@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane
-        fx:controller="su.kww.realttranslator.core.controllers.item_translator.TranslatorItem"
+        fx:controller="su.kww.realttranslator.core.controllers.item_translator.FrameTranslatorItem"
         stylesheets="@css/RootStyle.css"
         prefHeight="200.0" prefWidth="971.0"
         xmlns="http://javafx.com/javafx/8.0.172-ea"
