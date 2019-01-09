@@ -60,11 +60,10 @@ public abstract class BaseFrameTranslators implements Initializable {
         sync.setOnMouseExited(ex-> sync.setImage(new Image("view/resources/icons/sync.png")));
     }
 
-
-
-
-
-
-
-
+    protected void clearListVBox(){
+        activeBox.getChildren().removeAll();
+        notActiveBox.getChildren().removeAll();
+        withoutSetupBox.getChildren().removeAll();
+        System.gc();
+    }
 }

@@ -12,7 +12,6 @@ public class RepositorySiteSettings extends AbstractRepository {
         SiteSettings siteSettings = new SiteSettings();
         siteSettings.setSiteId(site.getId());
         site.setSiteSettings(siteSettings);
-
         return siteSettings;
     }
 }

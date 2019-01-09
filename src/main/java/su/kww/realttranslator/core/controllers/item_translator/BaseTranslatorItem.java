@@ -1,5 +1,6 @@
 package su.kww.realttranslator.core.controllers.item_translator;
 
+import io.reactivex.subjects.PublishSubject;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +13,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.apache.commons.codec.binary.Base64;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
+import su.kww.realttranslator.core.controllers.frame_translator_items.BaseFrameTranslators;
+import su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators;
+import su.kww.realttranslator.core.controllers.item_translator.property.TranslatorProperty;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -28,17 +32,25 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     @FXML
     protected ImageView run;
 
+
+    protected PublishSubject<Site> sitePublisher;
+
     protected Site site;
+
+    protected BaseFrameTranslators frameTranslators;
 
     @FXML
     void actionSettings(MouseEvent event) {
 
         settings.setImage(new Image("view/resources/icons/settings-pressed.png"));
-
         try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TranslatorProperty.fxml"));
         Stage stage1 = new Stage();
         Parent root = loader.load();
+        TranslatorProperty translatorProperty = loader.getController();
+        translatorProperty.setSite(site);
+        translatorProperty.setSitePublisher(sitePublisher);
+        translatorProperty.initFieldFromSiteSettings();
         Scene scene = new Scene(root);
         Image appIcon = new Image("view/resources/icons/realttranslator.png");
         stage1.getIcons().add(appIcon);
@@ -48,7 +60,6 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
@@ -82,9 +93,13 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
 
     @Override
     public TranslatorItem createLogo() {
-        getImageLogo(decodeImageByString(site.getLogo()));
+        setLogo(getImageLogo(decodeImageByString(site.getLogo())));
         setTextLogo(site.getName());
         return this;
     }
+
+
+
+
 
 }

@@ -34,12 +34,12 @@
                 </Tab>
                 <Tab style="-fx-background-color: #E4340C;" text="Неактивные">
                     <ScrollPane>
-                        <VBox fx:id="withoutSetupBox"></VBox>
+                        <VBox fx:id="notActiveBox"></VBox>
                     </ScrollPane>
                 </Tab>
                 <Tab style="-fx-background-color: #E4340C;" text="Ненастроенные">
                     <ScrollPane>
-                        <VBox fx:id="notActiveBox"></VBox>
+                        <VBox fx:id="withoutSetupBox"></VBox>
                     </ScrollPane>
                 </Tab>
             </tabs>
@@ -47,7 +47,7 @@
 
         <ImageView fx:id="sync"
                 fitHeight="26.0" fitWidth="20.0" layoutX="14.0" layoutY="31.0"
-                pickOnBounds="true" preserveRatio="true">
+                pickOnBounds="true" preserveRatio="true" onMouseClicked="#synchronize">
             <image>
                 <Image url="@resources/icons/sync.png" />
             </image>

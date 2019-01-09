@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import su.kww.realttranslator.core.api.MessageForTranslator;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
+import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
 import su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators;
 
 import java.awt.*;
@@ -45,15 +46,8 @@ public class Login extends BaseLogin implements Initializable {
     }
 
     private void updateByLogin(){
-        synchronizeFromApiDomstor();
+        frameTranslators.setUserNamePassword(new DomstorUsernamePassword(username.getText(),pass.getText()));
+        frameTranslators.synchronize();
         anchorPane.getScene().getWindow().hide();
     }
-
-    private void synchronizeFromApiDomstor(){
-        DaggerDomstorComponent.create()
-                .getDomstorApiConfig()
-                .synchronize(username.getText(), pass.getText());
-    }
-
-
 }

@@ -1,9 +1,8 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
-
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 //Create.Table("site_settings")
 @Entity
@@ -31,29 +30,29 @@ public class SiteSettings implements EntityDomstor {
     private Integer translationStatus;
     //.WithColumn("translation_date").AsDateTime().Nullable()
     @Column(name = "translation_date", nullable = false)
-    private Date translationDate;
+    private Date translationDate = new Date();
     //.WithColumn("translation_message").AsString(500).Nullable()
-    @Column(name = "translation_message", length = 500, nullable = true)
+    @Column(name = "translation_message", length = 500)
     private String translationMessage;
     //.WithColumn("login").AsString(255).Nullable()
-    @Column(name = "login", nullable = true)
+    @Column(name = "login")
     private String login;
     //.WithColumn("password").AsString(255).Nullable();
-    @Column(name = "password", nullable = true)
+    @Column(name = "password")
     private String password;
     //.AddColumn("config").AsString(16777215).Nullable();
-    @Column(name = "config", length = 16777215,nullable = true)
+    @Column(name = "config", length = 16777215)
     private String config;
     //.AddColumn("external_phone").AsString(255).Nullable()
-    @Column(name = "external_phone", nullable = true)
+    @Column(name = "external_phone")
     private String externalPhone;
 
     //.AddColumn("is_autorun_enabled").AsBoolean().WithDefaultValue(false)
     @Column(name = "is_autorun_enabled", nullable = false)
     private Boolean isAutorunEnabled = false;
 
-//    @OneToOne(fetch= FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "siteSettings")
-//    private Site site;
+    @OneToOne(fetch= FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "siteSettings")
+    private Site site;
 
     public Integer getSiteId() {
         return siteId;
@@ -165,5 +164,21 @@ public class SiteSettings implements EntityDomstor {
 
     public void setAutorunEnabled(Boolean autorunEnabled) {
         isAutorunEnabled = autorunEnabled;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public Boolean getAutorunEnabled() {
+        return isAutorunEnabled;
+    }
+
+    public Site getSite() {
+        return site;
+    }
+
+    public void setSite(Site site) {
+        this.site = site;
     }
 }

@@ -9,6 +9,8 @@ import java.io.Serializable;
 
 public class LoginEntity implements Serializable {
 
+    public LoginEntity(){}
+
     @SerializedName("user_id")
     @Expose
     @JsonProperty("user_id")
@@ -88,5 +90,41 @@ public class LoginEntity implements Serializable {
 
     public LoginService[] getLoginService() {
         return loginService;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public void setAgencyId(Integer agencyId) {
+        this.agencyId = agencyId;
+    }
+
+    public void setFilialId(Integer filialId) {
+        this.filialId = filialId;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setAgencyName(String agencyName) {
+        this.agencyName = agencyName;
+    }
+
+    public void setAgencyShortName(String agencyShortName) {
+        this.agencyShortName = agencyShortName;
+    }
+
+    public void setSettingsLevel(String settingsLevel) {
+        this.settingsLevel = settingsLevel;
+    }
+
+    public void setFilialName(String filialName) {
+        this.filialName = filialName;
+    }
+
+    public void setLoginService(LoginService[] loginService) {
+        this.loginService = loginService;
     }
 }

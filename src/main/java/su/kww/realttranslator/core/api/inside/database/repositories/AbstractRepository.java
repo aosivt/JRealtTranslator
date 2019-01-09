@@ -1,9 +1,11 @@
 package su.kww.realttranslator.core.api.inside.database.repositories;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import org.hibernate.Session;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
+import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 
 import javax.persistence.Query;
 import java.io.Serializable;
@@ -50,4 +52,10 @@ public abstract class AbstractRepository {
     protected static String toJson(Serializable serializable){
         return gson.toJson(serializable);
     }
+
+    public static Serializable fromJson(String jsonSerialise){
+        return gson.fromJson(jsonSerialise,Serializable.class);
+    }
+
+
 }
