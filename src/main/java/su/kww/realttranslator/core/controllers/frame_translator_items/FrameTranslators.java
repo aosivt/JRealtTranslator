@@ -69,9 +69,7 @@ public class FrameTranslators extends BaseFrameTranslators {
 
     private void updateTranslatorsFromDB(Site site) {
         sites = null;
-        activeBox.getChildren().clear();
-        notActiveBox.getChildren().clear();
-        withoutSetupBox.getChildren().clear();
+        clearListVBox();
         activateTranslatorItems();
     }
 
