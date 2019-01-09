@@ -39,6 +39,7 @@ public class FrameTranslators extends BaseFrameTranslators {
     public void addTranslator(final Site site) {
         try{
             FXMLLoader loader = createTranslatorItem(site);
+            addPercentProgressBar((double) (100/sites.size()),site.getName());
         } catch (IOException e){
             System.out.println(e.getMessage());
         }
@@ -76,10 +77,7 @@ public class FrameTranslators extends BaseFrameTranslators {
     public void activateTranslatorItems(){
         sites = RepositorySite.select(Site.class.getName());
         sites.parallelStream().filter(Objects::nonNull)
-                              .map(site->{
-                                  addPercentProgressBar((double) (100/sites.size()),((Site)site).getName());
-                                  return (Site)site;
-                              })
+                              .map(s->(Site)s)
                               .sequential()
                               .forEach(this::addTranslator);
         succesfullSync();
@@ -105,6 +103,7 @@ public class FrameTranslators extends BaseFrameTranslators {
 
     public void synchronize(){
         synchronize(userNamePassword.getUsername(), userNamePassword.getPassword());
+        updateTranslatorsFromDB(null);
     }
 
     private void succesfullSync(){

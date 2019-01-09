@@ -23,7 +23,7 @@ public class Login extends BaseLogin implements Initializable {
 
     private FrameTranslators frameTranslators;
     @Override
-    public void auth(ActionEvent event) {
+    public synchronized void auth(ActionEvent event) {
         if (checkFielding()){
             updateByLogin();
             frameTranslators.activateTranslatorItems();

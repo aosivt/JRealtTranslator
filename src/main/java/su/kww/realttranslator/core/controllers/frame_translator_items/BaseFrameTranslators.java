@@ -61,9 +61,9 @@ public abstract class BaseFrameTranslators implements Initializable {
     }
 
     protected void clearListVBox(){
-        activeBox.getChildren().removeAll();
-        notActiveBox.getChildren().removeAll();
-        withoutSetupBox.getChildren().removeAll();
+        activeBox.getChildren().clear();
+        notActiveBox.getChildren().clear();
+        withoutSetupBox.getChildren().clear();
         System.gc();
     }
 }
