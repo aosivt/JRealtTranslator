@@ -1,14 +1,6 @@
 package su.kww.realttranslator.core.api.inside.database.repositories;
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.hibernate.Session;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
-import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
 import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
-
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Objects;
 
 public class RepositorySite extends AbstractRepository{
