@@ -1,80 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTabPane?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.ScrollPane?>
+<GridPane fx:id="anchorPane" prefHeight="200.0" prefWidth="990.0" stylesheets="@css/RootStyle.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators">
 
-<AnchorPane fx:id="anchorPane"
-            fx:controller="su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators"
-            stylesheets="@css/RootStyle.css"
-            prefHeight="611.0" prefWidth="1004.0"
-            xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1"
-            >
 
-    <children>
-        <JFXTabPane fx:id="translatorsTabPane"
-                    layoutX="15.0" layoutY="105.0" prefHeight="429.0" prefWidth="973.0"
-                    style="-fx: #E4340C;" tabClosingPolicy="UNAVAILABLE">
-            <tabs>
-                <Tab style="-fx-background-color: #E4340C;" text="Активные" >
-                    <ScrollPane>
-                        <VBox fx:id="activeBox"></VBox>
-                    </ScrollPane>
-                </Tab>
-                <Tab style="-fx-background-color: #E4340C;" text="Неактивные">
-                    <ScrollPane>
-                        <VBox fx:id="notActiveBox"></VBox>
-                    </ScrollPane>
-                </Tab>
-                <Tab style="-fx-background-color: #E4340C;" text="Ненастроенные">
-                    <ScrollPane>
-                        <VBox fx:id="withoutSetupBox"></VBox>
-                    </ScrollPane>
-                </Tab>
-            </tabs>
-        </JFXTabPane>
+    <ImageView fx:id="sync" onMouseClicked="#synchronize" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+        <image>
+            <Image url="@resources/icons/sync.png" />
+        </image>
+    </ImageView>
 
-        <ImageView fx:id="sync"
-                fitHeight="26.0" fitWidth="20.0" layoutX="14.0" layoutY="31.0"
-                pickOnBounds="true" preserveRatio="true" onMouseClicked="#synchronize">
-            <image>
-                <Image url="@resources/icons/sync.png" />
-            </image>
-        </ImageView>
+    <ProgressBar fx:id="progressBar" maxHeight="30.0" maxWidth="1.7976931348623157E308" progress="0.0" style="-fx-accent: black;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
 
-        <ProgressBar fx:id="progressBar"
-                     layoutX="47.0" layoutY="24.0" prefHeight="33.0" prefWidth="734.0" progress="0.0"
-                     style="-fx-accent: black;" />
-
-        <JFXTextField fx:id="username" layoutX="78.0" layoutY="58.0" />
-
-        <Separator layoutX="31.0" layoutY="548.0" prefHeight="2.0" prefWidth="936.0" />
-
-        <ImageView fitHeight="45.0" fitWidth="639.0" layoutX="208.0" layoutY="560.0"
-                   pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@resources/icons/company_logo.png" />
-            </image>
-        </ImageView>
-
-        <Label fx:id="labelProgressBarr"
-             layoutX="319.0" layoutY="33.0" prefHeight="16.0" prefWidth="106.0"
-             text="Label" textAlignment="CENTER" textFill="TRANSPARENT">
-         <font>
+    <Label fx:id="labelProgressBarr" maxHeight="30.0" text="Необходима авторизация" textAlignment="CENTER" textFill="TRANSPARENT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
+        <font>
             <Font size="14.0" />
-         </font>
-      </Label>
+        </font>
+    </Label>
 
-    </children>
-</AnchorPane>
+    <JFXTabPane fx:id="translatorsTabPane" style="-fx: #E4340C;" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <tabs>
+            <Tab style="-fx-background-color: #E4340C;" text="Активные">
+                <ScrollPane>
+                    <VBox fx:id="activeBox" />
+                </ScrollPane>
+            </Tab>
+            <Tab style="-fx-background-color: #E4340C;" text="Неактивные">
+                <ScrollPane>
+                    <VBox fx:id="notActiveBox" />
+                </ScrollPane>
+            </Tab>
+            <Tab style="-fx-background-color: #E4340C;" text="Ненастроенные">
+                <ScrollPane>
+                    <VBox fx:id="withoutSetupBox" />
+                </ScrollPane>
+            </Tab>
+        </tabs>
+    </JFXTabPane>
+
+    <ImageView fitHeight="45.0" fitWidth="639.0" layoutX="208.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+        <image>
+            <Image url="@resources/icons/company_logo.png" />
+        </image>
+    </ImageView>
+
+    <columnConstraints>
+      <ColumnConstraints halignment="CENTER" maxWidth="40.0" percentWidth="5.0" />
+      <ColumnConstraints halignment="CENTER" percentWidth="95.0" />
+   </columnConstraints>
+
+   <rowConstraints>
+      <RowConstraints percentHeight="5.0" valignment="CENTER" />
+      <RowConstraints percentHeight="90.0" valignment="CENTER" />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints maxHeight="60.0" percentHeight="5.0" valignment="CENTER" />
+   </rowConstraints>
+
+</GridPane>
