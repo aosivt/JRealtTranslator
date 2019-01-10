@@ -71,7 +71,7 @@
             <Image url="@resources/icons/success.png" />
          </image>
       </ImageView>
-   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="3">
+   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="3">
       <children>
           <ImageView fx:id="logo" fitHeight="60.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
           <Label fx:id="textLogo" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" />

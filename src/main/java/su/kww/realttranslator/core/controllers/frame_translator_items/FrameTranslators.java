@@ -1,25 +1,15 @@
 package su.kww.realttranslator.core.controllers.frame_translator_items;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.subjects.PublishSubject;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
-import su.kww.realttranslator.core.api.inside.database.entities.SiteSettings;
-import su.kww.realttranslator.core.api.inside.database.entities.UserSettings;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySite;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySiteSettings;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryUserSettings;
 import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import su.kww.realttranslator.core.controllers.item_translator.FrameTranslatorItem;
-import su.kww.realttranslator.core.controllers.item_translator.TranslatorItem;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Set;
@@ -58,7 +48,7 @@ public class FrameTranslators extends BaseFrameTranslators {
         FrameTranslatorItem frameTranslatorItem = loader.getController();
         frameTranslatorItem.setSite(site);
         frameTranslatorItem.setSitePublisher(subscribeToSite());
-        frameTranslatorItem.createLogo();
+        frameTranslatorItem.initTranslator();
         return loader;
     }
 
