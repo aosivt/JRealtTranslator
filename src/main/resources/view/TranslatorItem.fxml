@@ -4,52 +4,93 @@
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane
-        fx:controller="su.kww.realttranslator.core.controllers.item_translator.FrameTranslatorItem"
-        stylesheets="@css/RootStyle.css"
-        prefHeight="200.0" prefWidth="971.0"
-        xmlns="http://javafx.com/javafx/8.0.172-ea"
-        xmlns:fx="http://javafx.com/fxml/1">
+<!--.tab-->
+<!--{-->
+<!-- -fx-background-color: #fbfbfb;-->
+<!-- -fx-border-width: 0 0 1 0;-->
+<!-- -fx-border-color: #c2c2c2 #c2c2c2 #c2c2c2 #c2c2c2-->
+<!--}-->
+<!--.tab-pane *.tab-header-area *.tab-header-background {-->
+<!-- -fx-background-color:transparent;-->
+<!--}-->
+<!--.tab:selected-->
+<!--{-->
+<!-- -fx-background-radius: 0;-->
+<!-- -fx-background-insets: 0;-->
+<!-- -fx-background-color: #fbfbfb;-->
+<!-- -fx-border-width: 0 0 3 0;-->
+<!-- -fx-border-color: #c2c2c2 #c2c2c2 #ff9500 #c2c2c2-->
+<!--}-->
+<!--.tab-pane *.tab-header-background-->
+<!--{-->
+<!-- -fx-background-color: #fbfbfb, #fbfbfb, #fbfbfb;-->
+<!-- -fx-border-width: 1 0 1 0;-->
+<!-- -fx-border-color: #c2c2c2 #c2c2c2 #c2c2c2 #c2c2c2-->
+<!--}-->
+<!--.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {-->
+<!-- -fx-border-style: segments(0.166667em, 0.166667em);-->
+<!-- -fx-border-width: 1;-->
+<!-- -fx-border-color: -fx-focus-color;-->
+<!--}-->
 
-      <ImageView fx:id="run"
-                 fitHeight="74.0" fitWidth="66.0" layoutX="171.0" layoutY="70.0"
-                 pickOnBounds="true" preserveRatio="true"
-                 onMouseClicked="#actionRun">
+<GridPane fx:id="translatorItem" maxWidth="1.7976931348623157E308" minHeight="150.0" minWidth="970.0" prefHeight="150.0" prefWidth="970.0" stylesheets="@css/RootStyle.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.item_translator.FrameTranslatorItem">
+
+      <ImageView fx:id="run" fitHeight="74.0" fitWidth="66.0" layoutX="171.0" layoutY="70.0" onMouseClicked="#actionRun" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="3" GridPane.valignment="CENTER">
          <image>
             <Image url="@resources/icons/run.png" />
          </image>
       </ImageView>
-      <ProgressBar layoutX="275.0" layoutY="98.0" prefHeight="27.0" prefWidth="657.0" progress="0.0" />
-      <ImageView fx:id="settings"
-                 fitHeight="25.0" fitWidth="25.0" layoutX="932.0" layoutY="14.0"
-                 pickOnBounds="true" preserveRatio="true"
-                 onMouseClicked="#actionSettings">
-         <image >
+      <ProgressBar layoutX="275.0" layoutY="98.0" maxHeight="27.0" maxWidth="1.7976931348623157E308" minHeight="27.0" minWidth="676.0" prefHeight="27.0" prefWidth="676.0" progress="0.0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+      <ImageView fx:id="settings" fitHeight="25.0" fitWidth="25.0" layoutX="932.0" layoutY="14.0" onMouseClicked="#actionSettings" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+         <image>
             <Image url="@resources/icons/settings.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="275.0" layoutY="131.0" pickOnBounds="true" preserveRatio="true">
+   <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2">
+      <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/icons/time.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/icons/date.png" />
+               </image>
+            </ImageView>
+      </children>
+   </HBox>
+      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
          <image>
             <Image url="@resources/icons/success.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="274.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@resources/icons/date.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="554.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@resources/icons/time.png" />
-         </image>
-      </ImageView>
+   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.rowSpan="3">
+      <children>
+          <ImageView fx:id="logo" fitHeight="60.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
+          <Label fx:id="textLogo" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" />
 
-    <ImageView fx:id="logo"
-               fitHeight="60.0" fitWidth="140.0" layoutX="21.0" layoutY="51.0"
-               pickOnBounds="true" preserveRatio="true" />
-    <Label fx:id="textLogo" alignment="CENTER" contentDisplay="CENTER"
-           layoutX="11.0" layoutY="123.0" prefHeight="16.0" prefWidth="148.0"/>
+          <Label fx:id="addOffer" alignment="TOP_LEFT" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" text="Добавить" wrapText="true" />
+          <Label fx:id="updateOffer" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" text="Обновить" />
+          <Label fx:id="deleteOffer" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" text="Удалить" />
+      </children>
+   </VBox>
+   <columnConstraints>
+      <ColumnConstraints halignment="LEFT" maxWidth="150.0" minWidth="150.0" percentWidth="15.0" prefWidth="150.0" />
+      <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="100.0" percentWidth="65.0" prefWidth="100.0" />
+      <ColumnConstraints maxWidth="1.7976931348623157E308" percentWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" />
+      <RowConstraints percentHeight="60.0" />
+      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" />
+   </rowConstraints>
 
-</AnchorPane>
+</GridPane>

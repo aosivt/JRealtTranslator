@@ -13,6 +13,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.TabPane?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <GridPane fx:id="anchorPane" prefHeight="200.0" prefWidth="990.0" stylesheets="@css/RootStyle.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators">
 
 
@@ -22,7 +24,13 @@
         </image>
     </ImageView>
 
-    <ProgressBar fx:id="progressBar" maxHeight="30.0" maxWidth="1.7976931348623157E308" progress="0.0" style="-fx-accent: black;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+    <JFXProgressBar fx:id="progressBar" maxHeight="27.0" maxWidth="1.7976931348623157E308" progress="0.0" style="-fx-accent: black;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+
+    <ImageView fx:id="mailerSettings" onMouseClicked="#synchronize" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="0">
+        <image>
+            <Image url="@resources/icons/settings.png" />
+        </image>
+    </ImageView>
 
     <Label fx:id="labelProgressBarr" maxHeight="30.0" text="Необходима авторизация" textAlignment="CENTER" textFill="TRANSPARENT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER">
         <font>
@@ -30,35 +38,36 @@
         </font>
     </Label>
 
-    <JFXTabPane fx:id="translatorsTabPane" style="-fx: #E4340C;" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+    <TabPane fx:id="translatorsTabPane" maxWidth="1.7976931348623157E308" stylesheets="@css/RootStyle.css" tabClosingPolicy="UNAVAILABLE" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
         <tabs>
-            <Tab style="-fx-background-color: #E4340C;" text="Активные">
-                <ScrollPane>
-                    <VBox fx:id="activeBox" />
+            <Tab text="Активные">
+                <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="1.7976931348623157E308">
+                    <VBox fx:id="activeBox" maxWidth="1.7976931348623157E308" />
                 </ScrollPane>
             </Tab>
-            <Tab style="-fx-background-color: #E4340C;" text="Неактивные">
-                <ScrollPane>
-                    <VBox fx:id="notActiveBox" />
+            <Tab text="Неактивные">
+                <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="1.7976931348623157E308">
+                    <VBox fx:id="notActiveBox" maxWidth="1.7976931348623157E308" />
                 </ScrollPane>
             </Tab>
-            <Tab style="-fx-background-color: #E4340C;" text="Ненастроенные">
-                <ScrollPane>
-                    <VBox fx:id="withoutSetupBox" />
+            <Tab text="Ненастроенные">
+                <ScrollPane fitToHeight="true" fitToWidth="true" maxWidth="1.7976931348623157E308">
+                    <VBox fx:id="withoutSetupBox" maxWidth="1.7976931348623157E308" />
                 </ScrollPane>
             </Tab>
         </tabs>
-    </JFXTabPane>
+    </TabPane>
 
-    <ImageView fitHeight="45.0" fitWidth="639.0" layoutX="208.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+    <ImageView fitHeight="45.0" fitWidth="639.0" layoutX="208.0" layoutY="560.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
         <image>
             <Image url="@resources/icons/company_logo.png" />
         </image>
     </ImageView>
 
     <columnConstraints>
-      <ColumnConstraints halignment="CENTER" maxWidth="40.0" percentWidth="5.0" />
-      <ColumnConstraints halignment="CENTER" percentWidth="95.0" />
+      <ColumnConstraints halignment="CENTER" maxWidth="30.0" percentWidth="5.0" />
+      <ColumnConstraints halignment="CENTER" percentWidth="90.0" />
+      <ColumnConstraints halignment="CENTER" maxWidth="30.0" percentWidth="5.0" />
    </columnConstraints>
 
    <rowConstraints>

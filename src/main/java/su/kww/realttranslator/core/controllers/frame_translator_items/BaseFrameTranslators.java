@@ -1,11 +1,13 @@
 package su.kww.realttranslator.core.controllers.frame_translator_items;
 
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -21,10 +23,10 @@ public abstract class BaseFrameTranslators implements Initializable {
     protected GridPane anchorPane;
 
     @FXML
-    protected ProgressBar progressBar;
+    protected JFXProgressBar progressBar;
 
     @FXML
-    protected JFXTabPane translatorsTabPane;
+    protected TabPane translatorsTabPane;
 
     @FXML
     protected VBox activeBox;
