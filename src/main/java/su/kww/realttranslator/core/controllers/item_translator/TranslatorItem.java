@@ -14,7 +14,9 @@ public interface TranslatorItem {
 
     TranslatorItem setSitePublisher(PublishSubject<Site> sitePublisher);
 
-    TranslatorItem createLogo();
+
+
+    TranslatorItem initTranslator();
 
     BaseFrameTranslators getBaseFrameTranslators();
 

@@ -38,4 +38,11 @@ public class FrameTranslatorItem extends BaseTranslatorItem {
         this.sitePublisher = sitePublisher;
         return this;
     }
+
+    @Override
+    public TranslatorItem initTranslator() {
+        createLogo();
+        fieldingInfo();
+        return this;
+    }
 }

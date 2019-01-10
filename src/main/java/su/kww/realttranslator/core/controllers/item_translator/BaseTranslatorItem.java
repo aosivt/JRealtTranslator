@@ -27,6 +27,14 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     protected ImageView logo;
     @FXML
     protected Label textLogo;
+
+    @FXML
+    protected Label addOffer;
+    @FXML
+    protected Label updateOffer;
+    @FXML
+    protected Label deleteOffer;
+
     @FXML
     protected ImageView settings;
     @FXML
@@ -91,15 +99,20 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
         logo.setImage(imageLogo);
     }
 
-    @Override
-    public TranslatorItem createLogo() {
+    protected TranslatorItem createLogo() {
         setLogo(getImageLogo(decodeImageByString(site.getLogo())));
         setTextLogo(site.getName());
         return this;
     }
 
+    protected TranslatorItem fieldingInfo(){
+        setTextCountAddOffer();
+        setTextCountUpdateOffer();
+        setTextCountDeleteOffer();
+        return this;
+    }
 
-
-
-
+    private void setTextCountAddOffer(){}
+    private void setTextCountUpdateOffer(){}
+    private void setTextCountDeleteOffer(){}
 }
