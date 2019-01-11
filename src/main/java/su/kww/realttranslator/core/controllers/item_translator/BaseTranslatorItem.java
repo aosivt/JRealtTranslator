@@ -82,6 +82,7 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     @FXML
     void actionRun(MouseEvent event) {
         run.setImage(new Image("view/resources/icons/run-pressed.png"));
+        translatorService.process(getAdvertSitesBySite(site));
     }
 
     @Override
