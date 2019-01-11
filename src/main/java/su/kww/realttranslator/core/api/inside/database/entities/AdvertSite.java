@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.io.Serializable;
 import java.sql.Date;
 
 
@@ -81,5 +80,37 @@ public class AdvertSite implements EntityDomstor {
 
     public void setExternalId(String externalId) {
         this.externalId = externalId;
+    }
+
+    public Long getDomstorId() {
+        return domstorId;
+    }
+
+    public void setDomstorId(Long domstorId) {
+        this.domstorId = domstorId;
+    }
+
+    public Integer getDataType() {
+        return dataType;
+    }
+
+    public void setDataType(Integer dataType) {
+        this.dataType = dataType;
+    }
+
+    public Date getAdvertEditDt() {
+        return advertEditDt;
+    }
+
+    public void setAdvertEditDt(Date advertEditDt) {
+        this.advertEditDt = advertEditDt;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }

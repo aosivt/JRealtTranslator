@@ -3,6 +3,7 @@ package su.kww.realttranslator.core.api.remote.domstor.services;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
+import su.kww.realttranslator.core.api.remote.domstor.entities.links.LinksSiteJson;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 import su.kww.realttranslator.core.api.remote.domstor.entities.mailer.MailerPresentsEntity;
 import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
@@ -19,4 +20,6 @@ public interface ServiceConfig {
     Observable<Set<ServiceAllJson>> getAdverts();
     @GET(BaseApiConfig.ResourcesUrl)
     Observable<Set<Resource>> getResources();
+    @GET(BaseApiConfig.LinksInUrl)
+    Observable<Set<LinksSiteJson>> getLinks();
 }

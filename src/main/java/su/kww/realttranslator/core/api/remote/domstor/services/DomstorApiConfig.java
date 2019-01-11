@@ -1,17 +1,16 @@
 package su.kww.realttranslator.core.api.remote.domstor.services;
 
 import io.reactivex.Observable;
-import su.kww.realttranslator.core.api.MessageForTranslator;
-import su.kww.realttranslator.core.api.inside.database.entities.Advert;
-import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.database.entities.UserSettings;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
+import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdvertSite;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdverts;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySite;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryUserSettings;
 import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
+import su.kww.realttranslator.core.api.remote.domstor.entities.links.LinksSiteJson;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 import su.kww.realttranslator.core.api.remote.domstor.entities.mailer.MailerPresentsEntity;
 import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
@@ -45,6 +44,11 @@ public class DomstorApiConfig extends BaseApiConfig {
         return getRetrofitForBaseUrl().create(ServiceConfig.class).getResources();
     }
 
+    @Override
+    public Observable<Set<LinksSiteJson>> getLinks() {
+        return getRetrofitForBaseUrl().create(ServiceConfig.class).getLinks();
+    }
+
     public void synchronize(String userName, String passWord) {
         setUserNamePassword(createUserPass(userName,passWord));
 
@@ -62,6 +66,10 @@ public class DomstorApiConfig extends BaseApiConfig {
         getResources()
 //                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
                 .subscribe(this::updateSite).dispose();
+
+        getLinks()
+//                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
+                .subscribe(this::updateAdvertSite).dispose();
     }
 
     private void setErrorMessage(Throwable throwable) {
@@ -93,6 +101,15 @@ public class DomstorApiConfig extends BaseApiConfig {
                 .collect(Collectors.toSet());
 
         RepositoryAdverts.updateBySetEntity(adverts);
+    }
+
+    private void updateAdvertSite(Set<LinksSiteJson> resources){
+        Set<EntityDomstor>  advertsites = resources
+                .parallelStream()
+                .map(RepositoryAdvertSite::create)
+                .collect(Collectors.toSet());
+
+        RepositoryAdvertSite.updateBySetEntity(advertsites);
     }
 
 
