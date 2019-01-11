@@ -1,16 +1,16 @@
 package su.kww.realttranslator.translators.builder;
 
 
-import su.kww.realttranslator.translators.items.yandex.YandexTranslator;
+import su.kww.realttranslator.translators.service.yandex.YandexTranslatorService;
 
 
 public enum BuildOptions {
     YANDEX{
         @Override
-        public Translator getTranslator() {
-            return new YandexTranslator();
+        public TranslatorService getTranslator() {
+            return new YandexTranslatorService();
         }
     };
 
-    public abstract Translator getTranslator();
+    public abstract TranslatorService getTranslator();
 }

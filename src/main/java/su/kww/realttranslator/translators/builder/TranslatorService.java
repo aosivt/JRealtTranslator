@@ -1,4 +1,4 @@
 package su.kww.realttranslator.translators.builder;
 
-public interface Translator {
+public interface TranslatorService {
 }

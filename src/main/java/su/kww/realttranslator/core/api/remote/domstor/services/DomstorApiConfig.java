@@ -1,6 +1,8 @@
 package su.kww.realttranslator.core.api.remote.domstor.services;
 
 import io.reactivex.Observable;
+import su.kww.realttranslator.core.api.inside.database.entities.Advert;
+import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
 import su.kww.realttranslator.core.api.inside.database.entities.UserSettings;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdvertSite;
@@ -43,7 +45,6 @@ public class DomstorApiConfig extends BaseApiConfig {
     public Observable<Set<Resource>> getResources() {
         return getRetrofitForBaseUrl().create(ServiceConfig.class).getResources();
     }
-
     @Override
     public Observable<Set<LinksSiteJson>> getLinks() {
         return getRetrofitForBaseUrl().create(ServiceConfig.class).getLinks();
@@ -85,7 +86,6 @@ public class DomstorApiConfig extends BaseApiConfig {
                 .parallelStream()
                 .map(RepositorySite::create)
                 .collect(Collectors.toSet());
-
         RepositoryAdverts.updateBySetEntity(sites);
     }
 
@@ -99,16 +99,16 @@ public class DomstorApiConfig extends BaseApiConfig {
                 .filter(Objects::nonNull)
                 .map(RepositoryAdverts::create)
                 .collect(Collectors.toSet());
-
+        RepositoryAdvertSite.clearTableByNameEntity(Advert.class.getName());
         RepositoryAdverts.updateBySetEntity(adverts);
     }
 
-    private void updateAdvertSite(Set<LinksSiteJson> resources){
-        Set<EntityDomstor>  advertsites = resources
+    private void updateAdvertSite(Set<LinksSiteJson> LinksSites){
+        Set<EntityDomstor>  advertsites = LinksSites
                 .parallelStream()
                 .map(RepositoryAdvertSite::create)
                 .collect(Collectors.toSet());
-
+        RepositoryAdvertSite.clearTableByNameEntity(AdvertSite.class.getName());
         RepositoryAdvertSite.updateBySetEntity(advertsites);
     }
 

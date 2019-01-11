@@ -12,15 +12,22 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.apache.commons.codec.binary.Base64;
+import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
+import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdvertSite;
 import su.kww.realttranslator.core.controllers.frame_translator_items.BaseFrameTranslators;
 import su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators;
 import su.kww.realttranslator.core.controllers.item_translator.property.TranslatorProperty;
+import su.kww.realttranslator.translators.builder.TranslatorService;
+import su.kww.realttranslator.translators.builder.TranslatorServiceBuilder;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     @FXML
@@ -44,6 +51,8 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     protected PublishSubject<Site> sitePublisher;
 
     protected Site site;
+
+    protected TranslatorService translatorService;
 
     protected BaseFrameTranslators frameTranslators;
 
@@ -106,13 +115,35 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     }
 
     protected TranslatorItem fieldingInfo(){
-        setTextCountAddOffer();
-        setTextCountUpdateOffer();
-        setTextCountDeleteOffer();
+        Set<AdvertSite> advertSites = getAdvertSitesBySite(site);
+        advertSites.forEach(as->OperationAdvertSite.values()[as.getOperationId()-1].countOffer(this));
         return this;
     }
 
-    private void setTextCountAddOffer(){}
-    private void setTextCountUpdateOffer(){}
-    private void setTextCountDeleteOffer(){}
+    protected Set<AdvertSite> getAdvertSitesBySite(Site site){
+        return RepositoryAdvertSite.getAdvertSiteBySite(site).parallelStream()
+                                   .filter(s->Objects.nonNull(s.getAdvert()))
+                                   .collect(Collectors.toSet());
+    }
+
+    @Override
+    public TranslatorService getTranslatorService() {
+        return translatorService;
+    }
+
+    void initTranslatorService() {
+        translatorService = TranslatorServiceBuilder.build(site);
+    }
+
+    public Label getAddOffer() {
+        return addOffer;
+    }
+
+    public Label getUpdateOffer() {
+        return updateOffer;
+    }
+
+    public Label getDeleteOffer() {
+        return deleteOffer;
+    }
 }

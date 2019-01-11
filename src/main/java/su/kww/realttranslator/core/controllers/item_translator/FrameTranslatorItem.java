@@ -1,14 +1,12 @@
 package su.kww.realttranslator.core.controllers.item_translator;
 
 import io.reactivex.subjects.PublishSubject;
-import org.reactivestreams.Publisher;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
-import su.kww.realttranslator.core.api.inside.database.entities.SiteSettings;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySiteSettings;
 import su.kww.realttranslator.core.controllers.frame_translator_items.BaseFrameTranslators;
-import su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators;
+import su.kww.realttranslator.translators.builder.TranslatorServiceBuilder;
 
 public class FrameTranslatorItem extends BaseTranslatorItem {
+
 
 
     @Override
@@ -43,6 +41,7 @@ public class FrameTranslatorItem extends BaseTranslatorItem {
     public TranslatorItem initTranslator() {
         createLogo();
         fieldingInfo();
+        initTranslatorService();
         return this;
     }
 }
