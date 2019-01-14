@@ -1,11 +1,16 @@
 package su.kww.realttranslator.translators.service.yandex.offer;
 
+import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
+
 import javax.xml.bind.annotation.*;
 import java.util.Date;
 
 @XmlRootElement(name="offer")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class YandexAdvertOffer {
+
+    public YandexAdvertOffer(){}
+    public YandexAdvertOffer(AdvertSite advertSite){}
 
     @XmlAttribute(name = "internal-id")
     private String id;

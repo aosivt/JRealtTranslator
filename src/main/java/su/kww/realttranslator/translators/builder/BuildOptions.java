@@ -8,7 +8,8 @@ public enum BuildOptions {
     YANDEX{
         @Override
         public TranslatorService getTranslator() {
-            return new YandexTranslatorService();
+
+            return new YandexTranslatorService(this.name().toLowerCase());
         }
     },
     AVITO{
@@ -128,7 +129,7 @@ public enum BuildOptions {
     VESTUM{
         @Override
         public TranslatorService getTranslator() {
-            return new YandexTranslatorService();
+            return new YandexTranslatorService(this.name().toLowerCase());
         }
     };
     public abstract TranslatorService getTranslator();

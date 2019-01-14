@@ -49,6 +49,7 @@ public class FrameTranslators extends BaseFrameTranslators {
         frameTranslatorItem.setSite(site);
         frameTranslatorItem.setSitePublisher(subscribeToSite());
         frameTranslatorItem.initTranslator();
+        frameTranslatorItem.setBaseFrameTranslators(this);
         return loader;
     }
 
