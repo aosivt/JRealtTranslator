@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.item_translator.property;
+package su.kww.realttranslator.core.controllers.frame.items.property;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jfoenix.controls.JFXCheckBox;
@@ -13,15 +13,12 @@ import javafx.stage.Stage;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.database.entities.SiteSettings;
 import su.kww.realttranslator.core.api.inside.database.entities.UserSettings;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySite;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySiteSettings;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryUserSettings;
-import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.ParseException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 

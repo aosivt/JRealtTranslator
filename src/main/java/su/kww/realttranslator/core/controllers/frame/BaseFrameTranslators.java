@@ -1,12 +1,10 @@
-package su.kww.realttranslator.core.controllers.frame_translator_items;
+package su.kww.realttranslator.core.controllers.frame;
 
 import com.jfoenix.controls.JFXProgressBar;
-import com.jfoenix.controls.JFXTabPane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

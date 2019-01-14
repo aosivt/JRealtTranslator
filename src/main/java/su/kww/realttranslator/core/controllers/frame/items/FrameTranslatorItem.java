@@ -1,9 +1,8 @@
-package su.kww.realttranslator.core.controllers.item_translator;
+package su.kww.realttranslator.core.controllers.frame.items;
 
 import io.reactivex.subjects.PublishSubject;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
-import su.kww.realttranslator.core.controllers.frame_translator_items.BaseFrameTranslators;
-import su.kww.realttranslator.translators.builder.TranslatorServiceBuilder;
+import su.kww.realttranslator.core.controllers.frame.BaseFrameTranslators;
 
 public class FrameTranslatorItem extends BaseTranslatorItem {
 

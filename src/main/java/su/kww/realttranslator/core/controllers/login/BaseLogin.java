@@ -1,6 +1,5 @@
 package su.kww.realttranslator.core.controllers.login;
 
-import com.google.common.base.Strings;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -9,8 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
-import su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators;
 
 import java.awt.*;
 import java.io.IOException;

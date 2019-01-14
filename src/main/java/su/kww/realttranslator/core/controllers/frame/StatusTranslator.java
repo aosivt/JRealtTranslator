@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.frame_translator_items;
+package su.kww.realttranslator.core.controllers.frame;
 
 import javafx.scene.layout.VBox;
 

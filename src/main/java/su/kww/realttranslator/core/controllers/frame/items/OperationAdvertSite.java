@@ -1,10 +1,6 @@
-package su.kww.realttranslator.core.controllers.item_translator;
+package su.kww.realttranslator.core.controllers.frame.items;
 
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators;
-
-import java.util.Objects;
 
 public enum OperationAdvertSite {
 

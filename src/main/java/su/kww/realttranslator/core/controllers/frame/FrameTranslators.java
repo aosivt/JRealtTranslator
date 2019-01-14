@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.frame_translator_items;
+package su.kww.realttranslator.core.controllers.frame;
 
 import io.reactivex.subjects.PublishSubject;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +8,7 @@ import su.kww.realttranslator.core.api.inside.database.entities.interfaces.Entit
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySite;
 import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
-import su.kww.realttranslator.core.controllers.item_translator.FrameTranslatorItem;
+import su.kww.realttranslator.core.controllers.frame.items.FrameTranslatorItem;
 
 import java.io.IOException;
 import java.util.Objects;

@@ -15,7 +15,7 @@
 
 <?import javafx.scene.control.TabPane?>
 <?import com.jfoenix.controls.JFXProgressBar?>
-<GridPane fx:id="anchorPane" prefHeight="200.0" prefWidth="990.0" stylesheets="@css/RootStyle.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators">
+<GridPane fx:id="anchorPane" prefHeight="200.0" prefWidth="990.0" stylesheets="@css/RootStyle.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.frame.FrameTranslators">
 
 
     <ImageView fx:id="sync" onMouseClicked="#synchronize" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="0" GridPane.rowIndex="0">

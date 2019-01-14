@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.controllers.item_translator;
+package su.kww.realttranslator.core.controllers.frame.items;
 
 import io.reactivex.subjects.PublishSubject;
 import javafx.fxml.FXML;
@@ -15,9 +15,8 @@ import org.apache.commons.codec.binary.Base64;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdvertSite;
-import su.kww.realttranslator.core.controllers.frame_translator_items.BaseFrameTranslators;
-import su.kww.realttranslator.core.controllers.frame_translator_items.FrameTranslators;
-import su.kww.realttranslator.core.controllers.item_translator.property.TranslatorProperty;
+import su.kww.realttranslator.core.controllers.frame.BaseFrameTranslators;
+import su.kww.realttranslator.core.controllers.frame.items.property.TranslatorProperty;
 import su.kww.realttranslator.translators.builder.TranslatorService;
 import su.kww.realttranslator.translators.builder.TranslatorServiceBuilder;
 
