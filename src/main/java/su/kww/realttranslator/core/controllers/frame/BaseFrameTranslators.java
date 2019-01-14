@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -58,4 +59,6 @@ public abstract class BaseFrameTranslators implements Initializable {
         withoutSetupBox.getChildren().clear();
         System.gc();
     }
+
+    public abstract UserNamePassword getUserNamePassword();
 }

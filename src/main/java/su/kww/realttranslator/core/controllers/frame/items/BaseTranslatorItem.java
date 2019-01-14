@@ -18,10 +18,12 @@ import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdvertSite;
 import su.kww.realttranslator.core.controllers.frame.BaseFrameTranslators;
 import su.kww.realttranslator.core.controllers.frame.items.property.TranslatorProperty;
+import su.kww.realttranslator.translators.builder.ResultProcessService;
 import su.kww.realttranslator.translators.builder.TranslatorService;
 import su.kww.realttranslator.translators.builder.TranslatorServiceBuilder;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -85,8 +87,11 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     @FXML
     void actionRun(MouseEvent event) {
         run.setImage(new Image("view/resources/icons/run-pressed.png"));
-        translatorService.process(getAdvertSitesBySite(site));
+        ResultProcessService resultProcessService = translatorService.process(getAdvertSitesBySite(site),frameTranslators.getUserNamePassword());
+        viewError(resultProcessService.getErrors());
     }
+
+    public void viewError(Set<String> errors){}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

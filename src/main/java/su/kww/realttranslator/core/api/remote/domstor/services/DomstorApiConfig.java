@@ -1,6 +1,9 @@
 package su.kww.realttranslator.core.api.remote.domstor.services;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.http.Part;
 import su.kww.realttranslator.core.api.inside.database.entities.Advert;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
 import su.kww.realttranslator.core.api.inside.database.entities.UserSettings;
@@ -15,6 +18,7 @@ import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.core.api.remote.domstor.entities.links.LinksSiteJson;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 import su.kww.realttranslator.core.api.remote.domstor.entities.mailer.MailerPresentsEntity;
+import su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data.UploadData;
 import su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data.UploadResult;
 import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
 
@@ -52,8 +56,8 @@ public class DomstorApiConfig extends BaseApiConfig {
     }
 
     @Override
-    public Observable<UploadResult> postDomstorData(String type, String name, String data) {
-        return getRetrofitForBaseUrl().create(ServiceConfig.class).postDomstorData(type, name, data);
+    public Observable<UploadResult> postDomstorData(MultipartBody.Part file, RequestBody name) {
+        return getRetrofitForBaseUrl().create(ServiceConfig.class).postDomstorData(file, name);
     }
 
     public void synchronize(String userName, String passWord) {

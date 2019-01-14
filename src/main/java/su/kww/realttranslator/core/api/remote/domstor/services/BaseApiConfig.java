@@ -48,7 +48,7 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
         return Credentials.basic(userNamePassword.getUsername(), userNamePassword.getPassword());
     }
 
-    protected BaseApiConfig setUserNamePassword(UserNamePassword userNamePassword) {
+    public BaseApiConfig setUserNamePassword(UserNamePassword userNamePassword) {
         this.userNamePassword = userNamePassword;
         return this;
     }

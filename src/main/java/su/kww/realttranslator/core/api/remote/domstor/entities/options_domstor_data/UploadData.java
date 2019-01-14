@@ -1,10 +1,12 @@
 package su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data;
 
+import java.io.File;
+
 public class UploadData {
 
     private String type;
     private String name;
-    private String data;
+    private File data;
 
     public String getType() {
         return type;
@@ -22,11 +24,11 @@ public class UploadData {
         this.name = name;
     }
 
-    public String getData() {
+    public File getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(File data) {
         this.data = data;
     }
 }

@@ -28,7 +28,7 @@ public class FrameTranslators extends BaseFrameTranslators {
 
     public void addTranslator(final Site site) {
         try{
-            FXMLLoader loader = createTranslatorItem(site);
+            createTranslatorItem(site);
             addPercentProgressBar((double) (100/sites.size()),site.getName());
         } catch (IOException e){
             System.out.println(e.getMessage());
@@ -102,6 +102,7 @@ public class FrameTranslators extends BaseFrameTranslators {
         labelProgressBarr.setText(MESSAGE_SYNC_OK);
     }
 
+    @Override
     public UserNamePassword getUserNamePassword() {
         return userNamePassword;
     }
