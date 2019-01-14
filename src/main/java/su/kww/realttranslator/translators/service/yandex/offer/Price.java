@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="price")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Price {
+
     private String value;
     private String currency;
 

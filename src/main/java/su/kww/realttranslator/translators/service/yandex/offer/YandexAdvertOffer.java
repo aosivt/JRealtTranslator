@@ -6,6 +6,7 @@ import java.util.Date;
 @XmlRootElement(name="offer")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class YandexAdvertOffer {
+
     @XmlAttribute(name = "internal-id")
     private String id;
 

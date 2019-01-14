@@ -2,6 +2,7 @@ package su.kww.realttranslator.translators.service.yandex.offer;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="location")
@@ -10,8 +11,10 @@ public class Location {
 
     private String country;
     private String region;
-    private String localityName; //locality-name
-    private String subLocalityName; //sub-locality-name
+    @XmlElement(name="locality-name")
+    private String localityName;
+    @XmlElement(name="sub-locality-name")
+    private String subLocalityName;
     private String address;
     private String latitude;
     private String longitude;
