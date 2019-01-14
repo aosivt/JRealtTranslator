@@ -1,19 +1,27 @@
 package Login;
 
-import com.google.gson.Gson;
 import com.sun.jersey.api.client.*;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 import org.junit.*;
+import su.kww.realttranslator.translators.service.yandex.offer.YandexAdvert;
+import su.kww.realttranslator.translators.service.yandex.offer.YandexAdvertOffer;
 
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Base64;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TestLoginEntity {
 
-    private String user = "alx";
-    private String pass = "123";
+    private String user = "";
+    private String pass = "";
     @BeforeClass
     public static void beforeClass() {
         System.out.println("Before CalculatorTest.class");
@@ -62,5 +70,19 @@ public class TestLoginEntity {
         } catch (UnsupportedEncodingException ex) {
             throw new IllegalStateException("Cannot encode with UTF-8", ex);
         }
+    }
+
+    @Test
+    public void testCreateYandexXmlFromObject() throws JAXBException, IOException {
+        YandexAdvert item = new YandexAdvert();
+        YandexAdvertOffer yandexAdvertOffer = new YandexAdvertOffer();
+        yandexAdvertOffer.setFloor(123);
+        yandexAdvertOffer.setId("jhiudhfgsf");
+        Set<YandexAdvertOffer> yandexAdvertOffers =  new HashSet<YandexAdvertOffer>();
+        yandexAdvertOffers.add(yandexAdvertOffer);
+        item.setOffer(yandexAdvertOffers);
+        JAXBContext context = JAXBContext.newInstance(item.getClass());
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.marshal(item, new FileWriter("item.xml"));
     }
 }
