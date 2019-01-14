@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -39,7 +42,7 @@
 <!-- -fx-border-color: -fx-focus-color;-->
 <!--}-->
 
-<GridPane fx:id="translatorItem" maxWidth="1.7976931348623157E308" minHeight="150.0" minWidth="970.0" prefHeight="150.0" prefWidth="970.0" stylesheets="@css/RootStyle.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.frame.items.FrameTranslatorItem">
+<GridPane fx:id="translatorItem" maxWidth="1.7976931348623157E308" minHeight="200.0" minWidth="960.0" prefHeight="200.0" prefWidth="970.0" stylesheets="@css/RootStyle.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="su.kww.realttranslator.core.controllers.frame.items.FrameTranslatorItem">
 
       <ImageView fx:id="run" fitHeight="74.0" fitWidth="66.0" layoutX="171.0" layoutY="70.0" onMouseClicked="#actionRun" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowSpan="3" GridPane.valignment="CENTER">
          <image>
@@ -75,22 +78,37 @@
       <children>
           <ImageView fx:id="logo" fitHeight="60.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true" />
           <Label fx:id="textLogo" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" />
-
-          <Label fx:id="addOffer" alignment="TOP_LEFT" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" text="Добавить" wrapText="true" />
-          <Label fx:id="updateOffer" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" text="Обновить" />
-          <Label fx:id="deleteOffer" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" text="Удалить" />
+          <Label fx:id="addOffer" alignment="TOP_LEFT" contentDisplay="TOP" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" text="Добавить:0" wrapText="true" />
+          <Label fx:id="updateOffer" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" text="Обновить:0" />
+          <Label fx:id="deleteOffer" alignment="TOP_LEFT" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="16.0" prefWidth="148.0" text="Удалить:0" />
       </children>
    </VBox>
+   <Accordion GridPane.columnSpan="4" GridPane.rowIndex="3">
+     <panes>
+       <TitledPane animated="false" maxWidth="1.7976931348623157E308" text="Список ошибок">
+         <content>
+           <VBox fx:id="errorBox">
+                  <children>
+                     <TextField />
+                     <TextField />
+                     <TextField />
+                     <TextField />
+                  </children></VBox>
+           </content>
+       </TitledPane>
+     </panes>
+   </Accordion>
    <columnConstraints>
-      <ColumnConstraints halignment="LEFT" maxWidth="150.0" minWidth="150.0" percentWidth="15.0" prefWidth="150.0" />
-      <ColumnConstraints maxWidth="1.7976931348623157E308" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" minWidth="100.0" percentWidth="65.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="LEFT" minWidth="120.0" prefWidth="150.0" />
+      <ColumnConstraints minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" maxWidth="1.7976931348623157E308" percentWidth="65.0" />
       <ColumnConstraints maxWidth="1.7976931348623157E308" percentWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" />
-      <RowConstraints percentHeight="60.0" />
-      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="30.0" />
+      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="20.0" />
+      <RowConstraints maxHeight="1.7976931348623157E308" percentHeight="40.0" />
+      <RowConstraints minHeight="10.0" percentHeight="20.0" prefHeight="20.0" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="20.0" valignment="CENTER" vgrow="ALWAYS" />
    </rowConstraints>
 
 </GridPane>

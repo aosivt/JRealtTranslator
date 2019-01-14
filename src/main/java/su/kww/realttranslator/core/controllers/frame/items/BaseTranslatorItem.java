@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.commons.codec.binary.Base64;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
@@ -45,6 +46,9 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     protected ImageView settings;
     @FXML
     protected ImageView run;
+
+    @FXML
+    protected VBox errorBox;
 
 
     protected PublishSubject<Site> sitePublisher;
