@@ -43,16 +43,11 @@ public class TestLoginEntity {
                 .type(MediaType.APPLICATION_JSON)
                 .header(HttpHeaders.AUTHORIZATION, getBasicAuthentication());
         LoginEntity returnValue = null;
-        Gson tempGson = new Gson();
         try {
-
-//            LoginEntity temp  = builder.post(LoginEntity.class);
             returnValue = builder.post(LoginEntity.class);
-//            String stringTemp = temp.getEntity(String.class).replaceAll("},]","}]");
-//            returnValue = tempGson.fromJson(stringTemp, LoginEntity.class);
         }
         catch (ClientHandlerException exception){
-            throw new ClientHandlerException("Ебано врот че делается то!!!!");
+            throw new ClientHandlerException("");
         } catch (UniformInterfaceException ue){
             ue.getResponse().getLength();
         }
