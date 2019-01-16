@@ -7,13 +7,14 @@ import su.kww.realttranslator.translators.service.yandex.offer.*;
 import su.kww.realttranslator.translators.service.yandex.offer.builders.offer.BuilderYandexAdvertOffer;
 
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BuilderYandexAdvert extends AbstractBuilderAdvert {
 
-    private final EnumMap<BuilderYandexAdvertOffer,Integer> mapOfferType = getMapType();
+    private final HashMap<Integer,BuilderYandexAdvertOffer> mapOfferType = getMapType();
 
     private BuilderYandexAdvert(){}
 
@@ -73,6 +74,8 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
         yandexAdvertOffer.setSalesAgent(salesAgent);
         return this;
     }
+
+
     protected Price toPrice(ServiceAllJson serviceAllJson){
         Price price = new Price();
         price.setCurrency(serviceAllJson.getPrice_currency().getName());
@@ -80,23 +83,17 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
         return price;
     }
 
-
-
-
     protected YandexAdvertOffer getYandexAdvertOffer(final AdvertSite advertSite){
-        return mapOfferType.entrySet().parallelStream()
-                .filter(f->f.getValue().equals(advertSite.getDataType()))
-                .findFirst().get().getKey().getYandexAdvertOffer();
+        return mapOfferType.get(advertSite.getDataType()).getYandexAdvertOffer();
     }
 
-    private static EnumMap<BuilderYandexAdvertOffer, Integer> getMapType(){
-        EnumMap<BuilderYandexAdvertOffer,Integer> map
-                = new EnumMap<BuilderYandexAdvertOffer, Integer>(BuilderYandexAdvertOffer.class);
-        map.put(BuilderYandexAdvertOffer.COMMERCE,1);
-        map.put(BuilderYandexAdvertOffer.FLAT,    3);
-        map.put(BuilderYandexAdvertOffer.GARAGE,  4);
-        map.put(BuilderYandexAdvertOffer.HOUSE,   7);
-        map.put(BuilderYandexAdvertOffer.LAND,    9);
+    private static HashMap<Integer,BuilderYandexAdvertOffer> getMapType(){
+        HashMap<Integer,BuilderYandexAdvertOffer> map = new HashMap<>();
+        map.put(1,BuilderYandexAdvertOffer.COMMERCE);
+        map.put(3,BuilderYandexAdvertOffer.FLAT);
+        map.put(2,BuilderYandexAdvertOffer.GARAGE);
+        map.put(7,BuilderYandexAdvertOffer.HOUSE);
+        map.put(9,BuilderYandexAdvertOffer.LAND);
         return map;
     }
 

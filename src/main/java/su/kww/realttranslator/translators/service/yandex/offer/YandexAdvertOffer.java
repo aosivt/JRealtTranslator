@@ -1,14 +1,13 @@
 package su.kww.realttranslator.translators.service.yandex.offer;
 
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
-import su.kww.realttranslator.translators.builders.advert.offer.AdvertOffer;
 
 import javax.xml.bind.annotation.*;
 import java.util.Date;
 
 @XmlRootElement(name="offer")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class YandexAdvertOffer implements AdvertOffer {
+public class YandexAdvertOffer {
 
     public YandexAdvertOffer(){}
     public YandexAdvertOffer(AdvertSite advertSite){}
