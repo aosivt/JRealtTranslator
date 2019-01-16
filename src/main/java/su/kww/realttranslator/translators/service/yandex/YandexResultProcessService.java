@@ -1,7 +1,7 @@
 package su.kww.realttranslator.translators.service.yandex;
 
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
-import su.kww.realttranslator.translators.builder.ResultProcessService;
+import su.kww.realttranslator.translators.builders.ResultProcessService;
 
 import java.io.File;
 import java.util.Set;

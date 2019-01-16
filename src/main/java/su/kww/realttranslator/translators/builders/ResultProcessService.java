@@ -1,4 +1,4 @@
-package su.kww.realttranslator.translators.builder;
+package su.kww.realttranslator.translators.builders;
 
 import java.util.Set;
 

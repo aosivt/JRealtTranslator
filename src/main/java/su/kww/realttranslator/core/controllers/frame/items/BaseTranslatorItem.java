@@ -18,12 +18,11 @@ import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdvertSite;
 import su.kww.realttranslator.core.controllers.frame.BaseFrameTranslators;
 import su.kww.realttranslator.core.controllers.frame.items.property.TranslatorProperty;
-import su.kww.realttranslator.translators.builder.ResultProcessService;
-import su.kww.realttranslator.translators.builder.TranslatorService;
-import su.kww.realttranslator.translators.builder.TranslatorServiceBuilder;
+import su.kww.realttranslator.translators.builders.ResultProcessService;
+import su.kww.realttranslator.translators.builders.service.TranslatorService;
+import su.kww.realttranslator.translators.builders.service.TranslatorServiceBuilder;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
