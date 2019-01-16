@@ -1,16 +1,21 @@
-package su.kww.realttranslator.translators.service.yandex.offer.builder;
+package su.kww.realttranslator.translators.service.yandex.offer.builders;
 
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
-import su.kww.realttranslator.core.api.remote.domstor.entities.options_feed_object.PriceCurrency;
 import su.kww.realttranslator.translators.builders.advert.AbstractBuilderAdvert;
 import su.kww.realttranslator.translators.service.yandex.offer.*;
+import su.kww.realttranslator.translators.service.yandex.offer.builders.offer.BuilderYandexAdvertOffer;
 
+import java.util.EnumMap;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class BuilderYandexAdvert extends AbstractBuilderAdvert {
+
+    private final EnumMap<BuilderYandexAdvertOffer,Integer> mapOfferType = getMapType();
+
+    private BuilderYandexAdvert(){}
 
     public static YandexAdvert build(Set<AdvertSite> advertSites){
 
@@ -24,12 +29,13 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
 
         YandexAdvert yandexAdvert = new YandexAdvert();
         yandexAdvert.setOffer(yandexAdvertOffers);
+
         return yandexAdvert;
     }
 
-    public YandexAdvertOffer buildAdvertOffer(AdvertSite advertSite){
+    public YandexAdvertOffer buildAdvertOffer(final AdvertSite advertSite){
         ServiceAllJson serviceAllJson = getServiceAllJsonByAdvertSite(advertSite);
-        YandexAdvertOffer yandexAdvertOffer = new YandexAdvertOffer();
+        YandexAdvertOffer yandexAdvertOffer = getYandexAdvertOffer(advertSite);
         yandexAdvertOffer.setId(getId(serviceAllJson));
         setFloor(serviceAllJson,yandexAdvertOffer)
         .setPrice(serviceAllJson,yandexAdvertOffer)
@@ -72,6 +78,26 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
         price.setCurrency(serviceAllJson.getPrice_currency().getName());
         price.setValue(serviceAllJson.getPrice_full());
         return price;
+    }
+
+
+
+
+    protected YandexAdvertOffer getYandexAdvertOffer(final AdvertSite advertSite){
+        return mapOfferType.entrySet().parallelStream()
+                .filter(f->f.getValue().equals(advertSite.getDataType()))
+                .findFirst().get().getKey().getYandexAdvertOffer();
+    }
+
+    private static EnumMap<BuilderYandexAdvertOffer, Integer> getMapType(){
+        EnumMap<BuilderYandexAdvertOffer,Integer> map
+                = new EnumMap<BuilderYandexAdvertOffer, Integer>(BuilderYandexAdvertOffer.class);
+        map.put(BuilderYandexAdvertOffer.COMMERCE,1);
+        map.put(BuilderYandexAdvertOffer.FLAT,    3);
+        map.put(BuilderYandexAdvertOffer.GARAGE,  4);
+        map.put(BuilderYandexAdvertOffer.HOUSE,   7);
+        map.put(BuilderYandexAdvertOffer.LAND,    9);
+        return map;
     }
 
 }

@@ -10,7 +10,7 @@ import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data.UploadResult;
 import su.kww.realttranslator.translators.builders.service.AbstractTranslatorService;
 import su.kww.realttranslator.translators.builders.ResultProcessService;
-import su.kww.realttranslator.translators.service.yandex.offer.builder.BuilderYandexAdvert;
+import su.kww.realttranslator.translators.service.yandex.offer.builders.BuilderYandexAdvert;
 import su.kww.realttranslator.translators.service.yandex.offer.YandexAdvert;
 
 import javax.xml.bind.JAXBContext;

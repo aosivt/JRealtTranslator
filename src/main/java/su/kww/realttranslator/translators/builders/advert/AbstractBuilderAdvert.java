@@ -7,6 +7,8 @@ import su.kww.realttranslator.core.model.Operation;
 
 public abstract class AbstractBuilderAdvert implements BuilderAdvert{
 
+
+
     private final Gson gson = new Gson();
 
     protected Boolean isNotDeleteProcess(AdvertSite advertSite){
