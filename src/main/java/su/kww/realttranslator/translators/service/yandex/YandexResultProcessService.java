@@ -8,7 +8,11 @@ import java.util.Set;
 
 public class YandexResultProcessService implements ResultProcessService<File> {
 
+
+
     private File resultOfferFile;
+
+    private YandexResultProcessService(){}
 
     public static YandexResultProcessService build(Set<AdvertSite> advertSites){
         YandexResultProcessService yandexResultProcessService = new YandexResultProcessService();
