@@ -11,5 +11,11 @@ import java.util.Date;
 
 public class FlatYandexAdvertOffer extends YandexAdvertOffer {
 
+    public FlatYandexAdvertOffer(){
+        super();
+        setPropertyType("жилая");
+        setCategory("квартира");
+    }
+
 
 }

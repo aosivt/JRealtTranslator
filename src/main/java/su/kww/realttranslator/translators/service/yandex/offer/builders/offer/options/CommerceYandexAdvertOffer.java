@@ -4,5 +4,8 @@ import su.kww.realttranslator.translators.service.yandex.offer.YandexAdvertOffer
 
 public class CommerceYandexAdvertOffer extends YandexAdvertOffer {
 
-
+    public CommerceYandexAdvertOffer(){
+        super();
+        setCategory("коммерческая");
+    }
 }

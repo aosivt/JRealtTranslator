@@ -15,7 +15,8 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
 
     private Gson gson = new GsonBuilder()
                                         .setLenient()
-                                        .setDateFormat("yyyy-mm-dd hh:mm:ss")
+                                        .setDateFormat("yyyy-MM-dd HH:mm:ss")
+//                                        .setDateFormat(1,1)
                                         .create();
 
     UserNamePassword userNamePassword;

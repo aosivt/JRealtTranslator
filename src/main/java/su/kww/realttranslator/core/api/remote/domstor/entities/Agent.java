@@ -17,7 +17,7 @@ public class Agent {
     @JsonProperty("name")
     private Object fullName;
     @JsonProperty("email")
-    private Object email;
+    private String email;
 
     public Object getId() {
         return id;
@@ -67,11 +67,11 @@ public class Agent {
         this.fullName = fullName;
     }
 
-    public Object getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(Object email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 }

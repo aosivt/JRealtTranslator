@@ -15,7 +15,9 @@ import java.util.stream.Collectors;
 
 public abstract class AbstractRepository {
 
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss")
+                                                      .setLenient()
+                                                      .create();
 
     public synchronized static EntityDomstor update(EntityDomstor serializable) {
         Session session = HibernateUtil.getSessionFactory().openSession();

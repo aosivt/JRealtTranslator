@@ -66,8 +66,8 @@
     </ImageView>
    <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
       <children>
-         <Button mnemonicParsing="false" text="Транслировать все" />
-         <Button mnemonicParsing="false" text="Включить автотрансляцию">
+         <Button mnemonicParsing="false" text="Транслировать все" visible="false" />
+         <Button mnemonicParsing="false" text="Включить автотрансляцию" visible="false">
             <HBox.margin>
                <Insets />
             </HBox.margin></Button>

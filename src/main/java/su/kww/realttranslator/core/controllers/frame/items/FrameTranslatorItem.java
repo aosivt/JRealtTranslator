@@ -1,6 +1,7 @@
 package su.kww.realttranslator.core.controllers.frame.items;
 
 import io.reactivex.subjects.PublishSubject;
+import javafx.scene.layout.GridPane;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.controllers.frame.BaseFrameTranslators;
 
@@ -41,6 +42,7 @@ public class FrameTranslatorItem extends BaseTranslatorItem {
         createLogo();
         fieldingInfo();
         initTranslatorService();
+
         return this;
     }
 }

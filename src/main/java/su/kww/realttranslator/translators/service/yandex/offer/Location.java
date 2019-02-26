@@ -9,6 +9,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Location {
 
+    public Location(){
+        country = "Россия";
+    }
     private String country;
     private String region;
     @XmlElement(name="locality-name")

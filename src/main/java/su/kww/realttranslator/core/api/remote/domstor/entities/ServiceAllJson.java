@@ -84,7 +84,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("building_floor")
     @Expose
     @JsonProperty("building_floor")
-    private Object building_floor;
+    private Integer building_floor;
     @SerializedName("for_commerce")
     @Expose
     @JsonProperty("for_commerce")
@@ -128,7 +128,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("gas")
     @Expose
     @JsonProperty("gas")
-    private Object gas;
+    private Boolean gas;
     @SerializedName("cable_tv")
     @Expose
     @JsonProperty("cable_tv")
@@ -160,15 +160,15 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("square_house")
     @Expose
     @JsonProperty("square_house")
-    private Object square_house;
+    private String square_house;
     @SerializedName("square_living")
     @Expose
     @JsonProperty("square_living")
-    private Object square_living;
+    private String square_living;
     @SerializedName("square_kitchen")
     @Expose
     @JsonProperty("square_kitchen")
-    private Object square_kitchen;
+    private String square_kitchen;
     @SerializedName("build_year")
     @Expose
     @JsonProperty("build_year")
@@ -200,7 +200,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("mortgage")
     @Expose
     @JsonProperty("mortgage")
-    private Object mortgage;
+    private Boolean mortgage;
     @SerializedName("cadastral_number")
     @Expose
     @JsonProperty("cadastral_number")
@@ -236,15 +236,15 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("reg_dt")
     @Expose
     @JsonProperty("reg_dt")
-    private Object reg_dt;
+    private Date reg_dt;
     @SerializedName("edit_dt")
     @Expose
     @JsonProperty("edit_dt")
-    private Object edit_dt;
+    private Date edit_dt;
     @SerializedName("ref_city_id")
     @Expose
     @JsonProperty("ref_city_id")
-    private Object ref_city_id;
+    private Integer ref_city_id;
 
     @SerializedName("ref_city")
     @Expose
@@ -404,7 +404,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("square_ground_unit")
     @Expose
     @JsonProperty("square_ground_unit")
-    private Object square_ground_unit;
+    private String square_ground_unit;
 
     @SerializedName("street_name")
     @Expose
@@ -457,11 +457,11 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("address_note")
     @Expose
     @JsonProperty("address_note")
-    private Object address_note;
+    private String address_note;
     @SerializedName("note_web")
     @Expose
     @JsonProperty("note_web")
-    private Object note_web;
+    private String note_web;
     @SerializedName("note_excel")
     @Expose
     @JsonProperty("note_excel")
@@ -493,7 +493,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("agent_phone")
     @Expose
     @JsonProperty("agent_phone")
-    private Object agent_phone;
+    private String agent_phone;
     @SerializedName("agent_name")
     @Expose
     @JsonProperty("agent_name")
@@ -505,11 +505,11 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("longitude")
     @Expose
     @JsonProperty("longitude")
-    private Object longitude;
+    private String longitude;
     @SerializedName("latitude")
     @Expose
     @JsonProperty("latitude")
-    private Object latitude;
+    private String latitude;
     @SerializedName("master_city_id")
     @Expose
     @JsonProperty("master_city_id")
@@ -671,7 +671,7 @@ public class ServiceAllJson implements Serializable {
         return ground_floor;
     }
 
-    public Object getBuilding_floor() {
+    public Integer getBuilding_floor() {
         return building_floor;
     }
 
@@ -715,7 +715,7 @@ public class ServiceAllJson implements Serializable {
         return phone_count;
     }
 
-    public Object getGas() {
+    public Boolean getGas() {
         return gas;
     }
 
@@ -747,15 +747,15 @@ public class ServiceAllJson implements Serializable {
         return toilet_count;
     }
 
-    public Object getSquare_house() {
+    public String getSquare_house() {
         return square_house;
     }
 
-    public Object getSquare_living() {
+    public String getSquare_living() {
         return square_living;
     }
 
-    public Object getSquare_kitchen() {
+    public String getSquare_kitchen() {
         return square_kitchen;
     }
 
@@ -787,7 +787,7 @@ public class ServiceAllJson implements Serializable {
         return video_weblink;
     }
 
-    public Object getMortgage() {
+    public Boolean getMortgage() {
         return mortgage;
     }
 
@@ -823,15 +823,15 @@ public class ServiceAllJson implements Serializable {
         return server_dt;
     }
 
-    public Object getReg_dt() {
+    public Date getReg_dt() {
         return reg_dt;
     }
 
-    public Object getEdit_dt() {
+    public Date getEdit_dt() {
         return edit_dt;
     }
 
-    public Object getRef_city_id() {
+    public Integer getRef_city_id() {
         return ref_city_id;
     }
 
@@ -975,7 +975,7 @@ public class ServiceAllJson implements Serializable {
         return heat;
     }
 
-    public Object getSquare_ground_unit() {
+    public String getSquare_ground_unit() {
         return square_ground_unit;
     }
 
@@ -1027,11 +1027,11 @@ public class ServiceAllJson implements Serializable {
         return state_id;
     }
 
-    public Object getAddress_note() {
+    public String getAddress_note() {
         return address_note;
     }
 
-    public Object getNote_web() {
+    public String getNote_web() {
         return note_web;
     }
 
@@ -1063,7 +1063,7 @@ public class ServiceAllJson implements Serializable {
         return org_is_filial_divided;
     }
 
-    public Object getAgent_phone() {
+    public String getAgent_phone() {
         return agent_phone;
     }
 
@@ -1075,11 +1075,11 @@ public class ServiceAllJson implements Serializable {
         return region_type_name;
     }
 
-    public Object getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public Object getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 

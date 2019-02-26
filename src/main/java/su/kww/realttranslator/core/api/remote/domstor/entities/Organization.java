@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Organization {
     @JsonProperty("id")
-    private String id;
+    private Integer id;
     @JsonProperty("name")
-    private Object name;
+    private String name;
     @JsonProperty("short_name")
     private Object shortName;
     @JsonProperty("blocked")
@@ -24,19 +24,19 @@ public class Organization {
     @JsonProperty("city")
     private Object city;
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Object getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Object name) {
+    public void setName(String name) {
         this.name = name;
     }
 

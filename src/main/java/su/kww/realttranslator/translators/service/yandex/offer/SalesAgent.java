@@ -16,6 +16,11 @@ public class SalesAgent {
     private String email;
     private String partner;
 
+    public SalesAgent(){
+        category = "агентство";
+    }
+
+
     public String getName() {
         return name;
     }

@@ -3,5 +3,9 @@ package su.kww.realttranslator.translators.service.yandex.offer.builders.offer.o
 
 public class RoomYandexAdvertOffer extends FlatYandexAdvertOffer {
 
+    public RoomYandexAdvertOffer(){
+        super();
+        setCategory("комната");
+    }
 
 }

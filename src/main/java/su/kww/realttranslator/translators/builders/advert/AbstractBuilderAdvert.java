@@ -1,15 +1,16 @@
 package su.kww.realttranslator.translators.builders.advert;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.core.model.Operation;
 
 public abstract class AbstractBuilderAdvert implements BuilderAdvert{
 
-
-
-    private final Gson gson = new Gson();
+    private final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss")
+                                                      .setLenient()
+                                                      .create();
 
     protected Boolean isNotDeleteProcess(AdvertSite advertSite){
         return advertSite.getOperationId()!= Operation.DELETE.ordinal();

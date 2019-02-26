@@ -4,5 +4,9 @@ import su.kww.realttranslator.translators.service.yandex.offer.YandexAdvertOffer
 
 public class LandYandexAdvertOffer extends YandexAdvertOffer {
 
+    public LandYandexAdvertOffer(){
+        super();
+        setCategory("участок");
+    }
 
 }

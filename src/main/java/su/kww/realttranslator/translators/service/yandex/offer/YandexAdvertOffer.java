@@ -1,13 +1,15 @@
 package su.kww.realttranslator.translators.service.yandex.offer;
 
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
+import su.kww.realttranslator.translators.builders.advert.AdvertOffer;
 
 import javax.xml.bind.annotation.*;
 import java.util.Date;
+import java.util.Set;
 
 @XmlRootElement(name="offer")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class YandexAdvertOffer {
+public class YandexAdvertOffer implements AdvertOffer {
 
     public YandexAdvertOffer(){}
     public YandexAdvertOffer(AdvertSite advertSite){}
@@ -16,35 +18,53 @@ public class YandexAdvertOffer {
     private String id;
 
     private String type;
+    @XmlElement(name="property-type")
     private String propertyType; //property-type
     private String category;
     private String url;
+    @XmlElement(name="creation-date")
     private Date creationDate; //creation-date
+    @XmlElement(name="last-update-date")
     private Date lastUpdateDate; //last-update-date
     private Location location;
+    @XmlElement(name="sales-agent")
     private SalesAgent salesAgent; //sales-agent
     private Price price;
     private String description;
     private Area area;
+    @XmlElement(name="kitchen-space")
+    private Area kitchenSpace;
+    @XmlElement(name="living-space")
+    private Area livingSpace;
     private Boolean studio;
     private Integer rooms;
+    @XmlElement(name="rooms-offered")
     private Integer roomsOffered; //rooms-offered
     private Integer floor;
+    @XmlElement(name="floors-total")
     private Integer floorsTotal; //floors-total
+    @XmlElement(name="building-type")
     private String buildingType; //building-type
     private Boolean lift;
+    @XmlElement(name="rubbish-chute")
     private Boolean rubbishChute; //rubbish-chute
     private Boolean parking;
     private Boolean alarm;
+    @XmlElement(name="flat-alarm")
     private Boolean flatAlarm; //flat-alarm
     private Boolean sauna;
+    @XmlElement(name="electricity-supply")
     private Boolean electricitySupply; //electricity-supply
     private Boolean haggle;
     private Boolean mortgage;
+    @XmlElement(name="rent-pledge")
     private Boolean rentPledge; //rent-pledge
     private Boolean security;
+    @XmlElement(name="utilities-included")
     private Boolean utilitiesIncluded; //utilities-included
     private String quality;
+    @XmlElement(name="image")
+    private Set<String> photos;
 
     public String getType() {
         return type;
@@ -293,4 +313,31 @@ public class YandexAdvertOffer {
     public void setId(String id) {
         this.id = id;
     }
+
+    public Set<String> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(Set<String> photos) {
+        this.photos = photos;
+    }
+
+    public Area getKitchenSpace() {
+        return kitchenSpace;
+    }
+
+    public void setKitchenSpace(Area kitchenSpace) {
+
+        this.kitchenSpace = kitchenSpace;
+    }
+
+    public Area getLivingSpace() {
+        return livingSpace;
+    }
+
+    public void setLivingSpace(Area livingSpace) {
+        this.livingSpace = livingSpace;
+    }
+
+
 }

@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.commons.codec.binary.Base64;
@@ -37,6 +38,9 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     protected Label textLogo;
 
     @FXML
+    protected GridPane translatorItem;
+
+    @FXML
     protected Label addOffer;
     @FXML
     protected Label updateOffer;
@@ -47,9 +51,6 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     protected ImageView settings;
     @FXML
     protected ImageView run;
-
-    @FXML
-    protected VBox errorBox;
 
 
     protected PublishSubject<Site> sitePublisher;
@@ -99,6 +100,7 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
 
         run.setOnMouseEntered(en-> run.setImage(new Image("view/resources/icons/run-hover.png")));
         run.setOnMouseExited(ex-> run.setImage(new Image("view/resources/icons/run.png")));
+
     }
 
     private Image getImageLogo(byte[] bytes){
