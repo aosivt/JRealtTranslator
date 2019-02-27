@@ -3,8 +3,8 @@ package Login;
 import com.sun.jersey.api.client.*;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 import org.junit.*;
-import su.kww.realttranslator.translators.service.yandex.offer.YandexAdvert;
-import su.kww.realttranslator.translators.service.yandex.offer.YandexAdvertOffer;
+import su.kww.realttranslator.translators.services.yandex.offer.YandexAdvert;
+import su.kww.realttranslator.translators.services.yandex.offer.YandexAdvertOffer;
 
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;

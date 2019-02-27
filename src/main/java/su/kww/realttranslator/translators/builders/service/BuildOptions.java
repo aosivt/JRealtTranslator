@@ -1,28 +1,27 @@
 package su.kww.realttranslator.translators.builders.service;
 
 
-import su.kww.realttranslator.translators.builders.service.TranslatorService;
-import su.kww.realttranslator.translators.service.afy.AfyTranslatorService;
-import su.kww.realttranslator.translators.service.avito.AvitoTranslatorService;
-import su.kww.realttranslator.translators.service.beboss.BebossTranslatorService;
-import su.kww.realttranslator.translators.service.bestru.BestruTranslatorService;
-import su.kww.realttranslator.translators.service.choister.ChoisterTranslatorService;
-import su.kww.realttranslator.translators.service.cian.CianTranslatorService;
-import su.kww.realttranslator.translators.service.domclick.DomclickTranslatorService;
-import su.kww.realttranslator.translators.service.irr.IrrTranslatorService;
-import su.kww.realttranslator.translators.service.kemdom.KemdomTranslatorService;
-import su.kww.realttranslator.translators.service.mirkvartir.MirkvartirTranslatorService;
-import su.kww.realttranslator.translators.service.move.MoveTranslatorService;
-import su.kww.realttranslator.translators.service.ngs.NgsTranslatorService;
-import su.kww.realttranslator.translators.service.nnbaza.NnbazaTranslatorService;
-import su.kww.realttranslator.translators.service.rentzilla.RenzillaTranslatorService;
-import su.kww.realttranslator.translators.service.restate.RestateTranslatorService;
-import su.kww.realttranslator.translators.service.russianrealty.RussianRealtyTranslatorService;
-import su.kww.realttranslator.translators.service.vestum.VestumTranslatorService;
-import su.kww.realttranslator.translators.service.vse42.Vse42TranslatorService;
-import su.kww.realttranslator.translators.service.wiweb.WiwebTranslatorService;
-import su.kww.realttranslator.translators.service.yandex.YandexTranslatorService;
-import su.kww.realttranslator.translators.service.zaydinaydi.ZaydiNaydiTranslatorService;
+import su.kww.realttranslator.translators.services.afy.AfyTranslatorService;
+import su.kww.realttranslator.translators.services.avito.AvitoTranslatorService;
+import su.kww.realttranslator.translators.services.beboss.BebossTranslatorService;
+import su.kww.realttranslator.translators.services.bestru.BestruTranslatorService;
+import su.kww.realttranslator.translators.services.choister.ChoisterTranslatorService;
+import su.kww.realttranslator.translators.services.cian.CianTranslatorService;
+import su.kww.realttranslator.translators.services.domclick.DomclickTranslatorService;
+import su.kww.realttranslator.translators.services.irr.IrrTranslatorService;
+import su.kww.realttranslator.translators.services.kemdom.KemdomTranslatorService;
+import su.kww.realttranslator.translators.services.mirkvartir.MirkvartirTranslatorService;
+import su.kww.realttranslator.translators.services.move.MoveTranslatorService;
+import su.kww.realttranslator.translators.services.ngs.NgsTranslatorService;
+import su.kww.realttranslator.translators.services.nnbaza.NnbazaTranslatorService;
+import su.kww.realttranslator.translators.services.rentzilla.RenzillaTranslatorService;
+import su.kww.realttranslator.translators.services.restate.RestateTranslatorService;
+import su.kww.realttranslator.translators.services.russianrealty.RussianRealtyTranslatorService;
+import su.kww.realttranslator.translators.services.vestum.VestumTranslatorService;
+import su.kww.realttranslator.translators.services.vse42.Vse42TranslatorService;
+import su.kww.realttranslator.translators.services.wiweb.WiwebTranslatorService;
+import su.kww.realttranslator.translators.services.yandex.YandexTranslatorService;
+import su.kww.realttranslator.translators.services.zaydinaydi.ZaydiNaydiTranslatorService;
 
 
 public enum BuildOptions {
