@@ -9,6 +9,11 @@ public class Vse42Object {
     private Vse42Object(){}
     public static void set(ServiceAllJson serviceAllJson, Integer category, Vse42AdvertOffer offer){
         Vse42Object object = new Vse42Object();
+        offer.setMasonry(object.getMasonry(serviceAllJson));
+        offer.setWc(object.getWc(serviceAllJson));
+        offer.setLogia(object.getLogia(serviceAllJson,category));
+        offer.setRepair(object.getRepair(serviceAllJson));
+        offer.setCost(object.getCost(serviceAllJson,offer.getOperation()));
 
     }
     private Integer getMasonry(ServiceAllJson serviceAllJson) {
@@ -119,15 +124,15 @@ public class Vse42Object {
 //        return phones.Count > 1 ? String.Join(",", phones.GetRange(0, 2)) : phones.FirstOrDefault();
 //    }
 
-    private Double getCost(ServiceAllJson serviceAllJson, String operationString)
+    private Float getCost(ServiceAllJson serviceAllJson, String operationString)
     {
         Double price_rur = Double.valueOf(operationString.equals(BuilderVse42Advert.OPERATION_SELL )?
                             serviceAllJson.getPrice_full() : serviceAllJson.getRent_full_rur());
         if(price_rur == 0) {
-            return 0D;
+            return 0F;
         }
 //        return Math.round(price_rur / 1000, 2);
-        return Double.valueOf(Math.round(price_rur / 1000));
+        return Float.valueOf(Math.round(price_rur / 1000));
     }
 
 }

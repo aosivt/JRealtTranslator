@@ -9,6 +9,7 @@ import su.kww.realttranslator.translators.services.vse42.builders.offer.Vse42Adv
 import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Address;
 import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Category;
 import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Districts;
+import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Object;
 
 import java.util.Objects;
 import java.util.Set;
@@ -45,9 +46,12 @@ public class BuilderVse42Advert extends AbstractBuilderAdvert {
         Vse42AdvertOffer vse42AdvertOffer = new Vse42AdvertOffer();
         Integer category = Vse42Districts.get(serviceAllJson,advertSite.getDataType());
         vse42AdvertOffer.setCategory(category);
-        vse42AdvertOffer.setDistrict(Vse42Districts.get(serviceAllJson,category));
         vse42AdvertOffer.setOperation(getOperation(serviceAllJson.getActive_sale()));
+        vse42AdvertOffer.setDistrict(Vse42Districts.get(serviceAllJson,category));
         vse42AdvertOffer.setAddress(Vse42Address.get(serviceAllJson,category));
+
+        Vse42Object.set(serviceAllJson, category, vse42AdvertOffer);
+
         return vse42AdvertOffer;
     }
 
