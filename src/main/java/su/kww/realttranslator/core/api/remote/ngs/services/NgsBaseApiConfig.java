@@ -5,14 +5,14 @@ import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 import javax.net.ssl.*;
 import java.security.cert.CertificateException;
 
 public abstract class NgsBaseApiConfig implements NgsUrlConfig, NgsServiceConfig {
 
-    protected String baseUrl = "https://realty.ngs.ru/realty_ajax/";
+    protected String baseUrl = "https://realty.ngs42.ru/";
 
     private final static String AUTH_FORMDATA_FORMAT = "from=&login=%s&password=%s";
 
@@ -28,7 +28,9 @@ public abstract class NgsBaseApiConfig implements NgsUrlConfig, NgsServiceConfig
 
                 .baseUrl(baseUrl)
                 .client(getUnsafeOkHttpClient())
-                .addConverterFactory(GsonConverterFactory.create(gson))
+
+                .addConverterFactory(ScalarsConverterFactory.create())
+//                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
