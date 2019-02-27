@@ -1,24 +1,33 @@
 package su.kww.realttranslator.core.api.remote.ngs.services;
 
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.*;
+import su.kww.realttranslator.core.api.remote.ngs.services.request.NgsAuthRequest;
+import su.kww.realttranslator.core.api.remote.ngs.services.responce.auth.NgsAuthResponce;
 
 import java.util.Map;
 
 public interface NgsServiceConfig {
 
-    @Headers({"Content-type: application/x-www-form-urlencoded",
-              "user-agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0",
-              "accept: */*",
-              "accept-encoding: gzip, deflate, br",
-              "accept-language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4",
-              "X-Requested-With: XMLHttpRequest"})
+    @Headers({"Content-type: application/json",
+            "Refer: https://novosibirsk.n1.ru/login/"})
 
     @FormUrlEncoded
-    @POST(NgsBaseApiConfig.LoginUrlAjax)
-    Call<Void> postDomstorData(@Query("action") String action, @FieldMap Map<String, String> params);
-}
+    @POST(NgsBaseApiConfig.LoginUrl)
+    Call<Void> postDomstorData(@FieldMap Map<String, String> params);
+
+    @Headers({"Content-type: application/json",
+              "Referer: https://novosibirsk.n1.ru/login/"})
+
+    @POST(NgsBaseApiConfig.LoginUrl)
+    Call<Object> postAuth(@Body NgsAuthRequest authRequest);
+
+    @POST(NgsBaseApiConfig.LoginUrl)
+    Observable<NgsAuthResponce> postAuthNgs(@Body NgsAuthRequest authRequest);
+//}
 
 //    @FormUrlEncoded
 //    @POST(NgsBaseApiConfig.LoginUrl)
-//    Call<Object> postDomstorData(@Query("action") String action, @FieldMap Map<String, String> params);
+//    Call<Object> postDomstorData( @FieldMap Map<String, String> params);
+}
