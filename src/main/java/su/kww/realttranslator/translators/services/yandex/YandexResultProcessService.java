@@ -8,8 +8,6 @@ import java.util.Set;
 
 public class YandexResultProcessService implements ResultProcessService<File> {
 
-
-
     private File resultOfferFile;
 
     private YandexResultProcessService(){}
@@ -29,6 +27,4 @@ public class YandexResultProcessService implements ResultProcessService<File> {
     public File getResult() {
         return resultOfferFile;
     }
-
-
 }

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class RepositoryAdverts extends AbstractRepository {
 
     public static Set<Advert> createAdverts(Set<ServiceAllJson> serviceAllJsons){
-        return serviceAllJsons.parallelStream()
+        return serviceAllJsons.stream()
                               .map(RepositoryAdverts::create)
                               .collect(Collectors.toSet());
     }

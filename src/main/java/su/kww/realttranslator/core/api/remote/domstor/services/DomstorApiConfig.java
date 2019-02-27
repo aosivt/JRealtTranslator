@@ -93,7 +93,8 @@ public class DomstorApiConfig extends BaseApiConfig {
 
     private void updateSite(Set<Resource> resources){
         Set<EntityDomstor>  sites = resources
-                .parallelStream()
+                .stream()
+//                .parallelStream()
                 .map(RepositorySite::create)
                 .collect(Collectors.toSet());
         RepositoryAdverts.updateBySetEntity(sites);
@@ -105,8 +106,10 @@ public class DomstorApiConfig extends BaseApiConfig {
     }
 
     private void updateAdverts(Set<ServiceAllJson> advertsServiceAllJson){
-        Set<EntityDomstor> adverts = advertsServiceAllJson.parallelStream()
+        Set<EntityDomstor> adverts = advertsServiceAllJson.stream()
+//                .parallelStream()
                 .filter(Objects::nonNull)
+//                .sequential()
                 .map(RepositoryAdverts::create)
                 .collect(Collectors.toSet());
         RepositoryAdvertSite.clearTableByNameEntity(Advert.class.getName());
@@ -115,7 +118,8 @@ public class DomstorApiConfig extends BaseApiConfig {
 
     private void updateAdvertSite(Set<LinksSiteJson> LinksSites){
         Set<EntityDomstor>  advertsites = LinksSites
-                .parallelStream()
+                .stream()
+//                .parallelStream()
                 .map(RepositoryAdvertSite::create)
                 .collect(Collectors.toSet());
         RepositoryAdvertSite.clearTableByNameEntity(AdvertSite.class.getName());

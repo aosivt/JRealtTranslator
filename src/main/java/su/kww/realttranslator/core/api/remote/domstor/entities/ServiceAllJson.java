@@ -4,6 +4,7 @@ package su.kww.realttranslator.core.api.remote.domstor.entities;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import su.kww.realttranslator.core.api.remote.domstor.entities.address.*;
 import su.kww.realttranslator.core.api.remote.domstor.entities.options_feed_object.*;
 
@@ -16,7 +17,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("room_count")
     @Expose
     @JsonProperty("room_count")
-    private String room_count;
+    private Integer room_count;
     @SerializedName("room_count_total")
     @Expose
     @JsonProperty("room_count_total")
@@ -24,11 +25,11 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("flat_type_id")
     @Expose
     @JsonProperty("flat_type_id")
-    private String flat_type_id;
+    private Integer flat_type_id;
     @SerializedName("object_floor")
     @Expose
     @JsonProperty("object_floor")
-    private String object_floor;
+    private Integer object_floor;
     @SerializedName("planning_id")
     @Expose
     @JsonProperty("planning_id")
@@ -37,6 +38,13 @@ public class ServiceAllJson implements Serializable {
     @Expose
     @JsonProperty("floor_count")
     private String floor_count;
+
+    @SerializedName("object_floor_min")
+    @Expose
+    @JsonProperty("object_floor_min")
+    private Integer objectFloorMin;
+
+
     @SerializedName("phone_id")
     @Expose
     @JsonProperty("phone_id")
@@ -44,11 +52,11 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("toilet_id")
     @Expose
     @JsonProperty("toilet_id")
-    private String toilet_id;
+    private Integer toilet_id;
     @SerializedName("material_wall_id")
     @Expose
     @JsonProperty("material_wall_id")
-    private String material_wall_id;
+    private Integer material_wall_id;
     @SerializedName("building_material_id")
     @Expose
     @JsonProperty("building_material_id")
@@ -56,7 +64,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("new_building")
     @Expose
     @JsonProperty("new_building")
-    private String new_building;
+    private Boolean new_building;
     @SerializedName("delivery_year")
     @Expose
     @JsonProperty("delivery_year")
@@ -92,11 +100,11 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("balcony_count")
     @Expose
     @JsonProperty("balcony_count")
-    private Object balcony_count;
+    private Integer balcony_count;
     @SerializedName("loggia_count")
     @Expose
     @JsonProperty("loggia_count")
-    private Object loggia_count;
+    private Integer loggia_count;
     @SerializedName("household_technique_ids")
     @Expose
     @JsonProperty("household_technique_ids")
@@ -116,11 +124,11 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("in_communal")
     @Expose
     @JsonProperty("in_communal")
-    private Object in_communal;
+    private Boolean in_communal;
     @SerializedName("building_num")
     @Expose
     @JsonProperty("building_num")
-    private Object building_num;
+    private Integer building_num;
     @SerializedName("phone_count")
     @Expose
     @JsonProperty("phone_count")
@@ -156,19 +164,26 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("toilet_count")
     @Expose
     @JsonProperty("toilet_count")
-    private Object toilet_count;
+    private Integer toilet_count;
     @SerializedName("square_house")
     @Expose
     @JsonProperty("square_house")
-    private String square_house;
+    private Integer square_house;
+
+    @SerializedName("square_house_min")
+    @Expose
+    @JsonProperty("square_house_min")
+    private Integer squareHouseMin;
+
+
     @SerializedName("square_living")
     @Expose
     @JsonProperty("square_living")
-    private String square_living;
+    private Integer square_living;
     @SerializedName("square_kitchen")
     @Expose
     @JsonProperty("square_kitchen")
-    private String square_kitchen;
+    private Integer square_kitchen;
     @SerializedName("build_year")
     @Expose
     @JsonProperty("build_year")
@@ -404,12 +419,12 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("square_ground_unit")
     @Expose
     @JsonProperty("square_ground_unit")
-    private String square_ground_unit;
+    private Object square_ground_unit;
 
     @SerializedName("street_name")
     @Expose
     @JsonProperty("street_name")
-    private Object street_name;
+    private String street_name;
     @SerializedName("planning")
     @Expose
     @JsonProperty("planning")
@@ -453,7 +468,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("state_id")
     @Expose
     @JsonProperty("state_id")
-    private Object state_id;
+    private Integer state_id;
     @SerializedName("address_note")
     @Expose
     @JsonProperty("address_note")
@@ -529,7 +544,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("district_id")
     @Expose
     @JsonProperty("district_id")
-    private Object district_id;
+    private Integer district_id;
     @SerializedName("street_id")
     @Expose
     @JsonProperty("street_id")
@@ -603,7 +618,7 @@ public class ServiceAllJson implements Serializable {
     @JsonProperty("developer")
     private Developer developer;
 
-    public String getRoom_count() {
+    public Integer getRoom_count() {
         return room_count;
     }
 
@@ -611,11 +626,11 @@ public class ServiceAllJson implements Serializable {
         return room_count_total;
     }
 
-    public String getFlat_type_id() {
+    public Integer getFlat_type_id() {
         return flat_type_id;
     }
 
-    public String getObject_floor() {
+    public Integer getObject_floor() {
         return object_floor;
     }
 
@@ -627,15 +642,19 @@ public class ServiceAllJson implements Serializable {
         return floor_count;
     }
 
+    public Integer getObjectFloorMin() {
+        return objectFloorMin;
+    }
+
     public String getPhone_id() {
         return phone_id;
     }
 
-    public String getToilet_id() {
+    public Integer getToilet_id() {
         return toilet_id;
     }
 
-    public String getMaterial_wall_id() {
+    public Integer getMaterial_wall_id() {
         return material_wall_id;
     }
 
@@ -643,7 +662,7 @@ public class ServiceAllJson implements Serializable {
         return building_material_id;
     }
 
-    public String getNew_building() {
+    public Boolean getNew_building() {
         return new_building;
     }
 
@@ -679,11 +698,11 @@ public class ServiceAllJson implements Serializable {
         return for_commerce;
     }
 
-    public Object getBalcony_count() {
+    public Integer getBalcony_count() {
         return balcony_count;
     }
 
-    public Object getLoggia_count() {
+    public Integer getLoggia_count() {
         return loggia_count;
     }
 
@@ -703,11 +722,11 @@ public class ServiceAllJson implements Serializable {
         return parking_ids;
     }
 
-    public Object getIn_communal() {
+    public Boolean getIn_communal() {
         return in_communal;
     }
 
-    public Object getBuilding_num() {
+    public Integer getBuilding_num() {
         return building_num;
     }
 
@@ -743,19 +762,19 @@ public class ServiceAllJson implements Serializable {
         return firePrevention;
     }
 
-    public Object getToilet_count() {
+    public Integer getToilet_count() {
         return toilet_count;
     }
 
-    public String getSquare_house() {
+    public Integer getSquare_house() {
         return square_house;
     }
 
-    public String getSquare_living() {
+    public Integer getSquare_living() {
         return square_living;
     }
 
-    public String getSquare_kitchen() {
+    public Integer getSquare_kitchen() {
         return square_kitchen;
     }
 
@@ -975,11 +994,11 @@ public class ServiceAllJson implements Serializable {
         return heat;
     }
 
-    public String getSquare_ground_unit() {
+    public Object getSquare_ground_unit() {
         return square_ground_unit;
     }
 
-    public Object getStreet_name() {
+    public String getStreet_name() {
         return street_name;
     }
 
@@ -1023,7 +1042,7 @@ public class ServiceAllJson implements Serializable {
         return public_level_web_id;
     }
 
-    public Object getState_id() {
+    public Integer getState_id() {
         return state_id;
     }
 
@@ -1099,7 +1118,7 @@ public class ServiceAllJson implements Serializable {
         return location_name;
     }
 
-    public Object getDistrict_id() {
+    public Integer getDistrict_id() {
         return district_id;
     }
 
@@ -1177,5 +1196,9 @@ public class ServiceAllJson implements Serializable {
 
     public Object getPhone() {
         return phone;
+    }
+
+    public Integer getSquareHouseMin() {
+        return squareHouseMin;
     }
 }

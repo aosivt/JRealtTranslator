@@ -48,21 +48,6 @@ public class YandexTranslatorService extends AbstractTranslatorService {
         marshaller.marshal(yandexAdvert, new FileWriter(getFeedSite()));
     }
 
-    protected void uploadOnServer(UserNamePassword usernamePassword){
-            File file = new File(getFeedSite());
-            RequestBody requestBody = RequestBody.create(MediaType.parse("*/*"), file);
-            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("data", file.getName(), requestBody);
-            RequestBody filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
-
-            Observable<UploadResult> resultObservable =  DaggerDomstorComponent.create().getDomstorApiConfig()
-                    .setUserNamePassword(usernamePassword)
-                    .postDomstorData(fileToUpload, filename);
-
-            resultObservable
-                    .doOnError(e->e.getMessage())
-                    .subscribe(System.out::print).dispose();
-    }
-
     @Override
     public String getSiteKey() {
         return "yandex";

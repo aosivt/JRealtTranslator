@@ -8,6 +8,13 @@ import su.kww.realttranslator.core.model.Operation;
 
 public abstract class AbstractBuilderAdvert implements BuilderAdvert{
 
+    public static final Integer DOMSTOR_TYPE_FLAT       = 3;
+    public static final Integer DOMSTOR_TYPE_HOUSE      = 5;
+    public static final Integer DOMSTOR_TYPE_LAND       = 9;
+    public static final Integer DOMSTOR_TYPE_GARAGE     = 7;
+    public static final Integer DOMSTOR_TYPE_COMMERCE   = 1;
+
+
     private final Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss")
                                                       .setLenient()
                                                       .create();

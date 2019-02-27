@@ -10,7 +10,6 @@ public enum BuilderYandexAdvertOffer {
     FLAT{
         @Override
         public YandexAdvertOffer getYandexAdvertOffer(AdvertSite advertSite) {
-
             return new FlatYandexAdvertOffer();
         }
     },HOUSE{

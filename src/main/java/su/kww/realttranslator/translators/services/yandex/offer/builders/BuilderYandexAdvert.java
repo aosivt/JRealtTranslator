@@ -60,7 +60,7 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
     }
 
     protected BuilderYandexAdvert setFloors(ServiceAllJson serviceAllJson, final YandexAdvertOffer yandexAdvertOffer){
-        yandexAdvertOffer.setFloor(Integer.parseInt(serviceAllJson.getObject_floor()));
+        yandexAdvertOffer.setFloor(serviceAllJson.getObject_floor());
         yandexAdvertOffer.setFloorsTotal(serviceAllJson.getBuilding_floor());
         return this;
     }
@@ -90,9 +90,9 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
     }
 
     protected BuilderYandexAdvert setAreas(ServiceAllJson serviceAllJson, final YandexAdvertOffer yandexAdvertOffer){
-        yandexAdvertOffer.setArea(getArea(serviceAllJson.getSquare_house(),UNIT_SQUARE_M2));
-        yandexAdvertOffer.setKitchenSpace(getArea(serviceAllJson.getSquare_kitchen(),UNIT_SQUARE_M2));
-        yandexAdvertOffer.setLivingSpace(getArea(serviceAllJson.getSquare_living(),UNIT_SQUARE_M2));
+        yandexAdvertOffer.setArea(getArea(serviceAllJson.getSquare_house().toString(),UNIT_SQUARE_M2));
+        yandexAdvertOffer.setKitchenSpace(getArea(serviceAllJson.getSquare_kitchen().toString(),UNIT_SQUARE_M2));
+        yandexAdvertOffer.setLivingSpace(getArea(serviceAllJson.getSquare_living().toString(),UNIT_SQUARE_M2));
 
         return this;
     }

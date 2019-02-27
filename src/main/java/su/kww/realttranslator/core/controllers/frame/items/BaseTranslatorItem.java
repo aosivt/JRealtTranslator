@@ -131,8 +131,10 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     }
 
     protected Set<AdvertSite> getAdvertSitesBySite(Site site){
-        return RepositoryAdvertSite.getAdvertSiteBySite(site).parallelStream()
+        return RepositoryAdvertSite.getAdvertSiteBySite(site)
+                                   .parallelStream()
                                    .filter(s->Objects.nonNull(s.getAdvert()))
+                                   .sequential()
                                    .collect(Collectors.toSet());
     }
 
