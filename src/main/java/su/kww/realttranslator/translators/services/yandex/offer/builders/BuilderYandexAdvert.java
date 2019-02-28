@@ -102,9 +102,9 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
 
     protected String getAddress(ServiceAllJson serviceAllJson){
         return String.format(ADDRESS_FORMAT_STRING, serviceAllJson.getStreet().getAbbr(),
-                                                           serviceAllJson.getStreet().getName(),
-                                                           serviceAllJson.getBuildingNum(),
-                                                           serviceAllJson.getCorpus());
+                                                    serviceAllJson.getStreet().getName(),
+                                                    serviceAllJson.getBuildingNum(),
+                                                    serviceAllJson.getCorpus());
     }
 
     protected BuilderYandexAdvert setSalesAgent(ServiceAllJson serviceAllJson, final YandexAdvertOffer yandexAdvertOffer){
