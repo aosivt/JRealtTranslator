@@ -17,11 +17,11 @@ public class RepositoryAdverts extends AbstractRepository {
 
     public static Advert create(ServiceAllJson serviceAllJson){
         Advert advert = new Advert();
-        advert.setDataType(serviceAllJson.getData_class());
+        advert.setDataType(serviceAllJson.getDataClass());
         advert.setDomstorId(serviceAllJson.getId());
-        advert.setRent(serviceAllJson.getActive_rent());
-        advert.setSale(serviceAllJson.getActive_sale());
-        advert.setServerDate(serviceAllJson.getServer_dt());
+        advert.setRent(serviceAllJson.isActiveRent());
+        advert.setSale(serviceAllJson.isActiveSale());
+        advert.setServerDate(serviceAllJson.getServerDt());
         advert.setJson(toJson(serviceAllJson));
         return advert;
     }

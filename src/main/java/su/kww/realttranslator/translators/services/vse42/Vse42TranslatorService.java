@@ -2,24 +2,13 @@ package su.kww.realttranslator.translators.services.vse42;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import io.reactivex.Observable;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
-import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
-import su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data.UploadResult;
 import su.kww.realttranslator.translators.builders.service.AbstractTranslatorService;
 import su.kww.realttranslator.translators.builders.ResultProcessService;
 import su.kww.realttranslator.translators.services.vse42.builders.BuilderVse42Advert;
-import su.kww.realttranslator.translators.services.vse42.builders.offer.Vse42Advert;
 import su.kww.realttranslator.translators.services.vse42.builders.offer.Vse42AdvertOffer;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;

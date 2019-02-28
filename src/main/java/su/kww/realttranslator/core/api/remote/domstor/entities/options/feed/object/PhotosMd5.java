@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.api.remote.domstor.entities.options_feed_object;
+package su.kww.realttranslator.core.api.remote.domstor.entities.options.feed.object;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

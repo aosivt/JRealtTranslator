@@ -13,7 +13,7 @@ public class Vse42Category {
 
     public static Integer get(ServiceAllJson allJson) {
         Vse42Category builder = new Vse42Category();
-        Integer type = builder.getIntegerTypeVse42Object(allJson.getData_class());
+        Integer type = builder.getIntegerTypeVse42Object(allJson.getDataClass());
         builder.fieldIfFlat(type,allJson);
         builder.fieldIfLand(type,allJson);
 
@@ -34,11 +34,11 @@ public class Vse42Category {
     }
 
     private void fieldIfFlat(Integer type,ServiceAllJson allJson){
-        if (allJson.getNew_building() && type.equals(BuilderVse42Advert.CAT_FLAT)) {
+        if (allJson.isNewBuilding() && type.equals(BuilderVse42Advert.CAT_FLAT)) {
             type = BuilderVse42Advert.CAT_NEW;
         } else {
-            Integer flatTypeId = allJson.getFlat_type_id();
-            if (flatTypeId == 1598 || flatTypeId == 1599 || flatTypeId == 1600 || flatTypeId == 1247 || allJson.getIn_communal()){
+            Integer flatTypeId = allJson.getFlatTypeId();
+            if (flatTypeId == 1598 || flatTypeId == 1599 || flatTypeId == 1600 || flatTypeId == 1247 || allJson.isInCommunal()){
                 type = BuilderVse42Advert.CAT_ROOM;
             }
             type = BuilderVse42Advert.CAT_FLAT;

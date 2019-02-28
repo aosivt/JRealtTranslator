@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data;
+package su.kww.realttranslator.core.api.remote.domstor.entities.options.domstor.data;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;

@@ -39,7 +39,7 @@ public abstract class AbstractBuilderAdvert implements BuilderAdvert{
     }
 
     protected String getId(ServiceAllJson serviceAllJson){
-        return String.format("%s-%s",serviceAllJson.getData_class(),serviceAllJson.getId());
+        return String.format("%s-%s",serviceAllJson.getDataClass(),serviceAllJson.getId());
     }
 
 

@@ -6,7 +6,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
-import su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data.UploadResult;
+import su.kww.realttranslator.core.api.remote.domstor.entities.options.domstor.data.UploadResult;
 
 import java.io.File;
 

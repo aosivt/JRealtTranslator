@@ -10,10 +10,10 @@ import java.util.Objects;
 public class Vse42Districts {
 
     private final Map<Integer,String> DISTRICT_COLLECTION = buildDistrictCollection();
-    public static Integer get(ServiceAllJson allJson, Integer cat){
+    public static Integer get(ServiceAllJson allJson, Integer cat) {
         Vse42Districts dist = new Vse42Districts();
 
-        Integer district_id = allJson.getDistrict_id();
+        Integer district_id = allJson.getDistrictId();
 
         if (district_id == 1330) {
             return 21;
@@ -29,7 +29,7 @@ public class Vse42Districts {
             if (cat.equals(BuilderVse42Advert.CAT_GARAGE) || cat.equals(BuilderVse42Advert.CAT_HOUSE)) {
                 return null;
             }
-            String parentDist = allJson.getParent_district().getName();
+            String parentDist = allJson.getParentDistrict().getName();
             if (!Objects.isNull(parentDist)) {
                 founded = dist.getDistrictByName(parentDist);
             }

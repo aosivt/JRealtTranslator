@@ -1,7 +1,6 @@
 package su.kww.realttranslator.translators.services.vse42.builders.offer.options;
 
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
-import su.kww.realttranslator.translators.builders.advert.AdvertOffer;
 import su.kww.realttranslator.translators.services.vse42.builders.BuilderVse42Advert;
 import su.kww.realttranslator.translators.services.vse42.builders.offer.Vse42AdvertOffer;
 
@@ -16,14 +15,14 @@ public class Vse42Floors {
 
     private Integer getFloor(ServiceAllJson allJson, Integer cat){
         Integer floor = cat.equals(BuilderVse42Advert.CAT_COMMERCE)?
-                        allJson.getObjectFloorMin() : allJson.getObject_floor();
+                        allJson.getObjectFloorMin() : allJson.getObjectFloor();
         if (floor == 0){
             return null;
         }
         return floor;
     }
     private Integer getFloorMax(ServiceAllJson allJson, Integer cat){
-        Integer floor = allJson.getBuilding_floor();
+        Integer floor = allJson.getBuildingFloor();
         if (floor == 0) {
             return null;
         }

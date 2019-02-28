@@ -7,7 +7,7 @@ public class Vse42Rooms {
     private Vse42Rooms(){}
 
     public static Integer get(ServiceAllJson allJson, Integer cat){
-        Integer rooms = allJson.getRoom_count();
+        Integer rooms = allJson.getRoomCount();
         if(rooms == 0) {
 //            if(cat == BuilderVse42Advert.CAT_FLAT || cat == BuilderVse42Advert.CAT_NEW)
 //            {

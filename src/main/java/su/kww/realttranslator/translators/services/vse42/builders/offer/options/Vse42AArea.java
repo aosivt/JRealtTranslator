@@ -16,7 +16,7 @@ public class Vse42AArea {
     }
     private Float getArea(ServiceAllJson serviceAllJson, Integer cat) {
         Integer area = cat.equals(BuilderVse42Advert.CAT_COMMERCE) ?
-                serviceAllJson.getSquareHouseMin() : serviceAllJson.getSquare_house();
+                serviceAllJson.getSquareHouseMin() : serviceAllJson.getSquareHouse();
         if (area == 0) {
             return null;
         }
@@ -24,7 +24,7 @@ public class Vse42AArea {
     }
 
     private Float getKitchenArea(ServiceAllJson serviceAllJson) {
-        Integer area = serviceAllJson.getSquare_kitchen();
+        Integer area = serviceAllJson.getSquareKitchen();
         if (area == 0) {
             return null;
         }
@@ -32,7 +32,7 @@ public class Vse42AArea {
     }
 
     private Float getLivingArea(ServiceAllJson serviceAllJson) {
-        Integer area = serviceAllJson.getSquare_living();
+        Integer area = serviceAllJson.getSquareLiving();
         if (area == 0) {
             return null;
         }

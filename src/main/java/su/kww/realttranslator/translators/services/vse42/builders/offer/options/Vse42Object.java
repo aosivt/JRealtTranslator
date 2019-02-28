@@ -25,7 +25,7 @@ public class Vse42Object {
         //168 Шлакоблок
         //215 Комбинированный (Кир.+Жб/П)
         //216 Сендвич панель
-        switch(serviceAllJson.getMaterial_wall_id()) {
+        switch(serviceAllJson.getMaterialWallId()) {
             case 1035: return 55;
             case 1034: return 76;
             case 1039: return 77;
@@ -36,30 +36,24 @@ public class Vse42Object {
         return null;
     }
 
-    private Integer getWc(ServiceAllJson serviceAllJson)
-    {
-        if(serviceAllJson.getToilet_count() > 1){
+    private Integer getWc(ServiceAllJson serviceAllJson) {
+        if(serviceAllJson.getToiletCount() > 1){
             return 143;
         }
-
-        switch(serviceAllJson.getToilet_id()){
-            case 1424:
-                return 131;
-            case 1425:
-                return 130;
+        switch(serviceAllJson.getToiletId()){
+            case 1424: return 131;
+            case 1425: return 130;
         }
-
         return null;
     }
 
-    private Integer getLogia(ServiceAllJson serviceAllJson, Integer cat)
-    {
+    private Integer getLogia(ServiceAllJson serviceAllJson, Integer cat) {
         if(cat.equals(AbstractBuilderAdvert.DOMSTOR_TYPE_FLAT)){
             return null;
         }
 
-        Integer bc = serviceAllJson.getBalcony_count();
-        Integer lc = serviceAllJson.getLoggia_count();
+        Integer bc = serviceAllJson.getBalconyCount();
+        Integer lc = serviceAllJson.getLoggiaCount();
 
         if(bc > 0 && lc > 0) {
             return 169; // Балкон + Лоджия
@@ -71,7 +65,7 @@ public class Vse42Object {
             return 171; // Лоджия + Лоджия
         }
 
-        Boolean glass = serviceAllJson.getBalcony_arrangement_ids().contains(1484);
+        Boolean glass = serviceAllJson.getBalconyArrangementIds().contains(1484);
 
         if (bc > 0) {
             if(glass) {
@@ -87,29 +81,22 @@ public class Vse42Object {
             return 129; // Лоджия
         }
         return null;
-
     }
 
-    private Integer getRepair(ServiceAllJson serviceAllJson)
-    {
+    private Integer getRepair(ServiceAllJson serviceAllJson) {
         //80 Требуется капитальный ремонт
         //82 Евроремонт
         //83 Самоотделка
         //84 Хороший ремонт
         //232 Требуется косметический ремонт
-        switch(serviceAllJson.getState_id()){
+        switch(serviceAllJson.getStateId()) {
             case 1058:
-            case 1057:
-                return 80;
-            case 1591:
-                return 82;
-            case 1056:
-                return 83;
+            case 1057: return 80;
+            case 1591: return 82;
+            case 1056: return 83;
             case 1059:
-            case 1590:
-                return 84;
-            case 1589:
-                return 232;
+            case 1590: return 84;
+            case 1589: return 232;
         }
         return null;
     }
@@ -126,13 +113,13 @@ public class Vse42Object {
 
     private Float getCost(ServiceAllJson serviceAllJson, String operationString)
     {
-        Double price_rur = Double.valueOf(operationString.equals(BuilderVse42Advert.OPERATION_SELL )?
-                            serviceAllJson.getPrice_full() : serviceAllJson.getRent_full_rur());
-        if(price_rur == 0) {
+        Double priceRur = Double.valueOf(operationString.equals(BuilderVse42Advert.OPERATION_SELL )?
+                            serviceAllJson.getPriceFull() : serviceAllJson.getPriceFullRur());
+        if(priceRur == 0) {
             return 0F;
         }
 //        return Math.round(price_rur / 1000, 2);
-        return Float.valueOf(Math.round(price_rur / 1000));
+        return Float.valueOf(Math.round(priceRur / 1000));
     }
 
 }

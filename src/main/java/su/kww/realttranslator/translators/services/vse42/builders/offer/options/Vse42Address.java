@@ -20,7 +20,7 @@ public class Vse42Address {
         }
 
         String abbr = serviceAllJson.getStreet().getAbbr();
-        String house = serviceAllJson.getBuilding_num().toString();
+        String house = serviceAllJson.getBuildingNum().toString();
         return (abbr == null ? "" : abbr + ". ") + street + (house == null? "" : ", " + house);
     }
 }

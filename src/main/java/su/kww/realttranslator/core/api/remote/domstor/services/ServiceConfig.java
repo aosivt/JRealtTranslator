@@ -8,8 +8,7 @@ import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.core.api.remote.domstor.entities.links.LinksSiteJson;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 import su.kww.realttranslator.core.api.remote.domstor.entities.mailer.MailerPresentsEntity;
-import su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data.UploadData;
-import su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data.UploadResult;
+import su.kww.realttranslator.core.api.remote.domstor.entities.options.domstor.data.UploadResult;
 import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
 
 import java.util.Set;

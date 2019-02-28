@@ -1,13 +1,7 @@
 package su.kww.realttranslator.translators.services.yandex;
 
-import io.reactivex.Observable;
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
-import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
-import su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data.UploadResult;
 import su.kww.realttranslator.translators.builders.service.AbstractTranslatorService;
 import su.kww.realttranslator.translators.builders.ResultProcessService;
 import su.kww.realttranslator.translators.services.yandex.offer.builders.BuilderYandexAdvert;

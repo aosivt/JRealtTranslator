@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.api.remote.domstor.entities.options_domstor_data;
+package su.kww.realttranslator.core.api.remote.domstor.entities.options.domstor.data;
 
 import java.io.File;
 

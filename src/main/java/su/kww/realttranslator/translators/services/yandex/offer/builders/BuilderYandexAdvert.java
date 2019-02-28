@@ -43,12 +43,11 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
         ServiceAllJson serviceAllJson = getServiceAllJsonByAdvertSite(advertSite);
         YandexAdvertOffer yandexAdvertOffer = getYandexAdvertOffer(advertSite);
         yandexAdvertOffer.setId(getId(serviceAllJson));
-        yandexAdvertOffer.setCreationDate(serviceAllJson.getReg_dt());
-        yandexAdvertOffer.setLastUpdateDate(serviceAllJson.getEdit_dt());
+        yandexAdvertOffer.setCreationDate(serviceAllJson.getRegDt());
+        yandexAdvertOffer.setLastUpdateDate(serviceAllJson.getEditDt());
         yandexAdvertOffer.setUrl(serviceAllJson.getLink());
-        yandexAdvertOffer.setDescription(serviceAllJson.getNote_web());
+        yandexAdvertOffer.setDescription(serviceAllJson.getNoteWeb());
         yandexAdvertOffer.setMortgage(serviceAllJson.getMortgage());
-
         setFloors(serviceAllJson,yandexAdvertOffer)
         .setAreas(serviceAllJson,yandexAdvertOffer)
         .setPrice(serviceAllJson,yandexAdvertOffer)
@@ -60,8 +59,8 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
     }
 
     protected BuilderYandexAdvert setFloors(ServiceAllJson serviceAllJson, final YandexAdvertOffer yandexAdvertOffer){
-        yandexAdvertOffer.setFloor(serviceAllJson.getObject_floor());
-        yandexAdvertOffer.setFloorsTotal(serviceAllJson.getBuilding_floor());
+        yandexAdvertOffer.setFloor(serviceAllJson.getObjectFloor());
+        yandexAdvertOffer.setFloorsTotal(serviceAllJson.getBuildingFloor());
         return this;
     }
 
@@ -70,7 +69,7 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
         return this;
     }
     protected BuilderYandexAdvert setPrice(ServiceAllJson serviceAllJson, final YandexAdvertOffer yandexAdvertOffer){
-        if (Objects.nonNull(serviceAllJson.getPrice_currency())) {
+        if (Objects.nonNull(serviceAllJson.getPriceCurrency())) {
             yandexAdvertOffer.setPrice(toPrice(serviceAllJson));
         }
         return this;
@@ -90,9 +89,9 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
     }
 
     protected BuilderYandexAdvert setAreas(ServiceAllJson serviceAllJson, final YandexAdvertOffer yandexAdvertOffer){
-        yandexAdvertOffer.setArea(getArea(serviceAllJson.getSquare_house().toString(),UNIT_SQUARE_M2));
-        yandexAdvertOffer.setKitchenSpace(getArea(serviceAllJson.getSquare_kitchen().toString(),UNIT_SQUARE_M2));
-        yandexAdvertOffer.setLivingSpace(getArea(serviceAllJson.getSquare_living().toString(),UNIT_SQUARE_M2));
+        yandexAdvertOffer.setArea(getArea(serviceAllJson.getSquareHouse().toString(),UNIT_SQUARE_M2));
+        yandexAdvertOffer.setKitchenSpace(getArea(serviceAllJson.getSquareKitchen().toString(),UNIT_SQUARE_M2));
+        yandexAdvertOffer.setLivingSpace(getArea(serviceAllJson.getSquareLiving().toString(),UNIT_SQUARE_M2));
 
         return this;
     }
@@ -104,14 +103,14 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
     protected String getAddress(ServiceAllJson serviceAllJson){
         return String.format(ADDRESS_FORMAT_STRING, serviceAllJson.getStreet().getAbbr(),
                                                            serviceAllJson.getStreet().getName(),
-                                                           serviceAllJson.getBuilding_num(),
+                                                           serviceAllJson.getBuildingNum(),
                                                            serviceAllJson.getCorpus());
     }
 
     protected BuilderYandexAdvert setSalesAgent(ServiceAllJson serviceAllJson, final YandexAdvertOffer yandexAdvertOffer){
         SalesAgent salesAgent = new SalesAgent();
-        salesAgent.setName((String)serviceAllJson.getAgent_name());
-        salesAgent.setPhone(getPhones(serviceAllJson.getAgent_phone()));
+        salesAgent.setName((String)serviceAllJson.getAgentName());
+        salesAgent.setPhone(getPhones(serviceAllJson.getAgentPhone()));
         salesAgent.setEmail(serviceAllJson.getAgent().getEmail());
         salesAgent.setOrganization(serviceAllJson.getOrg().getName());
         salesAgent.setAgencyId(serviceAllJson.getOrg().getId());
@@ -127,7 +126,7 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
     protected Price toPrice(ServiceAllJson serviceAllJson){
         Price price = new Price();
         price.setCurrency(PRICE_UNIT_RUR);
-        price.setValue(serviceAllJson.getPrice_full());
+        price.setValue(serviceAllJson.getPriceFull());
         return price;
     }
 
@@ -144,7 +143,4 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
         map.put(9,BuilderYandexAdvertOffer.LAND);
         return map;
     }
-
-
-
 }

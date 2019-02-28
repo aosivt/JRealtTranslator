@@ -46,7 +46,7 @@ public class BuilderVse42Advert extends AbstractBuilderAdvert {
         Vse42AdvertOffer vse42AdvertOffer = new Vse42AdvertOffer();
         Integer category = Vse42Districts.get(serviceAllJson,advertSite.getDataType());
         vse42AdvertOffer.setCategory(category);
-        vse42AdvertOffer.setOperation(getOperation(serviceAllJson.getActive_sale()));
+        vse42AdvertOffer.setOperation(getOperation(serviceAllJson.isActiveSale()));
         vse42AdvertOffer.setDistrict(Vse42Districts.get(serviceAllJson,category));
         vse42AdvertOffer.setAddress(Vse42Address.get(serviceAllJson,category));
 
