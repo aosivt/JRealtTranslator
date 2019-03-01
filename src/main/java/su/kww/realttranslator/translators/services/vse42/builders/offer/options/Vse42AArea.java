@@ -4,8 +4,6 @@ import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.translators.services.vse42.builders.BuilderVse42Advert;
 import su.kww.realttranslator.translators.services.vse42.builders.offer.Vse42AdvertOffer;
 
-import java.util.Objects;
-
 public class Vse42AArea {
     private Vse42AArea(){}
     public static void set(ServiceAllJson serviceAllJson, Integer category, Vse42AdvertOffer offer){
@@ -16,7 +14,7 @@ public class Vse42AArea {
     }
     private Float getArea(ServiceAllJson serviceAllJson, Integer cat) {
         Integer area = cat.equals(BuilderVse42Advert.CAT_COMMERCE) ?
-                serviceAllJson.getSquareHouseMin() : serviceAllJson.getSquareHouse();
+                serviceAllJson.getSquareHouseMin().intValue() : serviceAllJson.getSquareHouse().intValue();
         if (area == 0) {
             return null;
         }
@@ -24,7 +22,7 @@ public class Vse42AArea {
     }
 
     private Float getKitchenArea(ServiceAllJson serviceAllJson) {
-        Integer area = serviceAllJson.getSquareKitchen();
+        Integer area = serviceAllJson.getSquareKitchen().intValue();
         if (area == 0) {
             return null;
         }
@@ -32,7 +30,7 @@ public class Vse42AArea {
     }
 
     private Float getLivingArea(ServiceAllJson serviceAllJson) {
-        Integer area = serviceAllJson.getSquareLiving();
+        Integer area = serviceAllJson.getSquareLiving().intValue();
         if (area == 0) {
             return null;
         }
