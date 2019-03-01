@@ -168,26 +168,26 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("square_house")
     @Expose
     @JsonProperty("square_house")
-    private Integer squareHouse;
+    private Float squareHouse;
 
     @SerializedName("square_house_min")
     @Expose
     @JsonProperty("square_house_min")
-    private Integer squareHouseMin;
+    private Float squareHouseMin;
 
 
     @SerializedName("square_living")
     @Expose
     @JsonProperty("square_living")
-    private Integer squareLiving;
+    private Float squareLiving;
     @SerializedName("square_kitchen")
     @Expose
     @JsonProperty("square_kitchen")
-    private Integer squareKitchen;
+    private Float squareKitchen;
     @SerializedName("build_year")
     @Expose
     @JsonProperty("build_year")
-    private Object buildYear;
+    private Integer buildYear;
     @SerializedName("height")
     @Expose
     @JsonProperty("height")
@@ -766,23 +766,23 @@ public class ServiceAllJson implements Serializable {
         return toiletCount;
     }
 
-    public Integer getSquareHouse() {
+    public Float getSquareHouse() {
         return squareHouse;
     }
 
-    public Integer getSquareHouseMin() {
+    public Float getSquareHouseMin() {
         return squareHouseMin;
     }
 
-    public Integer getSquareLiving() {
+    public Float getSquareLiving() {
         return squareLiving;
     }
 
-    public Integer getSquareKitchen() {
+    public Float getSquareKitchen() {
         return squareKitchen;
     }
 
-    public Object getBuildYear() {
+    public Integer getBuildYear() {
         return buildYear;
     }
 
