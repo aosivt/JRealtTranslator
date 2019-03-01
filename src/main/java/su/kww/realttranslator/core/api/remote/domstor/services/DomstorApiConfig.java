@@ -66,15 +66,15 @@ public class DomstorApiConfig extends BaseApiConfig {
                 .subscribe(this::updateLogin).dispose();
 //
 //
+        getResources()
+//                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
+                .subscribe(this::updateSite).dispose();
+
         getAdverts()
                 .doOnError(e->{
                     System.out.println(e.getMessage());
                 })
                 .subscribe(this::updateAdverts).dispose();
-
-        getResources()
-//                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
-                .subscribe(this::updateSite).dispose();
 
         getLinks()
 //                .doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
@@ -111,11 +111,11 @@ public class DomstorApiConfig extends BaseApiConfig {
                 .map(RepositoryAdverts::create)
                 .collect(Collectors.toSet());
         RepositoryAdvertSite.clearTableByNameEntity(Advert.class.getName());
-        RepositoryAdverts.updateBySetEntity(adverts);
+        RepositoryAdverts.insertBySetEntity(adverts);
     }
 
     private void updateAdvertSite(Set<LinksSiteJson> LinksSites){
-        Set<EntityDomstor>  advertsites = LinksSites
+        Set<EntityDomstor> advertsites = LinksSites
                 .stream()
 //                .parallelStream()
                 .map(RepositoryAdvertSite::create)

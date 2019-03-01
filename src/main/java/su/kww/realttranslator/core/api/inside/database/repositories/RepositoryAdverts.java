@@ -2,6 +2,7 @@ package su.kww.realttranslator.core.api.inside.database.repositories;
 
 import com.google.gson.Gson;
 import su.kww.realttranslator.core.api.inside.database.entities.Advert;
+import su.kww.realttranslator.core.api.inside.database.entities.identifiers.AdvertId;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 
 import java.util.Set;
@@ -17,6 +18,7 @@ public class RepositoryAdverts extends AbstractRepository {
 
     public static Advert create(ServiceAllJson serviceAllJson){
         Advert advert = new Advert();
+//        advert.setId(new AdvertId(serviceAllJson.getDataClass(),serviceAllJson.getId()));
         advert.setDataType(serviceAllJson.getDataClass());
         advert.setDomstorId(serviceAllJson.getId());
         advert.setRent(serviceAllJson.isActiveRent());

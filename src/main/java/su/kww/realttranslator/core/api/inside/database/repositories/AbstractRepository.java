@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.exception.GenericJDBCException;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
@@ -19,7 +20,7 @@ public abstract class AbstractRepository {
                                                       .setLenient()
                                                       .create();
 
-    public synchronized static EntityDomstor update(EntityDomstor serializable) {
+    public static synchronized EntityDomstor update(EntityDomstor serializable) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.saveOrUpdate(serializable);
@@ -29,11 +30,28 @@ public abstract class AbstractRepository {
         return serializable;
     }
 
-    public static Set<EntityDomstor> updateBySetEntity(Set<EntityDomstor> entityDomstors) {
+    public static synchronized Set<EntityDomstor> updateBySetEntity(Set<EntityDomstor> entityDomstors) {
+
         final Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        entityDomstors.forEach(session::saveOrUpdate);
-        session.getTransaction().commit();
+        try {
+
+            entityDomstors.forEach(session::saveOrUpdate);
+            session.getTransaction().commit();
+            session.clear();
+            session.close();
+        } catch (GenericJDBCException e){
+            System.out.println(e.fillInStackTrace());
+        }
+
+        return entityDomstors;
+    }
+
+    public static synchronized Set<EntityDomstor> insertBySetEntity(Set<EntityDomstor> entityDomstors) {
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        entityDomstors.forEach(session::save);
+        session.flush();
         session.clear();
         session.close();
         return entityDomstors;

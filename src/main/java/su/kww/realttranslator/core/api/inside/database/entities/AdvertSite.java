@@ -1,5 +1,7 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.id.Assigned;
 import su.kww.realttranslator.core.api.inside.database.entities.identifiers.AdvertSiteId;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 
@@ -9,20 +11,26 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "advert_site")
-@IdClass(AdvertSiteId.class)
+//@IdClass(AdvertSiteId.class)
 public class AdvertSite implements EntityDomstor {
 
+//    @EmbeddedId
+//    private AdvertSiteId id;
+//
 //.WithColumn("site_id").AsInt32().PrimaryKey()
     @Id
     @Column(name = "site_id",nullable = false)
+//    @GeneratedValue(generator = "assigned")
     private Integer siteId;
 //                .AddColumn("data_type").AsInt32().Nullable()
     @Id
     @Column(name = "data_type",nullable = false)
+//    @GeneratedValue(generator = "assigned")
     private Integer dataType;
 //                .AddColumn("domstor_id").AsInt64().Nullable()
     @Id
     @Column(name = "domstor_id",nullable = false)
+//    @GeneratedValue(generator = "assigned")
     private Long domstorId;
 
 //.WithColumn("loaded").AsBoolean().WithDefaultValue(false).NotNullable()
@@ -44,24 +52,15 @@ public class AdvertSite implements EntityDomstor {
     @Column(name = "external_url")
     private String externalUrl = "";
 
+
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumns({
-//            @JoinColumn(
-//                    name = "data_type"
-////                    ,
-////                    referencedColumnName = "data_type",
-////                    updatable = false,
-////                    insertable = false
-//                    ),
-//            @JoinColumn(
-//                    name = "domstor_id"
-////                    ,
-////                    referencedColumnName = "domstor_id",
-////                    updatable = false,
-////                    insertable = false
-//                    )
+//            @JoinColumn(name="data_type", referencedColumnName="data_type", insertable = false, updatable = false),
+//            @JoinColumn(name="domstor_id", referencedColumnName="domstor_id", insertable = false, updatable = false)
 //    })
+    @Transient
     private Advert advert;
+
 
     public Integer getSiteId() {
         return siteId;
@@ -70,7 +69,7 @@ public class AdvertSite implements EntityDomstor {
     public void setSiteId(Integer siteId) {
         this.siteId = siteId;
     }
-
+//
     public Integer getDataType() {
         return dataType;
     }
@@ -136,6 +135,11 @@ public class AdvertSite implements EntityDomstor {
     }
 
     public Advert getAdvert() {
+
         return advert;
+    }
+
+    public void setAdvert(Advert advert) {
+        this.advert = advert;
     }
 }
