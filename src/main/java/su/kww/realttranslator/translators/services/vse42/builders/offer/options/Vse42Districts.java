@@ -41,8 +41,9 @@ public class Vse42Districts {
     }
 
     private Map.Entry getDistrictByName(final String nameDistrict){
-        return DISTRICT_COLLECTION.entrySet()
-                .parallelStream().filter(f->f.getValue().equals(nameDistrict))
+        return DISTRICT_COLLECTION.entrySet().stream()
+//                .parallelStream()
+                .filter(f->f.getValue().equals(nameDistrict))
                 .findFirst().orElse(null);
     }
 

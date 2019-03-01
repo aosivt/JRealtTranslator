@@ -116,4 +116,6 @@ public class LinksSiteJson {
     public void setExternalUrl(String externalUrl) {
         this.externalUrl = externalUrl;
     }
+
+
 }

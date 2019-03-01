@@ -15,7 +15,7 @@ public class UserSettings implements EntityDomstor {
     @GeneratedValue
     private Long id;
 //.WithColumn("key").AsString(255).NotNullable().Unique()
-    @Column(name = "key", nullable = false, unique = true)
+    @Column(name = "key", nullable = false)
     private String key = "";
 //.WithColumn("json").AsString(16777215).NotNullable();
     @Column(name = "json",length = 16777215,nullable = false)

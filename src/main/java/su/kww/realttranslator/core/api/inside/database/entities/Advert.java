@@ -12,11 +12,11 @@ import java.sql.Date;
 @IdClass(AdvertId.class)
 public class Advert implements EntityDomstor {
 
-    //                .WithColumn("data_type").AsInt32().NotNullable()
+//                .WithColumn("data_type").AsInt32().NotNullable()
     @Id
     @Column(name = "data_type", nullable = false)
     private Integer dataType;
-    //                .WithColumn("domstor_id").AsInt64().NotNullable();
+//                .WithColumn("domstor_id").AsInt64().NotNullable();
     @Id
     @Column(name = "domstor_id", nullable = false)
     private Long domstorId;

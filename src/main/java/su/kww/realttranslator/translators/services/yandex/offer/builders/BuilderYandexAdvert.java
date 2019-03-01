@@ -1,6 +1,7 @@
 package su.kww.realttranslator.translators.services.yandex.offer.builders;
 
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
+import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdverts;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.translators.builders.advert.AbstractBuilderAdvert;
 import su.kww.realttranslator.translators.builders.advert.AdvertOffer;
@@ -28,9 +29,12 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
         BuilderYandexAdvert builderYandexAdvert = new BuilderYandexAdvert();
 
         Set<YandexAdvertOffer> yandexAdvertOffers = advertSites
-                .parallelStream()
+//                .parallelStream()
+                .stream()
                 .filter(builderYandexAdvert::isNotDeleteProcess)
+                .filter(f-> Objects.nonNull(RepositoryAdverts.getById(f.getDataType(),f.getDomstorId())))
                 .map(advertSite-> (YandexAdvertOffer)builderYandexAdvert.buildAdvertOffer(advertSite))
+                .filter(Objects::isNull)
                 .collect(Collectors.toSet());
 
         YandexAdvert yandexAdvert = new YandexAdvert();
@@ -40,21 +44,27 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
     }
 
     public AdvertOffer buildAdvertOffer(final AdvertSite advertSite){
-        ServiceAllJson serviceAllJson = getServiceAllJsonByAdvertSite(advertSite);
-        YandexAdvertOffer yandexAdvertOffer = getYandexAdvertOffer(advertSite);
-        yandexAdvertOffer.setId(getId(serviceAllJson));
-        yandexAdvertOffer.setCreationDate(serviceAllJson.getRegDt());
-        yandexAdvertOffer.setLastUpdateDate(serviceAllJson.getEditDt());
-        yandexAdvertOffer.setUrl(serviceAllJson.getLink());
-        yandexAdvertOffer.setDescription(serviceAllJson.getNoteWeb());
-        yandexAdvertOffer.setMortgage(serviceAllJson.getMortgage());
-        setFloors(serviceAllJson,yandexAdvertOffer)
-        .setAreas(serviceAllJson,yandexAdvertOffer)
-        .setPrice(serviceAllJson,yandexAdvertOffer)
-        .setLocation(serviceAllJson,yandexAdvertOffer)
-        .setSalesAgent(serviceAllJson,yandexAdvertOffer)
-        .setPhotos(serviceAllJson,yandexAdvertOffer)
-        ;
+
+        YandexAdvertOffer yandexAdvertOffer = null;
+        try{
+            ServiceAllJson serviceAllJson = getServiceAllJsonByAdvertSite(advertSite);
+            yandexAdvertOffer = getYandexAdvertOffer(advertSite);
+            yandexAdvertOffer.setId(getId(serviceAllJson));
+            yandexAdvertOffer.setCreationDate(serviceAllJson.getRegDt());
+            yandexAdvertOffer.setLastUpdateDate(serviceAllJson.getEditDt());
+            yandexAdvertOffer.setUrl(serviceAllJson.getLink());
+            yandexAdvertOffer.setDescription(serviceAllJson.getNoteWeb());
+            yandexAdvertOffer.setMortgage(serviceAllJson.getMortgage());
+            setFloors(serviceAllJson,yandexAdvertOffer)
+                    .setAreas(serviceAllJson,yandexAdvertOffer)
+                    .setPrice(serviceAllJson,yandexAdvertOffer)
+                    .setLocation(serviceAllJson,yandexAdvertOffer)
+                    .setSalesAgent(serviceAllJson,yandexAdvertOffer)
+                    .setPhotos(serviceAllJson,yandexAdvertOffer)
+            ;
+        } catch (NullPointerException e){
+
+        }
         return yandexAdvertOffer;
     }
 
@@ -119,7 +129,10 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
     }
 
     private Set<String> getPhones(String textString){
-        return Arrays.asList(textString.split(",")).parallelStream().collect(Collectors.toSet());
+        return Arrays.asList(textString.split(","))
+//                .parallelStream()
+                .stream()
+                .collect(Collectors.toSet());
     }
 
 

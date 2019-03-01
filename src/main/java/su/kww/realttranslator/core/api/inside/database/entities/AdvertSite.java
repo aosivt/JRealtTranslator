@@ -44,25 +44,6 @@ public class AdvertSite implements EntityDomstor {
     @Column(name = "external_url")
     private String externalUrl = "";
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumns({
-//            @JoinColumn(
-//                    name = "data_type"
-////                    ,
-////                    referencedColumnName = "data_type",
-////                    updatable = false,
-////                    insertable = false
-//                    ),
-//            @JoinColumn(
-//                    name = "domstor_id"
-////                    ,
-////                    referencedColumnName = "domstor_id",
-////                    updatable = false,
-////                    insertable = false
-//                    )
-//    })
-    private Advert advert;
-
     public Integer getSiteId() {
         return siteId;
     }
@@ -135,7 +116,4 @@ public class AdvertSite implements EntityDomstor {
         this.externalUrl = externalUrl;
     }
 
-    public Advert getAdvert() {
-        return advert;
-    }
 }

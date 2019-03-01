@@ -111,14 +111,19 @@ public class DomstorApiConfig extends BaseApiConfig {
                 .map(RepositoryAdverts::create)
                 .collect(Collectors.toSet());
         RepositoryAdvertSite.clearTableByNameEntity(Advert.class.getName());
-        RepositoryAdverts.updateBySetEntity(adverts);
+        RepositoryAdverts.insertBySetEntity(adverts);
     }
 
-    private void updateAdvertSite(Set<LinksSiteJson> LinksSites){
-        Set<EntityDomstor>  advertsites = LinksSites
+    private void updateAdvertSite(Set<LinksSiteJson> linksSites){
+
+        Set<EntityDomstor>  advertsites = linksSites
                 .stream()
 //                .parallelStream()
                 .map(RepositoryAdvertSite::create)
+//                .peek(advertSite -> {
+//                    Advert advert = RepositoryAdverts.getById(advertSite.getDataType(),advertSite.getDomstorId());
+//                    advertSite.setAdvert(advert.get(0));
+//                })
                 .collect(Collectors.toSet());
         RepositoryAdvertSite.clearTableByNameEntity(AdvertSite.class.getName());
         RepositoryAdvertSite.updateBySetEntity(advertsites);

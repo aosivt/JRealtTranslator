@@ -1,7 +1,6 @@
 package su.kww.realttranslator.core.api.inside.database.repositories;
 
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
@@ -11,7 +10,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
-import java.util.Set;
 
 public class RepositoryAdvertSite extends AbstractRepository{
 
@@ -41,7 +39,6 @@ public class RepositoryAdvertSite extends AbstractRepository{
         session.close();
         return advertSites;
     }
-
 
 
 

@@ -3,10 +3,8 @@ package su.kww.realttranslator.core.api.inside.database.repositories;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
-import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 
 import javax.persistence.Query;
 import java.io.Serializable;
@@ -39,12 +37,25 @@ public abstract class AbstractRepository {
         return entityDomstors;
     }
 
+    public static Set<EntityDomstor> insertBySetEntity(Set<EntityDomstor> entityDomstors) {
+        final Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        entityDomstors.forEach(session::saveOrUpdate);
+        session.flush();
+        session.clear();
+        session.close();
+        return entityDomstors;
+    }
+
     public static Set<EntityDomstor> select(String nameEntity){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Set<EntityDomstor> serializables;
         String stringSelectEntities = String.format("From %s setEntity",nameEntity);
         Query query = session.createQuery(stringSelectEntities);
-        serializables = (Set<EntityDomstor>) query.getResultList().parallelStream().collect(Collectors.toSet());
+        serializables = (Set<EntityDomstor>) query.getResultList()
+                .stream()
+//                .parallelStream()
+                .collect(Collectors.toSet());
         session.clear();
         session.close();
         return serializables;

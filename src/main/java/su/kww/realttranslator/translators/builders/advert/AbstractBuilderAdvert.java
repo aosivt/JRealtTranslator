@@ -2,7 +2,9 @@ package su.kww.realttranslator.translators.builders.advert;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import su.kww.realttranslator.core.api.inside.database.entities.Advert;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
+import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdverts;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.core.model.Operation;
 
@@ -35,7 +37,8 @@ public abstract class AbstractBuilderAdvert implements BuilderAdvert{
 
 
     protected ServiceAllJson getServiceAllJsonByAdvertSite(AdvertSite advertSite){
-        return gson.fromJson(advertSite.getAdvert().getJson(),ServiceAllJson.class);
+        Advert advert = RepositoryAdverts.getById(advertSite.getDataType(),advertSite.getDomstorId());
+        return gson.fromJson(advert.getJson(),ServiceAllJson.class);
     }
 
     protected String getId(ServiceAllJson serviceAllJson){

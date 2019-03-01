@@ -67,7 +67,10 @@ public class FrameTranslators extends BaseFrameTranslators {
 
     public void activateTranslatorItems(){
         sites = RepositorySite.select(Site.class.getName());
-        sites.parallelStream().filter(Objects::nonNull)
+        sites
+//                .parallelStream()
+                .stream()
+                .filter(Objects::nonNull)
                               .map(s->(Site)s)
                               .sequential()
                               .forEach(this::addTranslator);

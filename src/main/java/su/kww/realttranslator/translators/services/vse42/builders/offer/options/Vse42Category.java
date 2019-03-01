@@ -47,7 +47,9 @@ public class Vse42Category {
 
     private Integer getIntegerTypeVse42Object(final Integer typeObject){
         return TYPE_COLLECTION.entrySet()
-                .parallelStream().filter(f->f.getKey().equals(typeObject))
+//                .parallelStream()
+                .stream()
+                .filter(f->f.getKey().equals(typeObject))
                 .findFirst().orElse(null).getValue();
     }
 
