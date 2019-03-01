@@ -1,5 +1,6 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
+import su.kww.realttranslator.core.api.inside.database.entities.identifiers.AdvertSiteId;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 
 import javax.persistence.*;
@@ -8,22 +9,22 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "advert_site")
+@IdClass(AdvertSiteId.class)
 public class AdvertSite implements EntityDomstor {
-//.WithColumn("advert_id").AsInt32().PrimaryKey()
-    @Id
-    @Column(name = "id")
-    @GeneratedValue
-    private Integer id;
+
 //.WithColumn("site_id").AsInt32().PrimaryKey()
     @Id
-    @Column(name = "site_id")
+    @Column(name = "site_id",nullable = false)
     private Integer siteId;
 //                .AddColumn("data_type").AsInt32().Nullable()
-    @Column(name = "data_type")
+    @Id
+    @Column(name = "data_type",nullable = false)
     private Integer dataType;
 //                .AddColumn("domstor_id").AsInt64().Nullable()
-    @Column(name = "domstor_id")
+    @Id
+    @Column(name = "domstor_id",nullable = false)
     private Long domstorId;
+
 //.WithColumn("loaded").AsBoolean().WithDefaultValue(false).NotNullable()
     @Column(name = "loaded", nullable = false)
     private Boolean loaded = false;
@@ -43,28 +44,24 @@ public class AdvertSite implements EntityDomstor {
     @Column(name = "external_url")
     private String externalUrl = "";
 
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(
-                    name = "data_type",
-                    referencedColumnName = "data_type",
-                    updatable = false,
-                    insertable = false),
-            @JoinColumn(
-                    name = "domstor_id",
-                    referencedColumnName = "domstor_id",
-                    updatable = false,
-                    insertable = false)
-    })
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumns({
+//            @JoinColumn(
+//                    name = "data_type"
+////                    ,
+////                    referencedColumnName = "data_type",
+////                    updatable = false,
+////                    insertable = false
+//                    ),
+//            @JoinColumn(
+//                    name = "domstor_id"
+////                    ,
+////                    referencedColumnName = "domstor_id",
+////                    updatable = false,
+////                    insertable = false
+//                    )
+//    })
     private Advert advert;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getSiteId() {
         return siteId;

@@ -1,30 +1,35 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
+import su.kww.realttranslator.core.api.inside.database.entities.identifiers.AdvertId;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 
 import javax.persistence.*;
-import java.io.Serializable;
+
 import java.sql.Date;
 
 @Entity
 @Table(name = "advert")
+@IdClass(AdvertId.class)
 public class Advert implements EntityDomstor {
 
-//                .WithColumn("id").AsInt32().PrimaryKey().Identity()
+    //                .WithColumn("data_type").AsInt32().NotNullable()
     @Id
-    @Column(name = "id")
-    @GeneratedValue
-    private Integer id;
-//                .WithColumn("server_date").AsDateTime().NotNullable()
+    @Column(name = "data_type", nullable = false)
+    private Integer dataType;
+    //                .WithColumn("domstor_id").AsInt64().NotNullable();
+    @Id
+    @Column(name = "domstor_id", nullable = false)
+    private Long domstorId;
+
+
+    //                .WithColumn("server_date").AsDateTime().NotNullable()
     @Column(name = "server_date", nullable = false)
     private Date serverDate;
 //    AddColumn("edit_date").AsDateTime().Nullable();
     @Column(name = "edit_date")
     private Date editDate;
-//                .WithColumn("data_type").AsInt32().NotNullable()
-    @Column(name = "data_type", nullable = false)
-    private Integer dataType;
-//                .WithColumn("is_rent").AsBoolean().NotNullable()
+
+    //                .WithColumn("is_rent").AsBoolean().NotNullable()
     @Column(name = "is_rent", nullable = false)
     private Boolean isRent = false;
 //                .WithColumn("is_sale").AsBoolean().NotNullable()
@@ -33,21 +38,10 @@ public class Advert implements EntityDomstor {
 //                .WithColumn("json").AsString(16777215).NotNullable()
     @Column(name = "json", length = 16777215, nullable = false)
     private String json;
-//                .WithColumn("domstor_id").AsInt64().NotNullable();
-    @Column(name = "domstor_id", nullable = false)
-    private Long domstorId;
 
 //                .AddColumn("deleted").AsBoolean().WithDefaultValue(false)
     @Column(name = "deleted", nullable = false)
     private Boolean deleted = false;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Date getServerDate() {
         return serverDate;
