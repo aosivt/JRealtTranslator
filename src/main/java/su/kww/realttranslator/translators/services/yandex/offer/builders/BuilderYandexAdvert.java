@@ -34,7 +34,7 @@ public class BuilderYandexAdvert extends AbstractBuilderAdvert {
                 .filter(builderYandexAdvert::isNotDeleteProcess)
                 .filter(f-> Objects.nonNull(RepositoryAdverts.getById(f.getDataType(),f.getDomstorId())))
                 .map(advertSite-> (YandexAdvertOffer)builderYandexAdvert.buildAdvertOffer(advertSite))
-                .filter(Objects::isNull)
+                .filter(Objects::nonNull)
                 .collect(Collectors.toSet());
 
         YandexAdvert yandexAdvert = new YandexAdvert();
