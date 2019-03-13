@@ -1,12 +1,9 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
-import org.hibernate.id.Assigned;
-import su.kww.realttranslator.core.api.inside.database.entities.identifiers.AdvertSiteId;
+import org.hibernate.annotations.GeneratorType;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 
+import javax.annotation.Generated;
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -14,7 +11,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "advert_site")
 //@IdClass(AdvertSiteId.class)
-public class AdvertSite implements EntityDomstor {
+public class AdvertSiteUpdate implements EntityDomstor {
 
 //    @EmbeddedId
 //    private AdvertSiteId id;
@@ -22,17 +19,17 @@ public class AdvertSite implements EntityDomstor {
 //.WithColumn("site_id").AsInt32().PrimaryKey()
     @Id
     @Column(name = "site_id",nullable = false)
-//    @GeneratedValue(generator = "assigned")
+//    @GeneratedValue(generator = "native")
     private Integer siteId;
 //                .AddColumn("data_type").AsInt32().Nullable()
     @Id
     @Column(name = "data_type",nullable = false)
-//    @GeneratedValue(generator = "assigned")
+//    @GeneratedValue(generator = "native")
     private Integer dataType;
 //                .AddColumn("domstor_id").AsInt64().Nullable()
     @Id
     @Column(name = "domstor_id",nullable = false)
-//    @GeneratedValue(generator = "assigned")
+//    @GeneratedValue(generator = "native")
     private Long domstorId;
 
 //.WithColumn("loaded").AsBoolean().WithDefaultValue(false).NotNullable()
@@ -56,12 +53,12 @@ public class AdvertSite implements EntityDomstor {
 
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @NotFound(action = NotFoundAction.IGNORE)
-    @JoinColumns({
-            @JoinColumn(name="data_type", referencedColumnName="data_type", insertable = false, updatable = false),
-            @JoinColumn(name="domstor_id", referencedColumnName="domstor_id", insertable = false, updatable = false)
-    })
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumns({
+//            @JoinColumn(name="data_type", referencedColumnName="data_type", insertable = false, updatable = false),
+//            @JoinColumn(name="domstor_id", referencedColumnName="domstor_id", insertable = false, updatable = false)
+//    })
+    @Transient
     private Advert advert;
 
 

@@ -4,7 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
 
-import su.kww.realttranslator.core.api.inside.database.entities.AdvertSiteAdvert;
+
+import su.kww.realttranslator.core.api.inside.database.entities.AdvertSiteData;
+import su.kww.realttranslator.core.api.inside.database.entities.AdvertSiteUpdate;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
@@ -18,8 +20,8 @@ import java.util.Set;
 
 public class RepositoryAdvertSite extends AbstractRepository{
 
-    public static AdvertSite create(LinksSiteJson linksSites){
-        AdvertSite advertSite = new AdvertSite();
+    public static AdvertSiteUpdate create(LinksSiteJson linksSites){
+        AdvertSiteUpdate advertSite = new AdvertSiteUpdate();
         advertSite.setSiteId(linksSites.getSiteId());
         advertSite.setDataType(linksSites.getType());
         advertSite.setDomstorId(linksSites.getDomstorId());
@@ -34,15 +36,15 @@ public class RepositoryAdvertSite extends AbstractRepository{
         return advertSite;
     }
 
-    public static List<AdvertSiteAdvert> getAdvertSiteBySite(Site site){
+    public static List<AdvertSite> getAdvertSiteBySite(Site site){
         Session session = HibernateUtil.getSessionFactory().openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<AdvertSiteAdvert> criteriaAdvertSite = builder.createQuery(AdvertSiteAdvert.class);
-        Root<AdvertSiteAdvert> root = criteriaAdvertSite.from(AdvertSiteAdvert.class);
+        CriteriaQuery<AdvertSite> criteriaAdvertSite = builder.createQuery(AdvertSite.class);
+        Root<AdvertSite> root = criteriaAdvertSite.from(AdvertSite.class);
         criteriaAdvertSite.select(root);
 //        criteriaAdvertSite.where(builder.equal(root.get("id").get("siteId"),site.getId().toString()));
         criteriaAdvertSite.where(builder.equal(root.get("siteId"),site.getId().toString()));
-        List<AdvertSiteAdvert> advertSites = session.createQuery(criteriaAdvertSite).getResultList();
+        List<AdvertSite> advertSites = session.createQuery(criteriaAdvertSite).getResultList();
         session.clear();
         session.close();
         return advertSites;

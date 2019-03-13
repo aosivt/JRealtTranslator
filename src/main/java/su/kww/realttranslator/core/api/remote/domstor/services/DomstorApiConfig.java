@@ -3,9 +3,7 @@ package su.kww.realttranslator.core.api.remote.domstor.services;
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import su.kww.realttranslator.core.api.inside.database.entities.Advert;
-import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
-import su.kww.realttranslator.core.api.inside.database.entities.UserSettings;
+import su.kww.realttranslator.core.api.inside.database.entities.*;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdvertSite;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdverts;
@@ -120,7 +118,7 @@ public class DomstorApiConfig extends BaseApiConfig {
 //                .parallelStream()
                 .map(RepositoryAdvertSite::create)
                 .collect(Collectors.toSet());
-        RepositoryAdvertSite.clearTableByNameEntity(AdvertSite.class.getName());
+        RepositoryAdvertSite.clearTableByNameEntity(AdvertSiteUpdate.class.getName());
         RepositoryAdvertSite.updateBySetEntity(advertsites);
     }
 

@@ -11,7 +11,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "advert")
-@IdClass(AdvertId.class)
+//@IdClass(AdvertId.class)
 public class Advert implements EntityDomstor {
 
 //                .WithColumn("data_type").AsInt32().NotNullable()

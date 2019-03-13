@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.exception.GenericJDBCException;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
+import su.kww.realttranslator.core.api.inside.utils.HibernateUtilForUpdate;
 import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
 
 import javax.persistence.Query;
@@ -21,7 +22,7 @@ public abstract class AbstractRepository {
                                                       .create();
 
     public static synchronized EntityDomstor update(EntityDomstor serializable) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtilForUpdate.getSessionFactory().openSession();
         session.beginTransaction();
         session.saveOrUpdate(serializable);
         session.getTransaction().commit();
@@ -32,7 +33,7 @@ public abstract class AbstractRepository {
 
     public static synchronized Set<EntityDomstor> updateBySetEntity(Set<EntityDomstor> entityDomstors) {
 
-        final Session session = HibernateUtil.getSessionFactory().openSession();
+        final Session session = HibernateUtilForUpdate.getSessionFactory().openSession();
         session.beginTransaction();
         try {
 
@@ -48,7 +49,7 @@ public abstract class AbstractRepository {
     }
 
     public static synchronized Set<EntityDomstor> insertBySetEntity(Set<EntityDomstor> entityDomstors) {
-        final Session session = HibernateUtil.getSessionFactory().openSession();
+        final Session session = HibernateUtilForUpdate.getSessionFactory().openSession();
         session.beginTransaction();
         entityDomstors.forEach(session::save);
         session.flush();
@@ -79,7 +80,7 @@ public abstract class AbstractRepository {
     }
 
     public static Boolean clearTableByNameEntity(String nameEntity){
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtilForUpdate.getSessionFactory().openSession();
         session.beginTransaction();
         String stringSelectEntities = String.format("delete from %s",nameEntity);
         Query query = session.createQuery(stringSelectEntities);
