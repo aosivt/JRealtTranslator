@@ -371,7 +371,7 @@ public class ServiceAllJson implements Serializable {
     @SerializedName("house_type_id")
     @Expose
     @JsonProperty("house_type_id")
-    private Object houseTypeId;
+    private Integer houseTypeId;
     @SerializedName("house_part")
     @Expose
     @JsonProperty("house_part")
@@ -617,6 +617,25 @@ public class ServiceAllJson implements Serializable {
     @Expose
     @JsonProperty("developer")
     private Developer developer;
+
+    @SerializedName("garage_type_id")
+    @Expose
+    @JsonProperty("garage_type_id")
+    private Integer garageTypeId;
+
+    @SerializedName("purpose_ids")
+    @Expose
+    @JsonProperty("purpose_ids")
+    private Set<Integer> purposeIds;
+
+
+    @SerializedName("with_business")
+    @Expose
+    @JsonProperty("with_business")
+    private Boolean withBusiness;
+
+
+
 
     public Integer getRoomCount() {
         return roomCount;
@@ -954,7 +973,7 @@ public class ServiceAllJson implements Serializable {
         return location;
     }
 
-    public Object getHouseTypeId() {
+    public Integer getHouseTypeId() {
         return houseTypeId;
     }
 
@@ -1200,5 +1219,41 @@ public class ServiceAllJson implements Serializable {
 
     public Developer getDeveloper() {
         return developer;
+    }
+
+    public Boolean getNewBuilding() {
+        return newBuilding;
+    }
+
+    public Boolean getActiveExchange() {
+        return activeExchange;
+    }
+
+    public Boolean getInCommunal() {
+        return inCommunal;
+    }
+
+    public Boolean getGas() {
+        return gas;
+    }
+
+    public Boolean getActiveSale() {
+        return activeSale;
+    }
+
+    public Boolean getActiveRent() {
+        return activeRent;
+    }
+
+    public Integer getGarageTypeId() {
+        return garageTypeId;
+    }
+
+    public Set<Integer> getPurposeIds() {
+        return purposeIds;
+    }
+
+    public Boolean withBusiness() {
+        return withBusiness;
     }
 }

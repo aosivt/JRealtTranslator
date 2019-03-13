@@ -15,6 +15,13 @@ public class Vse42Object {
         offer.setRepair(object.getRepair(serviceAllJson));
         offer.setCost(object.getCost(serviceAllJson,offer.getOperation()));
 
+        offer.setCategory(category);
+        offer.setFiles(serviceAllJson.getPhotos());
+        offer.setId(String.format("%s%s",serviceAllJson.getDataClass(),serviceAllJson.getId()));
+        offer.setOperation(object.getOperation(serviceAllJson.isActiveSale()));
+
+//        offer.setPhone(serviceAllJson.getContact());
+
     }
     private Integer getMasonry(ServiceAllJson serviceAllJson) {
         //55 Кирпич
@@ -122,4 +129,7 @@ public class Vse42Object {
         return Float.valueOf(Math.round(priceRur / 1000));
     }
 
+    private String getOperation(Boolean isSale){
+        return isSale?BuilderVse42Advert.OPERATION_SELL:BuilderVse42Advert.OPERATION_LEASE;
+    }
 }

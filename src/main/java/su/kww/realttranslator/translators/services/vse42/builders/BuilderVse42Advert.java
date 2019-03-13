@@ -41,22 +41,20 @@ public class BuilderVse42Advert extends AbstractBuilderAdvert {
     public AdvertOffer buildAdvertOffer(AdvertSite advertSite) {
         ServiceAllJson serviceAllJson = getServiceAllJsonByAdvertSite(advertSite);
         Vse42AdvertOffer vse42AdvertOffer = new Vse42AdvertOffer();
-        Integer category = Vse42Districts.get(serviceAllJson,advertSite.getDataType());
-        vse42AdvertOffer.setCategory(category);
-        vse42AdvertOffer.setOperation(getOperation(serviceAllJson.isActiveSale()));
+        Integer category = Vse42Category.get(serviceAllJson);
+        vse42AdvertOffer.setType(Vse42Type.get(serviceAllJson,category));
         vse42AdvertOffer.setDistrict(Vse42Districts.get(serviceAllJson,category));
         vse42AdvertOffer.setAddress(Vse42Address.get(serviceAllJson,category));
-        vse42AdvertOffer.setFiles(serviceAllJson.getPhotos());
-        vse42AdvertOffer.setId(String.format("%s%s",serviceAllJson.getDataClass(),serviceAllJson.getId()));
         vse42AdvertOffer.setRooms(Vse42Rooms.get(serviceAllJson,category));
         Vse42Object.set(serviceAllJson, category, vse42AdvertOffer);
+        Vse42AArea.set(serviceAllJson,category,vse42AdvertOffer);
+        Vse42Floors.set(serviceAllJson,category,vse42AdvertOffer);
+
 
 
         return vse42AdvertOffer;
     }
 
-    private String getOperation(Boolean isSale){
-        return isSale?OPERATION_SELL:OPERATION_LEASE;
-    }
+
 
 }
