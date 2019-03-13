@@ -35,7 +35,7 @@
         <mapping class="su.kww.realttranslator.core.api.inside.database.entities.UserSettings" />
         <mapping class="su.kww.realttranslator.core.api.inside.database.entities.AdvertSite" />
         <!--<mapping class="su.kww.realttranslator.core.api.inside.database.entities.AdvertSiteData" />-->
-        <!--<mapping class="su.kww.realttranslator.core.api.inside.database.entities.MailerPreset" />-->
+        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.MailerPreset" />
 
 
     </session-factory>

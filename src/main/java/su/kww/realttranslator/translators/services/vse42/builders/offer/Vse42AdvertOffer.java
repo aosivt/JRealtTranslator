@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import su.kww.realttranslator.translators.builders.advert.AdvertOffer;
 
 import java.util.List;
+import java.util.Set;
 
 public class Vse42AdvertOffer implements AdvertOffer {
     
@@ -65,7 +66,7 @@ public class Vse42AdvertOffer implements AdvertOffer {
     private String id;
 
     @JsonProperty("files")
-    private List<String> files;
+    private Set<String> files;
 
     public Integer getCategory() {
         return category;
@@ -219,11 +220,11 @@ public class Vse42AdvertOffer implements AdvertOffer {
         this.id = id;
     }
 
-    public List<String> getFiles() {
+    public Set<String> getFiles() {
         return files;
     }
 
-    public void setFiles(List<String> files) {
+    public void setFiles(Set<String> files) {
         this.files = files;
     }
 }

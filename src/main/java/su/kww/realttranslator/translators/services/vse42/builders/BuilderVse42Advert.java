@@ -6,10 +6,7 @@ import su.kww.realttranslator.translators.builders.advert.AbstractBuilderAdvert;
 import su.kww.realttranslator.translators.builders.advert.AdvertOffer;
 import su.kww.realttranslator.translators.services.vse42.builders.offer.Vse42Advert;
 import su.kww.realttranslator.translators.services.vse42.builders.offer.Vse42AdvertOffer;
-import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Address;
-import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Category;
-import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Districts;
-import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Object;
+import su.kww.realttranslator.translators.services.vse42.builders.offer.options.*;
 
 import java.util.Objects;
 import java.util.Set;
@@ -49,8 +46,11 @@ public class BuilderVse42Advert extends AbstractBuilderAdvert {
         vse42AdvertOffer.setOperation(getOperation(serviceAllJson.isActiveSale()));
         vse42AdvertOffer.setDistrict(Vse42Districts.get(serviceAllJson,category));
         vse42AdvertOffer.setAddress(Vse42Address.get(serviceAllJson,category));
-
+        vse42AdvertOffer.setFiles(serviceAllJson.getPhotos());
+        vse42AdvertOffer.setId(String.format("%s%s",serviceAllJson.getDataClass(),serviceAllJson.getId()));
+        vse42AdvertOffer.setRooms(Vse42Rooms.get(serviceAllJson,category));
         Vse42Object.set(serviceAllJson, category, vse42AdvertOffer);
+
 
         return vse42AdvertOffer;
     }
