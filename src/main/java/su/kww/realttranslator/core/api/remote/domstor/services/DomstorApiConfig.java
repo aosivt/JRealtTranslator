@@ -5,10 +5,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import su.kww.realttranslator.core.api.inside.database.entities.*;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdvertSite;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdverts;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositorySite;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryUserSettings;
+import su.kww.realttranslator.core.api.inside.database.repositories.*;
 import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
@@ -35,7 +32,7 @@ public class DomstorApiConfig extends BaseApiConfig {
         return getRetrofitForBaseUrl().create(ServiceConfig.class).getLogin();
     }
     @Override
-    public Observable<MailerPresentsEntity> getMailer() {
+    public Observable<Set<MailerPresentsEntity>> getMailer() {
         return getRetrofitForBaseUrl().create(ServiceConfig.class).getMailer();
     }
     @Override
@@ -58,6 +55,10 @@ public class DomstorApiConfig extends BaseApiConfig {
 
     public void synchronize(String userName, String passWord) {
         setUserNamePassword(createUserPass(userName,passWord));
+
+        getMailer()
+//                //.doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
+                .subscribe(this::updateMailerPresent).dispose();
 
         getLogin()
 //                //.doOnError(e->fieldMessage(MessageForTranslator.ERROR_USER_PASSWORD + e.getMessage()))
@@ -108,18 +109,28 @@ public class DomstorApiConfig extends BaseApiConfig {
 //                .sequential()
                 .map(RepositoryAdverts::create)
                 .collect(Collectors.toSet());
-        RepositoryAdvertSite.clearTableByNameEntity(Advert.class.getName());
-        RepositoryAdverts.insertBySetEntity(adverts);
+//        RepositoryAdvertSite.clearTableByNameEntity(Advert.class.getName());
+        RepositoryAdverts.updateBySetEntity(adverts);
     }
 
-    private void updateAdvertSite(Set<LinksSiteJson> LinksSites){
-        Set<EntityDomstor> advertsites = LinksSites
+    private void updateAdvertSite(Set<LinksSiteJson> linksSites){
+        Set<EntityDomstor> advertsites = linksSites
                 .stream()
 //                .parallelStream()
                 .map(RepositoryAdvertSite::create)
                 .collect(Collectors.toSet());
-        RepositoryAdvertSite.clearTableByNameEntity(AdvertSiteUpdate.class.getName());
+//        RepositoryAdvertSite.clearTableByNameEntity(AdvertSiteUpdate.class.getName());
         RepositoryAdvertSite.updateBySetEntity(advertsites);
+    }
+
+    private void updateMailerPresent(Set<MailerPresentsEntity> mailerPresentsEntities){
+        Set<EntityDomstor> mailerPresets = mailerPresentsEntities
+                .stream()
+//                .parallelStream()
+                .map(RepositoryMailerPresent::create)
+                .collect(Collectors.toSet());
+//        RepositoryAdvertSite.clearTableByNameEntity(AdvertSiteUpdate.class.getName());
+        RepositoryAdvertSite.updateBySetEntity(mailerPresets);
     }
 
 

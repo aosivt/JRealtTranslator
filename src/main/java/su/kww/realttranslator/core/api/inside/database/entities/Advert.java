@@ -41,9 +41,6 @@ public class Advert implements EntityDomstor {
     @Column(name = "deleted", nullable = false)
     private Boolean deleted = false;
 
-//    @OneToMany(mappedBy="advert")
-//    private Set<AdvertSite> advertSites = new HashSet<>();
-
     public Date getServerDate() {
         return serverDate;
     }
@@ -92,11 +89,4 @@ public class Advert implements EntityDomstor {
         this.domstorId = domstorId;
     }
 
-//    public Set<AdvertSite> getAdvertSites() {
-//        return advertSites;
-//    }
-//
-//    public void setAdvertSites(Set<AdvertSite> advertSites) {
-//        this.advertSites = advertSites;
-//    }
 }

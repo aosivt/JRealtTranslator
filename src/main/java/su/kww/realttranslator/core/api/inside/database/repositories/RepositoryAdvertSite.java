@@ -2,12 +2,9 @@ package su.kww.realttranslator.core.api.inside.database.repositories;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
+import su.kww.realttranslator.core.api.inside.database.entities.*;
 
 
-import su.kww.realttranslator.core.api.inside.database.entities.AdvertSiteData;
-import su.kww.realttranslator.core.api.inside.database.entities.AdvertSiteUpdate;
-import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import su.kww.realttranslator.core.api.inside.utils.HibernateUtil;
 import su.kww.realttranslator.core.api.remote.domstor.entities.links.LinksSiteJson;
@@ -25,10 +22,10 @@ public class RepositoryAdvertSite extends AbstractRepository{
         advertSite.setSiteId(linksSites.getSiteId());
         advertSite.setDataType(linksSites.getType());
         advertSite.setDomstorId(linksSites.getDomstorId());
-//        advertSite.setId(new AdvertSiteId(linksSites.getSiteId(),linksSites.getType(),linksSites.getDomstorId()));
         advertSite.setLoaded(linksSites.getLoaded());
         advertSite.setOperationId(linksSites.getOperation());
         advertSite.setExternalId(linksSites.getExternalId());
+        advertSite.setExternalUrl(linksSites.getExternalUrl());
         advertSite.setAdvertEditDt(linksSites.getAdvertEditDate());
         advertSite.setVersion(linksSites.getVersion());
         advertSite.setExternalUrl(linksSites.getExternalUrl());

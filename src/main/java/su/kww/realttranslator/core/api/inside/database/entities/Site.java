@@ -1,5 +1,7 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 
 import javax.persistence.*;
@@ -43,6 +45,7 @@ public class Site implements EntityDomstor {
     private Boolean autorunAvailable = false;
 
     @OneToOne
+    @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumn(name = "id", referencedColumnName = "siteId")
     private SiteSettings siteSettings;
 

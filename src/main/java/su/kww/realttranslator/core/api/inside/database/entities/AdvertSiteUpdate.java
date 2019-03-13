@@ -51,13 +51,6 @@ public class AdvertSiteUpdate implements EntityDomstor {
     @Column(name = "external_url")
     private String externalUrl = "";
 
-
-
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumns({
-//            @JoinColumn(name="data_type", referencedColumnName="data_type", insertable = false, updatable = false),
-//            @JoinColumn(name="domstor_id", referencedColumnName="domstor_id", insertable = false, updatable = false)
-//    })
     @Transient
     private Advert advert;
 

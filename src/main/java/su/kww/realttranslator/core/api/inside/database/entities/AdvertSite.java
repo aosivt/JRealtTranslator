@@ -54,8 +54,6 @@ public class AdvertSite implements EntityDomstor {
     @Column(name = "external_url")
     private String externalUrl = "";
 
-
-
     @ManyToOne(fetch = FetchType.EAGER)
     @NotFound(action = NotFoundAction.IGNORE)
     @JoinColumns({
