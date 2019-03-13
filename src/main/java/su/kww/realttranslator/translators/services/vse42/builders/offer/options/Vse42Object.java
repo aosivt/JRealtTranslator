@@ -13,12 +13,14 @@ public class Vse42Object {
         offer.setWc(object.getWc(serviceAllJson));
         offer.setLogia(object.getLogia(serviceAllJson,category));
         offer.setRepair(object.getRepair(serviceAllJson));
-        offer.setCost(object.getCost(serviceAllJson,offer.getOperation()));
 
+        offer.setOperation(object.getOperation(serviceAllJson.isActiveSale()));
+
+        offer.setCost(object.getCost(serviceAllJson));
         offer.setCategory(category);
         offer.setFiles(serviceAllJson.getPhotos());
         offer.setId(String.format("%s%s",serviceAllJson.getDataClass(),serviceAllJson.getId()));
-        offer.setOperation(object.getOperation(serviceAllJson.isActiveSale()));
+
 
 //        offer.setPhone(serviceAllJson.getContact());
 
@@ -118,9 +120,10 @@ public class Vse42Object {
 //        return phones.Count > 1 ? String.Join(",", phones.GetRange(0, 2)) : phones.FirstOrDefault();
 //    }
 
-    private Float getCost(ServiceAllJson serviceAllJson, String operationString)
+    private Float getCost(ServiceAllJson serviceAllJson)
     {
-        Double priceRur = Double.valueOf(operationString.equals(BuilderVse42Advert.OPERATION_SELL )?
+        Double priceRur = Double.valueOf(
+                            getOperation(serviceAllJson.isActiveSale()).equals(BuilderVse42Advert.OPERATION_SELL )?
                             serviceAllJson.getPriceFull() : serviceAllJson.getPriceFullRur());
         if(priceRur == 0) {
             return 0F;
