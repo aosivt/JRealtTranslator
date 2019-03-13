@@ -1,14 +1,12 @@
 package su.kww.realttranslator.translators.services.vse42.builders;
 
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdverts;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.translators.builders.advert.AbstractBuilderAdvert;
 import su.kww.realttranslator.translators.builders.advert.AdvertOffer;
+import su.kww.realttranslator.translators.services.vse42.builders.offer.Vse42Advert;
 import su.kww.realttranslator.translators.services.vse42.builders.offer.Vse42AdvertOffer;
-import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Address;
-import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Districts;
-import su.kww.realttranslator.translators.services.vse42.builders.offer.options.Vse42Object;
+import su.kww.realttranslator.translators.services.vse42.builders.offer.options.*;
 
 import java.util.Objects;
 import java.util.Set;
@@ -31,12 +29,9 @@ public class BuilderVse42Advert extends AbstractBuilderAdvert {
 
         BuilderVse42Advert builderVse42Advert = new BuilderVse42Advert();
         Set<Vse42AdvertOffer> vse42AdvertOffers = advertSites
-//                .parallelStream()
-                .stream()
+                .parallelStream()
                 .filter(builderVse42Advert::isNotDeleteProcess)
-                .filter(f-> Objects.nonNull(RepositoryAdverts.getById(f.getDataType(),f.getDomstorId())))
                 .map(advertSite-> (Vse42AdvertOffer)builderVse42Advert.buildAdvertOffer(advertSite))
-
                 .collect(Collectors.toSet());
 
         return vse42AdvertOffers;
@@ -44,28 +39,22 @@ public class BuilderVse42Advert extends AbstractBuilderAdvert {
 
     @Override
     public AdvertOffer buildAdvertOffer(AdvertSite advertSite) {
-
-        ServiceAllJson serviceAllJson = null;
-        try{
-            serviceAllJson = getServiceAllJsonByAdvertSite(advertSite);
-        }catch (NullPointerException e){
-            return null;
-        }
-
+        ServiceAllJson serviceAllJson = getServiceAllJsonByAdvertSite(advertSite);
         Vse42AdvertOffer vse42AdvertOffer = new Vse42AdvertOffer();
-        Integer category = Vse42Districts.get(serviceAllJson,advertSite.getDataType());
-        vse42AdvertOffer.setCategory(category);
-        vse42AdvertOffer.setOperation(getOperation(serviceAllJson.isActiveSale()));
+        Integer category = Vse42Category.get(serviceAllJson);
+        vse42AdvertOffer.setType(Vse42Type.get(serviceAllJson,category));
         vse42AdvertOffer.setDistrict(Vse42Districts.get(serviceAllJson,category));
         vse42AdvertOffer.setAddress(Vse42Address.get(serviceAllJson,category));
-
+        vse42AdvertOffer.setRooms(Vse42Rooms.get(serviceAllJson,category));
         Vse42Object.set(serviceAllJson, category, vse42AdvertOffer);
+        Vse42AArea.set(serviceAllJson,category,vse42AdvertOffer);
+        Vse42Floors.set(serviceAllJson,category,vse42AdvertOffer);
+
+
 
         return vse42AdvertOffer;
     }
 
-    private String getOperation(Boolean isSale){
-        return isSale?OPERATION_SELL:OPERATION_LEASE;
-    }
+
 
 }

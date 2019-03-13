@@ -2,10 +2,7 @@ package su.kww.realttranslator.core.api.inside.database.entities;
 
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
@@ -15,6 +12,7 @@ public class MailerPreset implements EntityDomstor {
     //.WithColumn("id").AsInt32().PrimaryKey()
     @Id
     @Column(name = "id")
+    @GeneratedValue(generator = "native")
     private Integer id;
     //.WithColumn("host").AsString(255).NotNullable()
     @Column(name = "host", nullable = false)

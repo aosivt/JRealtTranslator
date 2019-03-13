@@ -1,5 +1,7 @@
 package su.kww.realttranslator.core.api.inside.database.entities;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
 import javax.persistence.*;
 import java.util.Date;
@@ -52,6 +54,7 @@ public class SiteSettings implements EntityDomstor {
     private Boolean isAutorunEnabled = false;
 
     @OneToOne(fetch= FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "siteSettings")
+    @NotFound(action = NotFoundAction.IGNORE)
     private Site site;
 
     public Integer getSiteId() {

@@ -33,8 +33,9 @@
         <mapping class="su.kww.realttranslator.core.api.inside.database.entities.Site" />
         <mapping class="su.kww.realttranslator.core.api.inside.database.entities.SiteSettings" />
         <mapping class="su.kww.realttranslator.core.api.inside.database.entities.UserSettings" />
-        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.AdvertSite" />
+        <!--<mapping class="su.kww.realttranslator.core.api.inside.database.entities.AdvertSite" />-->
         <!--<mapping class="su.kww.realttranslator.core.api.inside.database.entities.AdvertSiteData" />-->
+        <mapping class="su.kww.realttranslator.core.api.inside.database.entities.AdvertSiteUpdate" />
         <mapping class="su.kww.realttranslator.core.api.inside.database.entities.MailerPreset" />
 
 

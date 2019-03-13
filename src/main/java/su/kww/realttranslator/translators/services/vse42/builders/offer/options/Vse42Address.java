@@ -21,6 +21,6 @@ public class Vse42Address {
 
         String abbr = serviceAllJson.getStreet().getAbbr();
         String house = serviceAllJson.getBuildingNum().toString();
-        return (abbr == null ? "" : abbr + ". ") + street + (house == null? "" : ", " + house);
+        return (abbr == null ? "" : abbr + " ") + street + (house == null? "" : ", " + house);
     }
 }

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.sql.Date;
+
 public class MailerPresentsEntity {
     @SerializedName("id")
     @Expose
@@ -33,6 +35,17 @@ public class MailerPresentsEntity {
     @Expose
     @JsonProperty("host")
     private String host;
+
+    @SerializedName("title")
+    @Expose
+    @JsonProperty("title")
+    private String title;
+
+    @SerializedName("updatedAt")
+    @Expose
+    @JsonProperty("updatedAt")
+    private Date updatedAt;
+
     @SerializedName("enabled")
     @Expose
     @JsonProperty("enabled")
@@ -68,5 +81,13 @@ public class MailerPresentsEntity {
 
     public Boolean getEnabled() {
         return enabled;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 }

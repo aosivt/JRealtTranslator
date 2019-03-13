@@ -18,7 +18,7 @@ public interface ServiceConfig {
     @GET(BaseApiConfig.LoginUrl)
     Observable<LoginEntity> getLogin();
     @GET(BaseApiConfig.MailerPresetsUrl)
-    Observable<MailerPresentsEntity> getMailer();
+    Observable<Set<MailerPresentsEntity>> getMailer();
     @GET(BaseApiConfig.AdvertsUrl)
     Observable<Set<ServiceAllJson>> getAdverts();
     @GET(BaseApiConfig.ResourcesUrl)

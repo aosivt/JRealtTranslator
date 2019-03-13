@@ -1,12 +1,17 @@
 package su.kww.realttranslator.translators.services.vse42.builders.offer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import su.kww.realttranslator.translators.builders.advert.AdvertOffer;
 
 import java.util.List;
+import java.util.Set;
 
 public class Vse42AdvertOffer implements AdvertOffer {
-    
+
+    @SerializedName("category")
+    @Expose
     @JsonProperty("category")
     private Integer category;
 
@@ -28,15 +33,21 @@ public class Vse42AdvertOffer implements AdvertOffer {
     @JsonProperty("floor")
     private Integer floor;
 
+    @SerializedName("floor_max")
+    @Expose
     @JsonProperty("floor_max")
     private Integer floorMax;
 
     @JsonProperty("area")
-    private Float Area;
+    private Float area;
 
+    @SerializedName("kitchen_area")
+    @Expose
     @JsonProperty("kitchen_area")
     private Float kitchenArea;
 
+    @SerializedName("living_area")
+    @Expose
     @JsonProperty("living_area")
     private Float livingArea;
 
@@ -52,20 +63,26 @@ public class Vse42AdvertOffer implements AdvertOffer {
     @JsonProperty("repair")
     private Integer repair;
 
+    @SerializedName("telephone")
+    @Expose
     @JsonProperty("telephone")
     private String phone;
 
+    @SerializedName("additional_info")
+    @Expose
     @JsonProperty("additional_info")
     private String additionalInfo;
 
     @JsonProperty("cost")
     private Float cost;
 
+    @SerializedName("ID")
+    @Expose
     @JsonProperty("ID")
     private String id;
 
     @JsonProperty("files")
-    private List<String> files;
+    private Set<String> files;
 
     public Integer getCategory() {
         return category;
@@ -132,11 +149,11 @@ public class Vse42AdvertOffer implements AdvertOffer {
     }
 
     public Float getArea() {
-        return Area;
+        return area;
     }
 
     public void setArea(Float area) {
-        Area = area;
+        area = area;
     }
 
     public Float getKitchenArea() {
@@ -219,11 +236,11 @@ public class Vse42AdvertOffer implements AdvertOffer {
         this.id = id;
     }
 
-    public List<String> getFiles() {
+    public Set<String> getFiles() {
         return files;
     }
 
-    public void setFiles(List<String> files) {
+    public void setFiles(Set<String> files) {
         this.files = files;
     }
 }

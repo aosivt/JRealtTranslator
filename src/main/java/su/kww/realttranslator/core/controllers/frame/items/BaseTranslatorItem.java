@@ -11,12 +11,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.apache.commons.codec.binary.Base64;
 import su.kww.realttranslator.core.api.inside.database.entities.AdvertSite;
 import su.kww.realttranslator.core.api.inside.database.entities.Site;
 import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdvertSite;
-import su.kww.realttranslator.core.api.inside.database.repositories.RepositoryAdverts;
 import su.kww.realttranslator.core.controllers.frame.BaseFrameTranslators;
 import su.kww.realttranslator.core.controllers.frame.items.property.TranslatorProperty;
 import su.kww.realttranslator.translators.builders.ResultProcessService;
@@ -125,21 +125,17 @@ abstract class BaseTranslatorItem implements Initializable, TranslatorItem {
     }
 
     protected TranslatorItem fieldingInfo(){
-        Set<AdvertSite> advertSites = getAdvertSitesBySite(site).stream()
-                .filter(f->Objects.nonNull(RepositoryAdverts.getById(f.getDataType(),f.getDomstorId())))
-                .collect(Collectors.toSet());
-
+        Set<AdvertSite> advertSites = getAdvertSitesBySite(site);
         advertSites.forEach(as->OperationAdvertSite.values()[as.getOperationId()-1].countOffer(this));
         return this;
     }
 
     protected Set<AdvertSite> getAdvertSitesBySite(Site site){
-
         return RepositoryAdvertSite.getAdvertSiteBySite(site)
-                                   .parallelStream()
-//                                   .filter(s->Objects.nonNull(s.getAdvert()))
-//                                   .stream()
-//                                   .filter(Objects::isNull)
+//                                   .parallelStream()
+                                    .stream()
+                                   .filter(s->Objects.nonNull(s.getAdvert()))
+//                                   .sequential()
                                    .collect(Collectors.toSet());
     }
 
