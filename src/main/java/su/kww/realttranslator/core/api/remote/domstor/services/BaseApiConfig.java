@@ -3,15 +3,26 @@ package su.kww.realttranslator.core.api.remote.domstor.services;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import io.reactivex.Observable;
+import okhttp3.*;
+import retrofit2.Response;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
-import okhttp3.Credentials;
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
+import su.kww.realttranslator.core.api.remote.domstor.entities.links.LinksSiteJson;
+import su.kww.realttranslator.core.api.remote.domstor.entities.login.LoginEntity;
+import su.kww.realttranslator.core.api.remote.domstor.entities.mailer.MailerPresentsEntity;
+import su.kww.realttranslator.core.api.remote.domstor.entities.options.domstor.data.UploadResult;
+import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
 
-public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
+import java.util.Set;
+
+public abstract class BaseApiConfig implements UrlConfig {
 
     protected String baseUrl = "http://api.domstor.ru/";
+
+    protected String basePhotoUrl = "http://static.domstor.ru/";
 
     private Gson gson = new GsonBuilder()
                                         .setLenient()
@@ -28,15 +39,15 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
     }
 
 
-    protected Retrofit getRetrofitForBaseUrl(){
-
+    protected Retrofit getRetrofitByUrl(String path){
         return new Retrofit.Builder()
                 .client(getHttpClient())
-                .baseUrl(baseUrl)
+                .baseUrl(path)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
+
 
     protected OkHttpClient getHttpClient(){
         return new OkHttpClient.Builder().authenticator(
@@ -49,8 +60,4 @@ public abstract class BaseApiConfig implements UrlConfig, ServiceConfig {
         return Credentials.basic(userNamePassword.getUsername(), userNamePassword.getPassword());
     }
 
-    public BaseApiConfig setUserNamePassword(UserNamePassword userNamePassword) {
-        this.userNamePassword = userNamePassword;
-        return this;
-    }
 }

@@ -3,6 +3,10 @@ package su.kww.realttranslator.core.api.remote.domstor.services;
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+
+
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 import retrofit2.http.*;
 import su.kww.realttranslator.core.api.remote.domstor.entities.ServiceAllJson;
 import su.kww.realttranslator.core.api.remote.domstor.entities.links.LinksSiteJson;
@@ -13,7 +17,7 @@ import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resourc
 
 import java.util.Set;
 
-public interface ServiceConfig {
+public interface ServiceConfig{
 
     @GET(BaseApiConfig.LoginUrl)
     Observable<LoginEntity> getLogin();
@@ -29,4 +33,5 @@ public interface ServiceConfig {
     @Multipart
     @POST(BaseApiConfig.UploadUrl)
     Observable<UploadResult> postDomstorData(@Part MultipartBody.Part file, @Part("file") RequestBody name);
+
 }

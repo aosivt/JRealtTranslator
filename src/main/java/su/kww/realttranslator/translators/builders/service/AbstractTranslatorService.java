@@ -7,6 +7,7 @@ import okhttp3.RequestBody;
 import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.entities.options.domstor.data.UploadResult;
+import su.kww.realttranslator.core.api.remote.domstor.services.DomstorApiConfig;
 
 import java.io.File;
 
@@ -23,7 +24,8 @@ public abstract class AbstractTranslatorService implements TranslatorService{
         MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("data", file.getName(), requestBody);
         RequestBody filename = RequestBody.create(MediaType.parse("text/plain"), file.getName());
 
-        Observable<UploadResult> resultObservable =  DaggerDomstorComponent.create().getDomstorApiConfig()
+        Observable<UploadResult> resultObservable =
+                DaggerDomstorComponent.create().getDomstorApiConfig()
                 .setUserNamePassword(usernamePassword)
                 .postDomstorData(fileToUpload, filename);
 
