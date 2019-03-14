@@ -33,13 +33,10 @@ public abstract class BaseTranslatorProperty implements Initializable {
     protected JFXTextField passwordResource;
     @FXML
     protected JFXTextField singlePhoneNumber;
-
     @FXML
     protected AnchorPane ancorPaneTranslatorProperty;
-
     @FXML
     protected Button ok;
-
     @FXML
     protected Button cancel;
 
@@ -110,4 +107,6 @@ public abstract class BaseTranslatorProperty implements Initializable {
         }
 
     }
+
+
 }

@@ -42,7 +42,13 @@ public class FrameTranslatorItem extends BaseTranslatorItem {
         createLogo();
         fieldingInfo();
         initTranslatorService();
-
+        setSitePublisher(subscribeToSite());
         return this;
+    }
+
+    private PublishSubject<Site> subscribeToSite(){
+        PublishSubject<Site> sitePublishSubject = PublishSubject.create();
+        sitePublishSubject.subscribe(s->frameTranslators.updateTranslatorsFromDB());
+        return sitePublishSubject;
     }
 }

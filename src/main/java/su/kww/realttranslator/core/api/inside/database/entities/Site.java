@@ -6,11 +6,12 @@ import su.kww.realttranslator.core.api.inside.database.entities.interfaces.Entit
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
 
 @Entity
 @Table(name = "site")
-public class Site implements EntityDomstor {
+public class Site implements EntityDomstor, Comparable<Site>  {
 
 //.WithColumn("id").AsInt32().PrimaryKey()
     @Id
@@ -135,5 +136,12 @@ public class Site implements EntityDomstor {
 
     public void setSiteSettings(SiteSettings siteSettings) {
         this.siteSettings = siteSettings;
+    }
+
+    @Override
+    public int compareTo(Site site) {
+        return Comparator.comparing(Site::getSiteKey)
+                .thenComparingInt(Site::getId)
+                .compare(this, site);
     }
 }

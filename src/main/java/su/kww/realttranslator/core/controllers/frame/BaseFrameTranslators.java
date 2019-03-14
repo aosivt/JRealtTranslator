@@ -61,4 +61,6 @@ public abstract class BaseFrameTranslators implements Initializable {
     }
 
     public abstract UserNamePassword getUserNamePassword();
+
+    public abstract void updateTranslatorsFromDB();
 }

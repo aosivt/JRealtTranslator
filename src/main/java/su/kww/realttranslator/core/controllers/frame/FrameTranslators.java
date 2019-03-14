@@ -11,6 +11,7 @@ import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import su.kww.realttranslator.core.controllers.frame.items.FrameTranslatorItem;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Set;
 
@@ -47,19 +48,12 @@ public class FrameTranslators extends BaseFrameTranslators {
         getBoxTranslatorItem(site).getChildren().add(loader.load());
         FrameTranslatorItem frameTranslatorItem = loader.getController();
         frameTranslatorItem.setSite(site);
-        frameTranslatorItem.setSitePublisher(subscribeToSite());
         frameTranslatorItem.initTranslator();
         frameTranslatorItem.setBaseFrameTranslators(this);
         return loader;
     }
 
-    private PublishSubject<Site> subscribeToSite(){
-        PublishSubject<Site> sitePublishSubject = PublishSubject.create();
-        sitePublishSubject.subscribe(this::updateTranslatorsFromDB);
-        return sitePublishSubject;
-    }
-
-    private void updateTranslatorsFromDB(Site site) {
+    public void updateTranslatorsFromDB() {
         sites = null;
         clearListVBox();
         activateTranslatorItems();
@@ -70,6 +64,7 @@ public class FrameTranslators extends BaseFrameTranslators {
         sites.parallelStream().filter(Objects::nonNull)
                               .map(s->(Site)s)
                               .sequential()
+                              .sorted()
                               .forEach(this::addTranslator);
         succesfullSync();
     }
@@ -94,7 +89,7 @@ public class FrameTranslators extends BaseFrameTranslators {
 
     public void synchronize(){
         synchronize(userNamePassword.getUsername(), userNamePassword.getPassword());
-        updateTranslatorsFromDB(null);
+        updateTranslatorsFromDB();
     }
 
     private void succesfullSync(){
