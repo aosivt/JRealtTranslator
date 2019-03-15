@@ -37,7 +37,6 @@ public class TestProcessAdd {
     private void assertAddDataToNgs(){
         NgsApiConfig ngsApiConfig = DaggerNgsComponent.create().getNgsApiConfig();
 
-
         String t = ngsApiConfig.auth(user,pass).add(dataForNgsForm).getResponce();
 
         assertNotNull(t);
@@ -58,7 +57,8 @@ public class TestProcessAdd {
     }
 
     private String getDataForNgsForm(){
-        return "{\"rubric\": \"homes\",\"deal_type\": \"sell\",\"price\": \"650000\",\"photos\": [],\"description\": \"В продаже полноценная 2-х комнатная квартира, (Чулым 3). Квартира чистая, светлая, теплая. Окна по всей квартиры пластиковые, новая входная дверь. Реальному покупателю торг.\",\"contacts\": {     \"person\": \"Алена Александровна\",     \"organization_name\": \"Агентство недвижимости «Новосибирск Недвижимость»\",     \"phones\": [       {         \"value\": \"89137707563\",         \"comment\": \"\"       }     ],     \"email\": \"nn2633262@mail.ru\",     \"address\": \"г. Новосибирск, Немировича -Данченко, 104\"   },\"is_net_sale\": true,\"is_exchange\": false,\"is_pawn\": false,\"is_deposit\": false,\"is_mortgage\": false,\"agency_code\": null,\"house\": {     \"material_type\": {       \"id\": \"374\"     }   },\"geo\": {     \"city\": {       \"id\": 2263012,       \"name\": \"Чулым-3\"     },     \"district\": null,     \"micro_district\": null,     \"street\": {       \"id\": 16071352,       \"name\": \"Центральная\"     },     \"house_number\": \"12\",     \"region\": {       \"id\": 54     }   },\"rent_duration_type\": {     \"id\": \"544\"   },\"total_area\": 41.2,\"living_area\": 24.8,\"kitchen_area\": 5.0,\"floor\": 1,\"floors_count\": 2,\"loggia_count\": null,\"balcony_count\": null,\"type\": {     \"id\": \"100000000\"   },\"layout_type\": {     \"id\": \"395\"   },\"condition_type\": {     \"id\": \"163128\"   },\"ownership_type\": {     \"id\": \"422\"   },\"wc_type\": {     \"id\": \"400\"   },\"rooms_count_type\": {\"id\": \"367\"   } }";
+        return
+                "{\"rubric\":\"homes\",\"deal_type\":\"sell\",\"price\":\"650000\",\"photos\":[],\"description\":\"В продаже полноценная 2-х комнатная квартира, (Чулым 3). Квартира чистая, светлая, теплая. Окна по всей квартиры пластиковые, новая входная дверь. Реальному покупателю торг.\",\"contacts\": {\"person\": \"Алена Александровна\",\"organization_name\": \"Агентство недвижимости «Новосибирск Недвижимость»\",\"phones\": [{\"value\": \"89137707563\",         \"comment\": \"\"       }     ],     \"email\": \"nn2633262@mail.ru\",     \"address\": \"г. Новосибирск, Немировича -Данченко, 104\"   },\"is_net_sale\": true,\"is_exchange\": false,\"is_pawn\": false,\"is_deposit\": false,\"is_mortgage\": false,\"agency_code\": null,\"house\": {     \"material_type\": {       \"id\": \"374\"     }   },\"geo\": {     \"city\": {       \"id\": 2263012,       \"name\": \"Чулым-3\"     },     \"district\": null,     \"micro_district\": null,     \"street\": {       \"id\": 16071352,       \"name\": \"Центральная\"     },     \"house_number\": \"12\",     \"region\": {       \"id\": 54     }   },\"rent_duration_type\": {     \"id\": \"544\"   },\"total_area\": 41.2,\"living_area\": 24.8,\"kitchen_area\": 5.0,\"floor\": 1,\"floors_count\": 2,\"loggia_count\": null,\"balcony_count\": null,\"type\":{\"id\":\"100000000\"},\"layout_type\":{\"id\":\"395\"},\"condition_type\":{\"id\":\"163128\"},\"ownership_type\":{\"id\":\"422\"},\"wc_type\":{\"id\":\"400\"},\"rooms_count_type\":{\"id\":\"367\"}}";
     }
 
 }

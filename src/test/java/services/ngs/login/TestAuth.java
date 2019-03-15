@@ -20,7 +20,7 @@ public class TestAuth {
 
     private void assertAuthNgs(){
         String t = DaggerNgsComponent.create().getNgsApiConfig()
-                                   .auth(pass,user)
+                                   .auth(user,pass)
                                    .getToken();
         assertNotNull(t);
     }

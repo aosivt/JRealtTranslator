@@ -38,10 +38,10 @@ public class NgsApiConfig {
 
     public NgsApiConfig add(String data){
         processNgsBaseApiConfig
-                .setToken(token)
-                .add(data)
-                .doOnError(this::setResponce)
-                .subscribe(this::setResponce).dispose();
+                            .setToken(token)
+                            .add(data)
+                            .doOnError(this::setResponce)
+                            .subscribe(this::setResponce).dispose();
         return this;
     }
 
