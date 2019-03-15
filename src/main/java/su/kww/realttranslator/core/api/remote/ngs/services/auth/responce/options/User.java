@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.api.remote.ngs.services.responce.auth.options;
+package su.kww.realttranslator.core.api.remote.ngs.services.auth.responce.options;
 
 public class User {
     private Integer id;
