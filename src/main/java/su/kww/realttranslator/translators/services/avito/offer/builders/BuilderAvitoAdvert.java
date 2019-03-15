@@ -18,7 +18,7 @@ public class BuilderAvitoAdvert extends AbstractBuilderAdvert {
 
     private final HashMap<Integer, BuilderAvitoAdvertOffer> mapOfferType = getMapType();
 
-    protected final static String ADDRESS_FORMAT_STRING = "%s %s, %s%s";
+    protected final static String ADDRESS_FORMAT_STRING = "%s %s, %s %s";
 
     protected final static String UNIT_SQUARE_M2 = "кв.м";
     protected final static String UNIT_SQUARE_100 = "cотка";
@@ -124,7 +124,7 @@ public class BuilderAvitoAdvert extends AbstractBuilderAdvert {
 //    }
 //
     private Set<String> getPhones(String textString){
-        return Arrays.asList(textString.split(",")).parallelStream().collect(Collectors.toSet());
+        return Arrays.asList(textString.split(",")).parallelStream().filter(Objects::isNull).collect(Collectors.toSet());
     }
 
 

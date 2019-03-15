@@ -1,7 +1,5 @@
 package domstor.remote;
 
-import io.reactivex.Observable;
-import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import retrofit2.Response;
@@ -9,9 +7,6 @@ import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
 import su.kww.realttranslator.core.api.remote.domstor.DomstorUsernamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
 import su.kww.realttranslator.core.api.remote.domstor.services.DomstorApiConfig;
-import su.kww.realttranslator.core.api.remote.ngs.DaggerNgsComponent;
-import su.kww.realttranslator.core.api.remote.ngs.services.request.NgsAuthRequest;
-import su.kww.realttranslator.core.api.remote.ngs.services.responce.auth.NgsAuthResponce;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -39,10 +34,10 @@ public class TestDownloadPhoto {
 
     @Test
     public void testDownload(){
-        Observable<Response<ResponseBody>> resp = domstorApiConfig.downloadPhotoByUrl(TEST_PHOTO_URL);
-        resp.subscribe(r->methodDownloadPhoto.invoke(domstorApiConfig
-                                                     ,r
-                                                     ,String.format(".JRealtTranslator/%s_%s/","3","234")));
+//        Observable<Response<ResponseBody>> resp = domstorApiConfig.downloadPhotos.downloadPhotoByUrl(TEST_PHOTO_URL);
+//        resp.subscribe(r->methodDownloadPhoto.invoke(domstorApiConfig
+//                                                     ,r
+//                                                     ,String.format(".JRealtTranslator/%s_%s/","3","234")));
     }
 
 
