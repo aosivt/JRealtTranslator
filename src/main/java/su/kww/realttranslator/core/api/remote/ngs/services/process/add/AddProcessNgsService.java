@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.api.remote.ngs.services.process;
+package su.kww.realttranslator.core.api.remote.ngs.services.process.add;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,17 +11,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import su.kww.realttranslator.core.api.remote.ngs.services.AbstractNgsBaseApiConfig;
 import su.kww.realttranslator.core.api.remote.ngs.services.NgsUrlConfig;
-import su.kww.realttranslator.core.api.remote.ngs.services.auth.AuthNgsServiceConfig;
-import su.kww.realttranslator.core.api.remote.ngs.services.auth.request.NgsAuthRequest;
-import su.kww.realttranslator.core.api.remote.ngs.services.auth.responce.NgsAuthResponce;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.add.request.AddProcessNgsRequest;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.add.response.AddProcessNgsResponse;
 
 import javax.inject.Inject;
 import java.io.IOException;
 
-public class ProcessNgsBaseApiConfig extends AbstractNgsBaseApiConfig implements NgsUrlConfig, ProcessNgsServiceConfig {
+public class AddProcessNgsService extends AbstractNgsBaseApiConfig implements NgsUrlConfig, AddProcessNgsConfig {
 
     @Inject
-    ProcessNgsBaseApiConfig(){}
+    AddProcessNgsService(){}
 
     protected static String BASE_URL = "https://novosibirsk.n1.ru/";
 
@@ -42,17 +41,11 @@ public class ProcessNgsBaseApiConfig extends AbstractNgsBaseApiConfig implements
     }
 
     @Override
-    public Observable<Object> add(String request) {
-        return getRetrofitForBaseUrl().create(ProcessNgsServiceConfig.class)
+    public Observable<AddProcessNgsResponse> add(AddProcessNgsRequest request) {
+        return getRetrofitForBaseUrl().create(AddProcessNgsConfig.class)
                                       .add(request);
     }
-//    {https://novosibirsk.n1.ru/api/rn/v2/offers/homes/?isPreview=0}
-//    {User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:28.0) Gecko/20100101 Firefox/28.0
-//        Accept: */*
-//Content-Type: application/x-www-form-urlencoded
-//Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4
 
-//}
     protected Response rewriteChainRequest(Interceptor.Chain chain) throws IOException {
         Request request  = chain.request()
                 .newBuilder()
@@ -67,11 +60,11 @@ public class ProcessNgsBaseApiConfig extends AbstractNgsBaseApiConfig implements
         return BASE_URL;
     }
 
-    private String getTokenForRequest(){
+    public String getTokenForRequest(){
         return String.format("Bearer %s", token);
     }
 
-    public ProcessNgsBaseApiConfig setToken(String token){
+    public AddProcessNgsService setToken(String token){
         this.token = token;
         return this;
     }

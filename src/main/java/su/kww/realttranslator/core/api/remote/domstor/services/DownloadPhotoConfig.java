@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
-public interface ServiceDownloadPhotoConfig {
+public interface DownloadPhotoConfig {
     @Streaming
     @GET
     Observable<Response<ResponseBody>> downloadPhotoByUrl(@Url String photoUrl);

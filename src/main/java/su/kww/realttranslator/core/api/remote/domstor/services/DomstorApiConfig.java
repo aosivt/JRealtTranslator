@@ -3,10 +3,6 @@ package su.kww.realttranslator.core.api.remote.domstor.services;
 import io.reactivex.Observable;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import okio.BufferedSink;
-import okio.Okio;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import su.kww.realttranslator.core.api.inside.database.entities.*;
 import su.kww.realttranslator.core.api.inside.database.entities.interfaces.EntityDomstor;
@@ -21,24 +17,16 @@ import su.kww.realttranslator.core.api.remote.domstor.entities.options.domstor.d
 import su.kww.realttranslator.core.api.remote.domstor.entities.resources.Resource;
 
 import javax.inject.Inject;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class DomstorApiConfig extends BaseApiConfig implements ServiceConfig {
 
     private String errorMessage = "";
 
     @Inject
-    ServiceDownloadPhoto serviceDownloadPhoto;
+    DownloadPhotoService serviceDownloadPhotoService;
 
     @Inject
     public DomstorApiConfig(){}
@@ -99,7 +87,7 @@ public class DomstorApiConfig extends BaseApiConfig implements ServiceConfig {
 
         Set<EntityDomstor> adverts = advertsServiceAllJson.stream()
                 .filter(Objects::nonNull)
-                .map(serviceDownloadPhoto.downloadPhotos)
+                .map(serviceDownloadPhotoService.downloadPhotos)
                 .map(RepositoryAdverts::create)
                 .collect(Collectors.toSet());
 //        RepositoryAdvertSite.clearTableByNameEntity(Advert.class.getName());

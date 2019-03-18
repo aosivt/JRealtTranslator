@@ -17,12 +17,12 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.function.Function;
 
-public class ServiceDownloadPhoto extends BaseApiConfig implements ServiceDownloadPhotoConfig {
+public class DownloadPhotoService extends BaseApiConfig implements DownloadPhotoConfig {
 
     private static final String FORMAT_PATH_PHOTOS = ".JRealtTranslator/%s_%s/";
 
     @Inject
-    public ServiceDownloadPhoto(){}
+    public DownloadPhotoService(){}
 
     public Function<ServiceAllJson,ServiceAllJson> downloadPhotos = (allJsonData) -> {
         allJsonData.getPhotos().forEach(fileNamePhoto ->
@@ -59,6 +59,6 @@ public class ServiceDownloadPhoto extends BaseApiConfig implements ServiceDownlo
 
     @Override
     public Observable<Response<ResponseBody>> downloadPhotoByUrl(String photoUrl) {
-        return getRetrofitForBasePhotoUrl().create(ServiceDownloadPhotoConfig.class).downloadPhotoByUrl(photoUrl);
+        return getRetrofitForBasePhotoUrl().create(DownloadPhotoConfig.class).downloadPhotoByUrl(photoUrl);
     }
 }

@@ -11,7 +11,7 @@ import su.kww.realttranslator.core.api.remote.domstor.services.DomstorApiConfig;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class TestDownloadPhoto {
+public class TestDownloadPhotoService {
 
     private DomstorApiConfig domstorApiConfig;
     private String TEST_PHOTO_URL;

@@ -54,4 +54,8 @@ public abstract class AbstractNgsBaseApiConfig {
         };
     }
 
+    public abstract String getTokenForRequest() throws Exception;
+
+    public abstract AbstractNgsBaseApiConfig setToken(String token) throws Exception;
+
 }

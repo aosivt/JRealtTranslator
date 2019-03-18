@@ -2,10 +2,10 @@ package su.kww.realttranslator.core.api.remote.ngs.services.auth.request;
 
 import javax.inject.Inject;
 
-public class NgsAuthRequest {
+public class AuthNgsRequest {
 
     @Inject
-    public NgsAuthRequest(){
+    public AuthNgsRequest(){
         setType("password");
     }
 

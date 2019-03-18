@@ -11,16 +11,16 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import su.kww.realttranslator.core.api.remote.ngs.services.AbstractNgsBaseApiConfig;
 import su.kww.realttranslator.core.api.remote.ngs.services.NgsUrlConfig;
-import su.kww.realttranslator.core.api.remote.ngs.services.auth.request.NgsAuthRequest;
-import su.kww.realttranslator.core.api.remote.ngs.services.auth.responce.NgsAuthResponce;
+import su.kww.realttranslator.core.api.remote.ngs.services.auth.request.AuthNgsRequest;
+import su.kww.realttranslator.core.api.remote.ngs.services.auth.responce.AuthNgsResponse;
 
 import javax.inject.Inject;
 import java.io.IOException;
 
-public class AuthNgsBaseApiConfig extends AbstractNgsBaseApiConfig implements NgsUrlConfig, AuthNgsServiceConfig {
+public class AuthNgsService extends AbstractNgsBaseApiConfig implements NgsUrlConfig, AuthNgsConfig {
 
     @Inject
-    AuthNgsBaseApiConfig(){}
+    AuthNgsService(){}
 
     protected static String BASE_URL = "https://realty.ngs42.ru/";
 
@@ -39,8 +39,8 @@ public class AuthNgsBaseApiConfig extends AbstractNgsBaseApiConfig implements Ng
     }
 
     @Override
-    public Observable<NgsAuthResponce> postAuthNgs(NgsAuthRequest authRequest) {
-        return getRetrofitForBaseUrl().create(AuthNgsServiceConfig.class)
+    public Observable<AuthNgsResponse> postAuthNgs(AuthNgsRequest authRequest) {
+        return getRetrofitForBaseUrl().create(AuthNgsConfig.class)
                                                 .postAuthNgs(authRequest);
     }
 
@@ -58,5 +58,15 @@ public class AuthNgsBaseApiConfig extends AbstractNgsBaseApiConfig implements Ng
     @Override
     protected String getBaseUrl() {
         return BASE_URL;
+    }
+
+    @Override
+    public String getTokenForRequest() throws Exception {
+        throw new Exception("this is not call execute method");
+    }
+
+    @Override
+    public AbstractNgsBaseApiConfig setToken(String token) throws Exception {
+        throw new Exception("this is not call execute method");
     }
 }
