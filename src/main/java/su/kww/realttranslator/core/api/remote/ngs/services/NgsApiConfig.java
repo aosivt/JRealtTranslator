@@ -19,6 +19,7 @@ import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.respons
 
 import javax.inject.Inject;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -35,11 +36,7 @@ public class NgsApiConfig {
     @Inject
     UploadPhotoService uploadPhotoService;
 
-
     private String token;
-
-    private AddProcessNgsResponse addProcessNgsResponse;
-    private AddProcessNgsRequest addProcessNgsRequest;
 
 
 
@@ -47,10 +44,8 @@ public class NgsApiConfig {
     public NgsApiConfig(){}
 
     public NgsApiConfig auth(String username, String pass){
-
         authNgsRequest.setUsername(username);
         authNgsRequest.setPassword(pass);
-
         authNgsService.postAuthNgs(authNgsRequest)
                             .doOnError(this::setError)
                             .subscribe(this::setToken)
@@ -59,29 +54,24 @@ public class NgsApiConfig {
     }
 
     public NgsApiConfig add(AddProcessNgsRequest data){
-        addProcessNgsService
-                            .setToken(token)
-                            .add(data)
-                            .doOnError(this::setError)
-                            .subscribe(this::setAddProcessNgsResponse).dispose();
+        try {
+            addProcessNgsService.setToken(token)
+                                .addWithCall(data)
+    //                            .doOnError(this::setError)
+    //                            .subscribe(this::setAddProcessNgsResponse).dispose();
+            .execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return this;
     }
 
-//    public Observable<ResponseBody> uploadPhoto(MultipartBody file){
-//        return uploadPhotoService.setToken(token).uploadPhoto(file);
-//    }
-//
-//    public Observable<UploadPhotoNgsResponse> uploadPhotoByPart(RequestBody type, RequestBody photo){
-//        return uploadPhotoService.setToken(token).uploadPhotoByPart(type, photo);
-//    }
-
-    public NgsApiConfig uploadPhotos(Set<String> pathToPhoto){
+    public Set<JsonPropertyPhoto> uploadPhotos(Set<String> pathToPhoto){
         Set<JsonPropertyPhoto> jsonPropertyPhotos = pathToPhoto.stream()
-                .map(this::buildRequestForUpload)
-                .map(BuilderJsonPropertyPhoto::build)
-                .collect(Collectors.toSet());
-        addProcessNgsRequest.setPhotos(jsonPropertyPhotos);
-        return this;
+                                                                .map(this::buildRequestForUpload)
+                                                                .map(BuilderJsonPropertyPhoto::build)
+                                                                .collect(Collectors.toSet());
+        return jsonPropertyPhotos;
     }
 
     private UploadPhotoNgsResponse buildRequestForUpload(String localPathPhoto){
@@ -97,8 +87,8 @@ public class NgsApiConfig {
         return uploadPhotoService.setToken(token).uploadPhotoByPartWithMap(type, photo);
     }
 
-    private void setAddProcessNgsResponse(AddProcessNgsResponse response) {
-        addProcessNgsResponse = response;
+    private void setAddProcessNgsResponse(Object response) {
+        System.out.println(response);
     }
 
     private void setError(Object o) {

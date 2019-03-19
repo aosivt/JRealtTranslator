@@ -4,10 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import io.reactivex.Observable;
-import okhttp3.Interceptor;
-import okhttp3.Request;
-import okhttp3.Response;
+import okhttp3.*;
 import retrofit2.Retrofit;
+import retrofit2.Call;
 import retrofit2.converter.gson.GsonConverterFactory;
 import su.kww.realttranslator.core.api.remote.ngs.services.AbstractNgsBaseApiConfig;
 import su.kww.realttranslator.core.api.remote.ngs.services.NgsUrlConfig;
@@ -41,9 +40,12 @@ public class AddProcessNgsService extends AbstractNgsBaseApiConfig implements Ng
     }
 
     @Override
-    public Observable<AddProcessNgsResponse> add(AddProcessNgsRequest request) {
-        return getRetrofitForBaseUrl().create(AddProcessNgsConfig.class)
-                                      .add(request);
+    public Observable<Object> add(AddProcessNgsRequest request) {
+        return getRetrofitForBaseUrl().create(AddProcessNgsConfig.class).add(request);
+    }
+    @Override
+    public Call<Object> addWithCall(AddProcessNgsRequest request) {
+        return getRetrofitForBaseUrl().create(AddProcessNgsConfig.class).addWithCall(request);
     }
 
     protected Response rewriteChainRequest(Interceptor.Chain chain) throws IOException {
@@ -67,6 +69,12 @@ public class AddProcessNgsService extends AbstractNgsBaseApiConfig implements Ng
     public AddProcessNgsService setToken(String token){
         this.token = token;
         return this;
+    }
+
+    protected OkHttpClient getUnsafeOkHttpClient(){
+        OkHttpClient okHttpClient = super.getUnsafeOkHttpClient();
+        okHttpClient.dispatcher().setMaxRequests(1);
+        return okHttpClient;
     }
 
 }
