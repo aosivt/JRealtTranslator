@@ -1,4 +1,4 @@
-package su.kww.realttranslator.core.api.remote.ngs.services.auth;
+package su.kww.realttranslator.core.api.remote.ngs.services.process.remove;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -7,24 +7,29 @@ import io.reactivex.Observable;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
+import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import su.kww.realttranslator.core.api.remote.ngs.services.AbstractNgsBaseApiConfig;
 import su.kww.realttranslator.core.api.remote.ngs.services.NgsUrlConfig;
-import su.kww.realttranslator.core.api.remote.ngs.services.auth.request.AuthNgsRequest;
-import su.kww.realttranslator.core.api.remote.ngs.services.auth.responce.AuthNgsResponse;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.add.request.AddProcessNgsRequest;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.remove.request.AbstractRemoveArchiveNgsRequest;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.remove.request.ArchiveProcessNgsRequest;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.remove.request.RemoveProcessNgsRequest;
 
 import javax.inject.Inject;
 import java.io.IOException;
 
-public class AuthNgsService extends AbstractNgsBaseApiConfig implements NgsUrlConfig, AuthNgsConfig {
+public class RemoveProcessNgsService extends AbstractNgsBaseApiConfig implements NgsUrlConfig, RemoveProcessNgsConfig {
 
     @Inject
-    AuthNgsService(){
+    RemoveProcessNgsService(){
         System.out.println("init".concat(getClass().getName()));
     }
 
-    protected static String BASE_URL = "https://realty.ngs42.ru/";
+    protected static String BASE_URL = "https://novosibirsk.n1.ru/";
+
+    private String token;
 
     private Gson gson = new GsonBuilder()
                                         .setLenient()
@@ -40,19 +45,22 @@ public class AuthNgsService extends AbstractNgsBaseApiConfig implements NgsUrlCo
                            .build();
     }
 
+
     @Override
-    public Observable<AuthNgsResponse> postAuthNgs(AuthNgsRequest authRequest) {
-        return getRetrofitForBaseUrl().create(AuthNgsConfig.class)
-                                                .postAuthNgs(authRequest);
+    public Observable<Object> archive(AbstractRemoveArchiveNgsRequest request) {
+        return getRetrofitForBaseUrl().create(RemoveProcessNgsConfig.class).archive(request);
+    }
+
+    @Override
+    public Observable<Object> remove(AbstractRemoveArchiveNgsRequest request) {
+        return getRetrofitForBaseUrl().create(RemoveProcessNgsConfig.class).remove(request);
     }
 
     protected Response rewriteChainRequest(Interceptor.Chain chain) throws IOException {
         Request request  = chain.request()
                 .newBuilder()
-                .addHeader("referer","https://realty.ngs.ru/cp/")
-                .addHeader("host","realty.ngs.ru")
-                .addHeader("origin","https://realty.ngs.ru")
                 .addHeader("Content-Type","application/json")
+                .addHeader("Authorization", getTokenForRequest())
                 .build();
         return chain.proceed(request);
     }
@@ -62,13 +70,13 @@ public class AuthNgsService extends AbstractNgsBaseApiConfig implements NgsUrlCo
         return BASE_URL;
     }
 
-    @Override
-    public String getTokenForRequest() throws Exception {
-        throw new Exception("this is not call execute method");
+    public String getTokenForRequest(){
+        return String.format("Bearer %s", token);
     }
 
-    @Override
-    public AbstractNgsBaseApiConfig setToken(String token) throws Exception {
-        throw new Exception("this is not call execute method");
+    public RemoveProcessNgsService setToken(String token){
+        this.token = token;
+        return this;
     }
+
 }

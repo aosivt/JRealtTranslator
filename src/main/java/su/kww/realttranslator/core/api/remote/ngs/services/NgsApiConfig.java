@@ -9,6 +9,8 @@ import su.kww.realttranslator.core.api.remote.ngs.DaggerNgsComponent;
 import su.kww.realttranslator.core.api.remote.ngs.services.auth.AuthNgsService;
 import su.kww.realttranslator.core.api.remote.ngs.services.auth.request.AuthNgsRequest;
 import su.kww.realttranslator.core.api.remote.ngs.services.auth.responce.AuthNgsResponse;
+import su.kww.realttranslator.core.api.remote.ngs.services.id.IdNgsService;
+import su.kww.realttranslator.core.api.remote.ngs.services.id.responses.IdNgsResponse;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.AddProcessNgsService;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.request.AddProcessNgsRequest;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.response.AddProcessNgsResponse;
@@ -16,6 +18,10 @@ import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.UploadP
 import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.options.BuilderJsonPropertyPhoto;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.options.JsonPropertyPhoto;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.response.UploadPhotoNgsResponse;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.remove.RemoveProcessNgsService;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.remove.request.AbstractRemoveArchiveNgsRequest;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.remove.request.ArchiveProcessNgsRequest;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.remove.request.RemoveProcessNgsRequest;
 
 import javax.inject.Inject;
 import java.io.File;
@@ -35,6 +41,10 @@ public class NgsApiConfig {
     AddProcessNgsService addProcessNgsService;
     @Inject
     UploadPhotoService uploadPhotoService;
+    @Inject
+    RemoveProcessNgsService removeProcessNgsService;
+    @Inject
+    IdNgsService idNgsService;
 
     private String token;
 
@@ -53,17 +63,13 @@ public class NgsApiConfig {
         return this;
     }
 
-    public NgsApiConfig add(AddProcessNgsRequest data){
-        try {
-            addProcessNgsService.setToken(token)
-                                .addWithCall(data)
-    //                            .doOnError(this::setError)
-    //                            .subscribe(this::setAddProcessNgsResponse).dispose();
-            .execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return this;
+    public AddProcessNgsResponse add(AddProcessNgsRequest data){
+
+        AddProcessNgsResponse response = addProcessNgsService.setToken(token)
+                                                             .add(data)
+                                                             .doOnError(this::setError)
+                                                             .blockingFirst();
+        return response;
     }
 
     public Set<JsonPropertyPhoto> uploadPhotos(Set<String> pathToPhoto){
@@ -85,6 +91,19 @@ public class NgsApiConfig {
 
     public Observable<UploadPhotoNgsResponse> uploadPhotoByPart(RequestBody type, Map<String, RequestBody> photo){
         return uploadPhotoService.setToken(token).uploadPhotoByPartWithMap(type, photo);
+    }
+
+    public Observable<Object> archiveOffer(Integer offerId){
+        AbstractRemoveArchiveNgsRequest request = new ArchiveProcessNgsRequest().addParams(offerId);
+        return removeProcessNgsService.setToken(token).archive(request);
+    }
+    public Observable<Object> removeOffer(Integer offerId){
+        AbstractRemoveArchiveNgsRequest request = new RemoveProcessNgsRequest().addParams(offerId);
+        return removeProcessNgsService.setToken(token).remove(request);
+    }
+
+    public Observable<IdNgsResponse> getIdByOldId(Integer offerId){
+        return idNgsService.setToken(token).getIdByOldId(offerId);
     }
 
     private void setAddProcessNgsResponse(Object response) {

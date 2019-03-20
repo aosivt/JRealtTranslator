@@ -7,6 +7,7 @@ public class AuthNgsRequest {
     @Inject
     public AuthNgsRequest(){
         setType("password");
+        System.out.println("init".concat(getClass().getName()));
     }
 
     private String username;

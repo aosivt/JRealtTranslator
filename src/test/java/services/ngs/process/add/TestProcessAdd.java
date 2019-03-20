@@ -16,32 +16,36 @@ import su.kww.realttranslator.core.api.remote.ngs.DaggerNgsComponent;
 import su.kww.realttranslator.core.api.remote.ngs.services.NgsApiConfig;
 import su.kww.realttranslator.core.api.remote.ngs.services.auth.request.AuthNgsRequest;
 import su.kww.realttranslator.core.api.remote.ngs.services.auth.responce.AuthNgsResponse;
+import su.kww.realttranslator.core.api.remote.ngs.services.id.responses.IdNgsResponse;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.request.AddProcessNgsRequest;
+import su.kww.realttranslator.core.api.remote.ngs.services.process.add.response.AddProcessNgsResponse;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.options.BuilderJsonPropertyPhoto;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.options.JsonPropertyPhoto;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.response.UploadPhotoNgsResponse;
-
+import su.kww.realttranslator.core.api.remote.ngs.services.id.responses.options.Result;
 import java.io.File;
 import java.util.*;
 
 import static org.junit.Assert.*;
 
 public class TestProcessAdd {
-    AuthNgsRequest authNgsRequest;
 
     AddProcessNgsRequest dataForNgsForm;
-    String token;
+
     private String pass = "pass123word";
 //    private String pass = "0305tdf";
     private String user = "darkf00rce@gmail.com";
 //    private String user = "rcn3120240@mail.ru";
-    private String boundary = "---------------------------265283104014185";
+
+
+    static {
+        System.setProperty("http.proxyHost", "127.0.0.1");
+        System.setProperty("https.proxyHost", "127.0.0.1");
+        System.setProperty("http.proxyPort", "8888");
+        System.setProperty("https.proxyPort", "8888");
+    }
     @Before
     public void setAuthData(){
-        authNgsRequest = new AuthNgsRequest();
-        authNgsRequest.setUsername("darkf00rce@gmail.com");
-        authNgsRequest.setPassword("pass123word");
-        authNgsRequest.setType("password");
         dataForNgsForm = getDataForNgsForm();
    }
 
@@ -52,9 +56,9 @@ public class TestProcessAdd {
     }
 
     private void assertAddDataToNgs(){
-        NgsApiConfig ngsApiConfig = DaggerNgsComponent.create().getNgsApiConfig()
-                .auth(user,pass)
-                ;
+        NgsApiConfig ngsApiConfig = DaggerNgsComponent.create()
+                                                .getNgsApiConfig()
+                                                .auth(user,pass);
 //                .add(getDataForNgsForm());
         uploadOnServerByPartWithMap(ngsApiConfig);
     }
@@ -74,7 +78,17 @@ public class TestProcessAdd {
 
         Set<JsonPropertyPhoto> jsonPropertyPhotos = ngsApiConfig.uploadPhotos(photoPath);
         dataForNgsForm.setPhotos(jsonPropertyPhotos);
-        ngsApiConfig.add(dataForNgsForm);
+        AddProcessNgsResponse response = ngsApiConfig.add(dataForNgsForm);
+        String id = response.getResults().parallelStream().findFirst().get().getId();
+        try {
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        IdNgsResponse offer = ngsApiConfig.getIdByOldId(Integer.parseInt(id)).blockingFirst();
+        Integer n1OfferId = offer.getResult().get(0).getId();
+        Object arch = ngsApiConfig.archiveOffer(n1OfferId).blockingFirst();
+        Object remove = ngsApiConfig.removeOffer(n1OfferId).blockingFirst();
     }
     private String getDataString(){
         return  "{" +
@@ -120,5 +134,4 @@ public class TestProcessAdd {
                 "\"wc_type\":{\"id\":\"400\"}," +
                 "\"rooms_count_type\":{\"id\":\"367\"}}";
     }
-
 }

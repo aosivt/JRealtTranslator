@@ -19,7 +19,9 @@ import java.io.IOException;
 public class AddProcessNgsService extends AbstractNgsBaseApiConfig implements NgsUrlConfig, AddProcessNgsConfig {
 
     @Inject
-    AddProcessNgsService(){}
+    AddProcessNgsService(){
+        System.out.println("init".concat(getClass().getName()));
+    }
 
     protected static String BASE_URL = "https://novosibirsk.n1.ru/";
 
@@ -40,7 +42,7 @@ public class AddProcessNgsService extends AbstractNgsBaseApiConfig implements Ng
     }
 
     @Override
-    public Observable<Object> add(AddProcessNgsRequest request) {
+    public Observable<AddProcessNgsResponse> add(AddProcessNgsRequest request) {
         return getRetrofitForBaseUrl().create(AddProcessNgsConfig.class).add(request);
     }
     @Override
@@ -69,12 +71,6 @@ public class AddProcessNgsService extends AbstractNgsBaseApiConfig implements Ng
     public AddProcessNgsService setToken(String token){
         this.token = token;
         return this;
-    }
-
-    protected OkHttpClient getUnsafeOkHttpClient(){
-        OkHttpClient okHttpClient = super.getUnsafeOkHttpClient();
-        okHttpClient.dispatcher().setMaxRequests(1);
-        return okHttpClient;
     }
 
 }

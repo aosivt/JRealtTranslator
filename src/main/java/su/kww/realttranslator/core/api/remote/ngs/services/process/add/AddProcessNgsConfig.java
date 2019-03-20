@@ -9,10 +9,10 @@ import su.kww.realttranslator.core.api.remote.ngs.services.process.add.request.A
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.response.AddProcessNgsResponse;
 
 public interface AddProcessNgsConfig {
-    @POST(AddProcessNgsService.PROCESS_URL)
-    Observable<Object> add(@Body AddProcessNgsRequest request);
+    @POST(AddProcessNgsService.HOME_PROCESS_URL)
+    Observable<AddProcessNgsResponse> add(@Body AddProcessNgsRequest request);
 
-    @POST(AddProcessNgsService.PROCESS_URL)
+    @POST(AddProcessNgsService.HOME_PROCESS_URL)
     Call<Object> addWithCall(@Body AddProcessNgsRequest request);
 
 

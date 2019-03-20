@@ -28,7 +28,9 @@ public class UploadPhotoService extends AbstractNgsBaseApiConfig implements Uplo
             .create();
 
     @Inject
-    public UploadPhotoService(){}
+    public UploadPhotoService(){
+        System.out.println("init".concat(getClass().getName()));
+    }
 
     @Override
     public Observable<ResponseBody> uploadPhoto(MultipartBody file) {
