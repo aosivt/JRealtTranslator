@@ -9,21 +9,14 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
-import su.kww.realttranslator.core.api.remote.domstor.DaggerDomstorComponent;
-import su.kww.realttranslator.core.api.remote.domstor.UserNamePassword;
-import su.kww.realttranslator.core.api.remote.domstor.entities.options.domstor.data.UploadResult;
+
 import su.kww.realttranslator.core.api.remote.ngs.DaggerNgsComponent;
 import su.kww.realttranslator.core.api.remote.ngs.services.NgsApiConfig;
-import su.kww.realttranslator.core.api.remote.ngs.services.auth.request.AuthNgsRequest;
-import su.kww.realttranslator.core.api.remote.ngs.services.auth.responce.AuthNgsResponse;
 import su.kww.realttranslator.core.api.remote.ngs.services.id.responses.IdNgsResponse;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.request.AddProcessNgsRequest;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.response.AddProcessNgsResponse;
-import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.options.BuilderJsonPropertyPhoto;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.options.JsonPropertyPhoto;
-import su.kww.realttranslator.core.api.remote.ngs.services.process.photo.response.UploadPhotoNgsResponse;
-import su.kww.realttranslator.core.api.remote.ngs.services.id.responses.options.Result;
-import java.io.File;
+
 import java.util.*;
 
 import static org.junit.Assert.*;

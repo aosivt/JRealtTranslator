@@ -12,14 +12,14 @@ import java.util.Map;
 
 public interface UploadPhotoConfig {
 //    @Multipart
-    @POST(AddProcessNgsService.UPLOAD_PHOTOS)
+    @POST(AddProcessNgsService.UPLOAD_PHOTOS_URL)
     Observable<ResponseBody> uploadPhoto(@Body MultipartBody file);
 
     @Multipart
-    @POST(AddProcessNgsService.UPLOAD_PHOTOS)
+    @POST(AddProcessNgsService.UPLOAD_PHOTOS_URL)
     Observable<UploadPhotoNgsResponse> uploadPhotoByPart(@Part("type") RequestBody type, @Part("media\"; filename=\"1.jpg\"") RequestBody photo);
 
     @Multipart
-    @POST(AddProcessNgsService.UPLOAD_PHOTOS)
+    @POST(AddProcessNgsService.UPLOAD_PHOTOS_URL)
     Observable<UploadPhotoNgsResponse> uploadPhotoByPartWithMap(@Part("type") RequestBody type, @PartMap Map<String, RequestBody> photo);
 }
