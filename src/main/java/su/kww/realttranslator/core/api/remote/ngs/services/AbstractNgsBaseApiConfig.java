@@ -58,4 +58,6 @@ public abstract class AbstractNgsBaseApiConfig {
 
     public abstract AbstractNgsBaseApiConfig setToken(String token) throws Exception;
 
+
+
 }

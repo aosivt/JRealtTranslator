@@ -4,13 +4,24 @@ import io.reactivex.Observable;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
-import su.kww.realttranslator.core.api.remote.ngs.DaggerNgsComponent;
+
 import su.kww.realttranslator.core.api.remote.ngs.services.auth.AuthNgsService;
 import su.kww.realttranslator.core.api.remote.ngs.services.auth.request.AuthNgsRequest;
 import su.kww.realttranslator.core.api.remote.ngs.services.auth.responce.AuthNgsResponse;
+
+import su.kww.realttranslator.core.api.remote.ngs.services.dictionaries.cooperative.NgsCooperativeService;
+import su.kww.realttranslator.core.api.remote.ngs.services.dictionaries.developer.NgsDeveloperService;
+
 import su.kww.realttranslator.core.api.remote.ngs.services.id.IdNgsService;
 import su.kww.realttranslator.core.api.remote.ngs.services.id.responses.IdNgsResponse;
+
+import su.kww.realttranslator.core.api.remote.ngs.services.locations.city.NgsCityService;
+import su.kww.realttranslator.core.api.remote.ngs.services.locations.complex.NgsComplexService;
+import su.kww.realttranslator.core.api.remote.ngs.services.locations.district.NgsDistrictService;
+import su.kww.realttranslator.core.api.remote.ngs.services.locations.microdistrict.NgsMicroDistrictService;
+import su.kww.realttranslator.core.api.remote.ngs.services.locations.region.NgsRegions;
+import su.kww.realttranslator.core.api.remote.ngs.services.locations.street.NgsStreetService;
+
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.AddProcessNgsService;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.request.AddProcessNgsRequest;
 import su.kww.realttranslator.core.api.remote.ngs.services.process.add.response.AddProcessNgsResponse;
@@ -25,7 +36,6 @@ import su.kww.realttranslator.core.api.remote.ngs.services.process.remove.reques
 
 import javax.inject.Inject;
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -34,17 +44,33 @@ import java.util.stream.Collectors;
 public class NgsApiConfig {
 
     @Inject
-    AuthNgsService authNgsService;
+    AuthNgsService                      authNgsService;
     @Inject
-    AuthNgsRequest authNgsRequest;
+    AuthNgsRequest                      authNgsRequest;
     @Inject
-    AddProcessNgsService addProcessNgsService;
+    AddProcessNgsService          addProcessNgsService;
     @Inject
-    UploadPhotoService uploadPhotoService;
+    UploadPhotoService              uploadPhotoService;
     @Inject
-    RemoveProcessNgsService removeProcessNgsService;
+    RemoveProcessNgsService    removeProcessNgsService;
     @Inject
-    IdNgsService idNgsService;
+    IdNgsService                          idNgsService;
+    @Inject
+    NgsCityService                         cityService;
+    @Inject
+    NgsComplexService                   complexService;
+    @Inject
+    NgsDistrictService                 districtService;
+    @Inject
+    NgsMicroDistrictService       microDistrictService;
+    @Inject
+    NgsRegions                                 regions;
+    @Inject
+    NgsStreetService                     streetService;
+    @Inject
+    NgsDeveloperService               developerService;
+    @Inject
+    NgsCooperativeService           cooperativeService;
 
     private String token;
 
@@ -122,4 +148,59 @@ public class NgsApiConfig {
         return token;
     }
 
+    public AuthNgsService getAuthNgsService() {
+        return authNgsService;
+    }
+
+    public AuthNgsRequest getAuthNgsRequest() {
+        return authNgsRequest;
+    }
+
+    public AddProcessNgsService getAddProcessNgsService() {
+        return addProcessNgsService;
+    }
+
+    public UploadPhotoService getUploadPhotoService() {
+        return uploadPhotoService;
+    }
+
+    public RemoveProcessNgsService getRemoveProcessNgsService() {
+        return removeProcessNgsService;
+    }
+
+    public IdNgsService getIdNgsService() {
+        return idNgsService;
+    }
+
+    public NgsCityService getCityService() {
+        return cityService;
+    }
+
+    public NgsComplexService getComplexService() {
+        return complexService;
+    }
+
+    public NgsDistrictService getDistrictService() {
+        return districtService;
+    }
+
+    public NgsMicroDistrictService getMicroDistrictService() {
+        return microDistrictService;
+    }
+
+    public NgsRegions getRegions() {
+        return regions;
+    }
+
+    public NgsStreetService getStreetService() {
+        return streetService;
+    }
+
+    public NgsDeveloperService getDeveloperService() {
+        return developerService;
+    }
+
+    public NgsCooperativeService getCooperativeService() {
+        return cooperativeService;
+    }
 }

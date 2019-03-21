@@ -1,13 +1,13 @@
-package su.kww.realttranslator.core.api.remote.ngs.services.city.response;
+package su.kww.realttranslator.core.api.remote.ngs.services.locations.city.response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import su.kww.realttranslator.core.api.remote.ngs.services.city.response.options.Metadata;
-import su.kww.realttranslator.core.api.remote.ngs.services.city.response.options.Result;
+import su.kww.realttranslator.core.api.remote.ngs.services.locations.city.response.options.Metadata;
+import su.kww.realttranslator.core.api.remote.ngs.services.locations.city.response.options.Result;
 
 import java.util.List;
 
-public class CityNgsResponse {
+public class NgsCityResponse {
     @SerializedName("result")
     @Expose
     private List<Result> result = null;
